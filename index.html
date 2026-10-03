@@ -1,0 +1,2364 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Révisions Œnologie CEFOR</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Caveat:wght@500;600&family=Gloock&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout : une colonne de lecture (max 1040px) sous une barre de navigation collante ; le jaune post-it ne marque que ce que le prof a signalé « ne pas oublier » */
+:root{
+  --paper:#FBF9F9; --surface:#FFFFFF; --ink:#24191D; --muted:#6C5F65; --line:#E6DCDF;
+  --wine:#7B1E36; --wine-soft:#F5E7EB; --postit:#F7E36E; --postit-ink:#3A2F00;
+  --ok:#23704A; --bad:#A8261E; --scrim:rgba(18,10,13,.9); --on-scrim:#F4EEF0;
+  --k1:#7B1E36; --k2:#1C6B66; --k3:#8A5A00; --on-k:#FFFFFF;
+  --f-display:"Gloock", Georgia, "Times New Roman", serif;
+  --f-body:"Atkinson Hyperlegible", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --f-mono:"IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --f-hand:"Caveat", "Segoe Print", "Bradley Hand", cursive;
+  --radius:6px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#161113; --surface:#1F181B; --ink:#F2EBED; --muted:#B4A7AC; --line:#382D32;
+    --wine:#E68CA2; --wine-soft:#3A2129; --postit:#EAD55E; --postit-ink:#2B2300;
+    --ok:#6CC592; --bad:#F2877F; --k1:#E68CA2; --k2:#6FC7BE; --k3:#E2B64D; --on-k:#161113; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#161113; --surface:#1F181B; --ink:#F2EBED; --muted:#B4A7AC; --line:#382D32;
+  --wine:#E68CA2; --wine-soft:#3A2129; --postit:#EAD55E; --postit-ink:#2B2300;
+  --ok:#6CC592; --bad:#F2877F; --k1:#E68CA2; --k2:#6FC7BE; --k3:#E2B64D; --on-k:#161113; color-scheme:dark;
+}
+
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth;scroll-padding-top:7.5rem}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 1.0625rem/1.6 var(--f-body);padding-inline:clamp(16px,4vw,40px);padding-block:0 4rem;-webkit-font-smoothing:antialiased}
+.page{max-width:1040px;margin-inline:auto}
+h1,h2,h3,h4{text-wrap:balance;margin:0}
+h1,h2{font-family:var(--f-display);font-weight:400;letter-spacing:-.01em;line-height:1.08}
+h1{font-size:clamp(2.5rem,6.5vw,3.9rem)}
+h2{font-size:clamp(1.9rem,4.2vw,2.6rem)}
+h3{font-size:1.3rem;line-height:1.3;font-weight:700}
+h4{font-size:1.05rem;font-weight:700}
+p,ul,ol,dl,blockquote{margin:0}
+a{color:var(--wine);text-underline-offset:.18em}
+:focus-visible{outline:2px solid var(--wine);outline-offset:2px}
+.kicker,.label{font-family:var(--f-mono);font-size:.76rem;letter-spacing:.09em;text-transform:uppercase;color:var(--wine);font-weight:500}
+.prose{max-width:68ch}
+.muted{color:var(--muted)}
+.num{font-family:var(--f-mono);font-variant-numeric:tabular-nums;font-size:.94em;white-space:nowrap}
+mark{background:var(--postit);color:var(--postit-ink);padding:0 .2em;border-radius:2px}
+
+/* En-tête et parties */
+.site-head{display:grid;gap:.55rem;padding-block:2.6rem 1.6rem}
+.site-head .lede{font-size:1.12rem;color:var(--muted);max-width:62ch}
+.parts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:1rem;margin-top:1.1rem}
+.parts a{display:grid;grid-template-columns:auto minmax(0,1fr);gap:.15rem .9rem;align-content:start;padding:1rem 1.15rem 1.1rem;border:1px solid var(--line);border-radius:var(--radius);background:var(--surface);color:var(--ink);text-decoration:none;transition:transform .15s,border-color .15s}
+.parts a:hover{border-color:var(--wine);transform:translateY(-2px)}
+.parts .num{grid-row:span 2;font-family:var(--f-display);font-size:2.7rem;line-height:1;color:var(--wine)}
+.parts .pt{font-weight:700;font-size:1.2rem;line-height:1.25}
+.parts .pd{color:var(--muted);font-size:.95rem;line-height:1.45}
+.parts a.is-postit{background:var(--postit);color:var(--postit-ink);border-color:transparent;transform:rotate(-1.2deg);box-shadow:0 14px 20px -16px rgba(40,25,0,.6)}
+.parts a.is-postit .num,.parts a.is-postit .pd{color:var(--postit-ink)}
+.parts a.is-postit .pt{font-family:var(--f-hand);font-size:1.75rem;line-height:1}
+.parts a.is-postit:hover{transform:rotate(0)}
+.parts a[aria-current="true"]{outline:2px solid var(--ink);outline-offset:3px}
+
+/* Barre de navigation */
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:var(--paper);border-bottom:1px solid var(--line);display:grid;gap:.15rem;padding-block:.5rem .25rem}
+.bar-parts{display:flex;gap:.3rem;overflow-x:auto;scrollbar-width:none}
+.bar-parts a{font-weight:700;font-size:.92rem;text-decoration:none;color:var(--ink);padding:.3rem .8rem;border-radius:999px;border:1px solid var(--line);white-space:nowrap}
+.bar-parts a .n{font-family:var(--f-mono);color:var(--wine);margin-right:.35rem;font-weight:500}
+.bar-parts a[aria-current="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.bar-parts a[aria-current="true"] .n{color:var(--paper)}
+.subnav{list-style:none;margin:0;padding:.15rem 0 .1rem;display:flex;gap:.1rem;overflow-x:auto;scrollbar-width:thin}
+.subnav a{display:block;white-space:nowrap;padding:.28rem .7rem;border-radius:999px;text-decoration:none;color:var(--muted);font-size:.9rem}
+.subnav a:hover{background:var(--wine-soft);color:var(--wine)}
+.subnav a[aria-current="true"]{color:var(--wine);background:var(--wine-soft)}
+
+/* Tête de partie */
+.part-head{display:grid;gap:.5rem;padding-block:2.5rem .25rem}
+.part-head h2{font-size:clamp(2.3rem,5.2vw,3.3rem)}
+.part-head .lede{color:var(--muted);max-width:64ch;font-size:1.08rem}
+.part-head+section{border-top:0}
+
+/* Sections */
+section{padding-block:3.25rem 1rem}
+section+section{border-top:1px solid var(--line)}
+.sec-head{display:grid;gap:.45rem;margin-bottom:1.5rem}
+.sec-head .sub{color:var(--muted);max-width:64ch}
+.block{display:grid;gap:1rem;margin-block:2rem 1rem}
+.block>h3{display:flex;flex-wrap:wrap;align-items:center;gap:.45rem .8rem}
+.sub-block{display:grid;gap:1rem;margin-block:2.5rem 1rem;padding-top:1.75rem;border-top:1px dashed var(--line)}
+.sub-block>h3{display:flex;flex-wrap:wrap;align-items:baseline;gap:.4rem .8rem}
+
+.pi{font:600 1.08rem/1 var(--f-hand);background:var(--postit);color:var(--postit-ink);border:0;padding:.3rem .55rem .22rem;transform:rotate(-2deg);cursor:pointer;box-shadow:0 4px 6px -4px rgba(40,25,0,.55);white-space:nowrap;transition:transform .15s}
+.pi:hover{transform:rotate(0) translateY(-1px)}
+.pis{display:inline-flex;flex-wrap:wrap;gap:.4rem}
+
+ul.plain{padding-left:1.15rem;display:grid;gap:.4rem}
+ul.plain li::marker{color:var(--wine)}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:1.25rem}
+.cols.two{grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr))}
+.cols>*{min-width:0}
+.panel{border:1px solid var(--line);background:var(--surface);border-radius:var(--radius);padding:1.1rem 1.25rem 1.2rem;display:grid;gap:.6rem;align-content:start}
+.panel>h4,.mini{font-family:var(--f-mono);font-size:.76rem;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);font-weight:500}
+.panel .head{display:flex;justify-content:space-between;align-items:center;gap:.6rem;flex-wrap:wrap}
+.panel .head h4{font-size:1.12rem}
+.retenir{background:var(--wine-soft);padding:1rem 1.25rem;border-radius:var(--radius);display:grid;gap:.45rem}
+.warn{font-weight:700;color:var(--wine)}
+blockquote{font-family:var(--f-display);font-size:clamp(1.3rem,3vw,1.7rem);line-height:1.3;max-width:40ch;padding-left:1.25rem;border-left:1px solid var(--wine)}
+blockquote cite{display:block;font-family:var(--f-body);font-style:normal;font-size:.9rem;color:var(--muted);margin-top:.6rem}
+
+/* Frise */
+.timeline{list-style:none;padding:0;display:grid;border-left:2px solid var(--line);margin-left:.35rem}
+.timeline li{display:grid;grid-template-columns:9.5rem minmax(0,1fr);gap:1rem;padding:.5rem 0 .5rem 1.2rem;position:relative}
+.timeline li::before{content:"";position:absolute;left:-7px;top:.95rem;width:12px;height:12px;border-radius:50%;background:var(--paper);border:2px solid var(--wine)}
+.timeline .when{font-family:var(--f-mono);font-size:.9rem;color:var(--wine);font-variant-numeric:tabular-nums;padding-top:.1rem}
+@media (max-width:560px){.timeline li{grid-template-columns:1fr;gap:.1rem}}
+
+/* Étapes */
+.steps{list-style:none;padding:0;display:grid;border-top:1px solid var(--line)}
+.steps li{display:grid;grid-template-columns:3.1rem minmax(0,1fr) auto;gap:.3rem .9rem;padding:.75rem 0;border-bottom:1px solid var(--line);align-items:start}
+.steps li::before{content:attr(data-n);font-family:var(--f-mono);color:var(--wine);font-size:.95rem;padding-top:.12rem}
+.steps .t{font-weight:700}
+.steps .d{color:var(--muted);display:block;font-size:.97rem}
+.tag{font-family:var(--f-mono);font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line);border-radius:3px;padding:.05rem .35rem;margin-left:.35rem;vertical-align:.12em;white-space:nowrap}
+.tag.must{color:var(--wine);border-color:var(--wine)}
+
+/* Définitions */
+.defs{display:grid;border-top:1px solid var(--line)}
+.defs>div{display:grid;grid-template-columns:minmax(9rem,13rem) minmax(0,1fr) auto;gap:.3rem 1.2rem;padding:.8rem 0;border-bottom:1px solid var(--line);align-items:start}
+.defs dt{font-weight:700}
+.defs dd{margin:0;color:var(--ink)}
+.defs .fig{display:block;font-family:var(--f-mono);color:var(--wine);font-size:.92rem;font-variant-numeric:tabular-nums;font-weight:400}
+@media (max-width:640px){.defs>div{grid-template-columns:minmax(0,1fr)}.steps li{grid-template-columns:2.9rem minmax(0,1fr)}.steps .pi{grid-column:2}.defs .pi,.steps .pi{justify-self:start}}
+
+/* Tableaux */
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius);background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:.95rem}
+.tbl.wide table{min-width:620px}
+th,td{text-align:left;vertical-align:top;padding:.65rem .85rem;border-bottom:1px solid var(--line)}
+thead th{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:500;background:var(--paper);vertical-align:bottom}
+thead th .pi{margin-top:.45rem;display:inline-block;text-transform:none;letter-spacing:0}
+tbody th{font-weight:700}
+tbody tr:last-child>*{border-bottom:0}
+td.r{text-align:right;font-family:var(--f-mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+.cat{font-family:var(--f-mono);font-size:.75rem;letter-spacing:.05em;text-transform:uppercase;color:var(--wine)}
+
+/* Robes */
+.robes{display:grid;gap:1.1rem}
+.robe-row{display:grid;grid-template-columns:5.5rem minmax(0,1fr);gap:1rem;align-items:start}
+.robe-row h4{padding-top:.9rem}
+.robe-row ol{list-style:none;padding:0;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:.5rem}
+.robe-row li{display:grid;gap:.35rem;font-size:.82rem;text-align:center;color:var(--muted);justify-items:center}
+.robe-row li i{display:block;width:100%;max-width:3.4rem;aspect-ratio:1;border-radius:50%;border:1px solid var(--line);background:var(--c);background:radial-gradient(circle,var(--c) 52%,color-mix(in srgb,var(--c) 55%,#fff) 100%)}
+.robe-axis{grid-column:2;font-family:var(--f-mono);font-size:.72rem;color:var(--muted);letter-spacing:.05em;display:flex;justify-content:space-between;margin-top:-.4rem}
+@media (max-width:560px){.robe-row{grid-template-columns:1fr}.robe-row h4{padding-top:0}.robe-row ol{grid-template-columns:repeat(3,minmax(0,1fr))}.robe-axis{grid-column:1}}
+
+/* Échelles */
+.ladders{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,330px),1fr));gap:1.25rem}
+.ladder{border:1px solid var(--line);border-radius:var(--radius);background:var(--surface);padding:1rem 1.15rem 1.15rem;display:grid;gap:.65rem;align-content:start;min-width:0}
+.ladder-head{display:flex;justify-content:space-between;align-items:center;gap:.6rem;flex-wrap:wrap}
+.ladder-head h4{font-size:1.12rem}
+.ladder-note{font-size:.92rem;color:var(--muted)}
+.ladder ol{list-style:none;padding:0;display:grid;gap:.55rem}
+.ladder li{display:grid;grid-template-columns:2.6rem minmax(0,1fr);gap:.8rem;align-items:start}
+.ladder .m{height:.45rem;border-radius:2px;background:var(--line);position:relative;overflow:hidden;margin-top:.55rem}
+.ladder .m::after{content:"";position:absolute;inset:0 auto 0 0;width:calc(var(--w) * 100%);background:var(--wine)}
+.ladder li b{display:block;line-height:1.35}
+.ladder li .def{display:block;font-size:.93rem;color:var(--muted);line-height:1.45}
+.ladder.is-list li{grid-template-columns:minmax(0,1fr)}
+.ladder-axis{font-family:var(--f-mono);font-size:.72rem;color:var(--muted);letter-spacing:.05em}
+
+/* Slides */
+.filters{display:flex;flex-wrap:wrap;gap:.45rem;margin-bottom:1.75rem}
+.filters button{font:inherit;font-size:.92rem;border:1px solid var(--line);background:var(--surface);color:var(--ink);padding:.35rem .85rem;border-radius:999px;cursor:pointer}
+.filters button[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.sgroup{display:grid;gap:1rem;margin-bottom:2.75rem}
+.sgroup-title{display:flex;flex-wrap:wrap;gap:.25rem .75rem;align-items:baseline;font-size:1.15rem}
+.sgroup-title .count{font-family:var(--f-mono);font-size:.8rem;color:var(--muted);font-weight:400}
+.slides{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,225px),1fr));gap:1.5rem 1.1rem}
+.slide{font:inherit;color:inherit;text-align:left;background:none;border:0;padding:0;cursor:pointer;display:grid;gap:.6rem;align-content:start;min-width:0}
+.slide img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;border:1px solid var(--line);border-radius:4px;transition:transform .15s,box-shadow .15s}
+.slide:hover img{transform:translateY(-2px);box-shadow:0 10px 18px -14px rgba(40,10,20,.6)}
+.slide:focus-visible{outline:2px solid var(--wine);outline-offset:4px;border-radius:4px}
+.slide-cap{display:grid;gap:.12rem}
+.slide-no{font-family:var(--f-mono);font-size:.74rem;color:var(--muted)}
+.slide-title{font-weight:700;line-height:1.3}
+.slide-line{font-size:.88rem;color:var(--muted);line-height:1.4}
+
+/* Visionneuse */
+.lb{position:fixed;inset:0;z-index:50;background:var(--scrim);display:grid;place-items:center;padding:calc(env(safe-area-inset-top,0px) + 16px) 16px calc(env(safe-area-inset-bottom,0px) + 16px)}
+.lb-inner{width:min(100%,1100px);display:grid;gap:.8rem}
+.lb img{width:100%;max-height:calc(100vh - 9rem);max-height:calc(100dvh - 9rem);object-fit:contain;border-radius:4px}
+.lb-bar{display:flex;gap:.5rem;align-items:center;color:var(--on-scrim);flex-wrap:wrap}
+.lb-bar p{flex:1 1 12rem;min-width:0;font-size:.98rem}
+.lb-bar p span{font-family:var(--f-mono);font-size:.8rem;opacity:.75;display:block}
+.lb button{font:inherit;background:rgba(255,255,255,.1);color:var(--on-scrim);border:1px solid rgba(255,255,255,.3);border-radius:999px;padding:.4rem .95rem;cursor:pointer}
+.lb button:hover{background:rgba(255,255,255,.2)}
+
+/* Examen */
+.qcm{display:grid;gap:.7rem}
+.qcm-q{font-weight:700}
+.qcm ol{padding-left:1.4rem;display:grid;gap:.2rem}
+details{border:1px solid var(--line);border-radius:var(--radius);padding:.65rem .9rem;background:var(--surface)}
+details summary{cursor:pointer;font-weight:700;color:var(--wine)}
+details[open] summary{margin-bottom:.6rem}
+details p+p{margin-top:.5rem}
+.checklist{list-style:none;padding:0;display:grid;border-top:1px solid var(--line)}
+.check{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:.8rem;align-items:center;padding:.6rem .15rem;border-bottom:1px solid var(--line)}
+.check input{width:1.15rem;height:1.15rem;margin:0;accent-color:var(--wine)}
+.check label{cursor:pointer}
+.check a{font-size:.88rem;white-space:nowrap}
+.check input:checked+label{color:var(--muted);text-decoration:line-through;text-decoration-color:var(--muted)}
+.progress{font-family:var(--f-mono);font-size:.85rem;color:var(--muted);font-weight:400}
+
+/* Exercices */
+.tabs{display:flex;flex-wrap:wrap;gap:.45rem;margin-bottom:1.1rem}
+.tabs button{font:inherit;font-weight:700;border:1px solid var(--line);background:var(--surface);color:var(--ink);padding:.5rem 1rem;border-radius:999px;cursor:pointer}
+.tabs button[aria-selected="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.ex{border:1px solid var(--line);background:var(--surface);border-radius:var(--radius);padding:clamp(1rem,3vw,1.75rem);display:grid;gap:1.15rem;max-width:880px;grid-template-columns:minmax(0,1fr)}
+.ex>*{min-width:0}
+.ex-bar{display:flex;flex-wrap:wrap;gap:.6rem 1rem;align-items:center}
+.ex-bar label{font-weight:700}
+.ex-bar select{font:inherit;padding:.35rem .55rem;border:1px solid var(--line);border-radius:4px;background:var(--paper);color:var(--ink);max-width:100%}
+.ex-prompt{max-width:64ch}
+.score{margin-left:auto;font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+.ex-foot{display:flex;flex-wrap:wrap;gap:.75rem;align-items:center;justify-content:space-between;min-height:2.5rem}
+.ex-foot>p{flex:1 1 16rem;min-width:0}
+.ex-actions{display:flex;flex-wrap:wrap;gap:.5rem}
+.ok{color:var(--ok);font-weight:700}
+.ko{color:var(--bad);font-weight:700}
+.btn{font:inherit;font-weight:700;background:var(--wine);color:var(--paper);border:1.5px solid var(--wine);border-radius:999px;padding:.5rem 1.15rem;cursor:pointer}
+.btn.ghost{background:none;color:var(--wine)}
+.btn:disabled{opacity:.45;cursor:default}
+
+/* Nuage de mots */
+.rubs{display:flex;flex-wrap:wrap;gap:.5rem}
+.rub{font:inherit;display:inline-flex;flex-wrap:wrap;text-align:left;max-width:100%;align-items:center;gap:.5rem;padding:.4rem .9rem .4rem .45rem;border-radius:999px;border:1.5px solid var(--kc);background:var(--surface);color:var(--ink);cursor:pointer}
+.rub .n{display:inline-grid;place-items:center;width:1.55rem;height:1.55rem;border-radius:50%;background:var(--kc);color:var(--on-k);font:500 .8rem/1 var(--f-mono)}
+.rub .c{font-family:var(--f-mono);font-size:.78rem;color:var(--muted)}
+.rub[aria-pressed="true"]{background:var(--kc);color:var(--on-k)}
+.rub[aria-pressed="true"] .n{background:var(--on-k);color:var(--kc)}
+.rub[aria-pressed="true"] .c{color:var(--on-k)}
+.rub.solo{cursor:default}
+.cloud{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:.55rem .8rem;padding:1.6rem 1rem;border:1px dashed var(--line);border-radius:var(--radius);background:var(--paper);min-height:10rem}
+.w{font:inherit;background:none;border:1.5px solid transparent;color:var(--ink);border-radius:8px;padding:.15rem .5rem;cursor:pointer;line-height:1.2;display:inline-flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:.1rem .4rem;max-width:100%}
+.w.s1{font-size:1rem}
+.w.s2{font-size:1.22rem;font-weight:700}
+.w.s3{font-size:1.6rem;font-family:var(--f-display)}
+.w:hover{border-color:var(--line)}
+.w.on{border-color:var(--kc);background:var(--surface);box-shadow:inset 0 -.35em 0 color-mix(in srgb,var(--kc) 22%,transparent)}
+.w .b{font:500 .72rem/1 var(--f-mono);background:var(--kc);color:var(--on-k);border-radius:50%;width:1.3rem;height:1.3rem;display:inline-grid;place-items:center}
+.w.good{border-color:var(--ok);outline:1.5px solid var(--ok)}
+.w.bad{border-color:var(--bad);outline:1.5px solid var(--bad)}
+.w .fix{flex-basis:100%;font:500 .74rem/1.2 var(--f-mono);color:var(--bad)}
+.w[disabled]{cursor:default}
+
+/* Remettre dans l'ordre */
+.slots{list-style:none;padding:0;display:grid;gap:.4rem}
+.slots li{display:grid;grid-template-columns:2.2rem minmax(0,1fr);align-items:center;gap:.5rem;min-height:2.75rem;padding:.25rem .4rem;border:1px dashed var(--line);border-radius:6px}
+.slots li::before{content:attr(data-n);font-family:var(--f-mono);color:var(--wine);text-align:center}
+.slots li.filled{border-style:solid}
+.slots li.good{border-color:var(--ok);border-width:1.5px}
+.slots li.bad{border-color:var(--bad);border-width:1.5px}
+.slots .fix{grid-column:2;font-size:.86rem;color:var(--bad)}
+.slots .detail{font-family:var(--f-mono);font-size:.8rem;color:var(--muted);margin-left:.4rem}
+.chip{font:inherit;text-align:left;background:var(--paper);color:var(--ink);border:1px solid var(--line);border-radius:6px;padding:.45rem .75rem;cursor:pointer}
+.chip:hover:not(:disabled){border-color:var(--wine)}
+.chip:disabled{cursor:default;color:var(--ink)}
+.slots .chip{width:100%}
+.pool{display:flex;flex-wrap:wrap;gap:.5rem;min-height:2.6rem}
+.pool:empty::before{content:"Tout est placé : vérifiez.";color:var(--muted);font-size:.92rem;align-self:center}
+
+/* QCM et définitions */
+.q-def{font-family:var(--f-display);font-size:clamp(1.3rem,3vw,1.7rem);line-height:1.3}
+.q-opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:.6rem}
+.q-opts button{font:inherit;text-align:left;padding:.75rem .95rem;border:1px solid var(--line);border-radius:6px;background:var(--paper);color:var(--ink);cursor:pointer}
+.q-opts button:hover:not(:disabled){border-color:var(--wine)}
+.q-opts button:disabled{cursor:default;color:var(--ink);opacity:.55}
+.q-opts button.is-right{opacity:1;border-color:var(--ok);background:var(--surface);box-shadow:inset 0 0 0 1px var(--ok)}
+.q-opts button.is-wrong{opacity:1;border-color:var(--bad);box-shadow:inset 0 0 0 1px var(--bad)}
+.explain{background:var(--wine-soft);border-radius:var(--radius);padding:.8rem 1rem}
+
+footer{border-top:1px solid var(--line);margin-top:3rem;padding-top:1.5rem;color:var(--muted);font-size:.92rem;display:grid;gap:.4rem}
+
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*{transition:none!important}}
+
+/* Slides post-it expliquées */
+.pgroup{display:grid;gap:.25rem;margin-bottom:2.25rem}
+.pcard{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:1.1rem 1.75rem;padding-block:1.25rem;border-top:1px solid var(--line);align-items:start}
+.pcard .shot{padding:0;border:0;background:none;cursor:zoom-in;display:block;width:100%}
+.pcard .shot img{display:block;width:100%;height:auto;aspect-ratio:4/3;border:1px solid var(--line);border-radius:4px;transition:transform .15s}
+.pcard .shot:hover img{transform:translateY(-2px)}
+.pcard .shot:focus-visible{outline:2px solid var(--wine);outline-offset:3px}
+.pcard-body{display:grid;gap:.55rem;min-width:0;align-content:start}
+.pcard-body h4{font-size:1.25rem;line-height:1.25}
+.retenir-line{background:var(--postit);color:var(--postit-ink);padding:.55rem .8rem;border-radius:2px;font-weight:700;box-shadow:0 6px 10px -9px rgba(40,25,0,.6);justify-self:start}
+.piege{font-size:.96rem;color:var(--muted)}
+.piege b{color:var(--wine)}
+@media (max-width:720px){.pcard{grid-template-columns:minmax(0,1fr)}}
+
+/* Fiche résumé globale */
+.sheet{columns:3 290px;column-gap:1.1rem}
+.scard{break-inside:avoid;display:grid;gap:.45rem;border:1px solid var(--line);background:var(--surface);border-radius:var(--radius);padding:.85rem 1rem .95rem;margin:0 0 1.1rem;font-size:.95rem;line-height:1.5}
+.scard>h4{display:flex;flex-wrap:wrap;align-items:center;gap:.3rem .5rem;font-family:var(--f-mono);font-size:.74rem;letter-spacing:.09em;text-transform:uppercase;color:var(--wine);font-weight:500}
+.scard ul{padding-left:1rem;display:grid;gap:.2rem}
+.scard ul li::marker{color:var(--wine)}
+.scard p b,.scard li b{font-weight:700}
+.scard .more{font-size:.85rem;justify-self:start}
+.kv{display:grid;grid-template-columns:auto minmax(0,1fr);gap:.2rem .75rem;margin:0}
+.kv dt{font-family:var(--f-mono);font-size:.88rem;font-variant-numeric:tabular-nums;color:var(--wine);white-space:nowrap}
+.kv dd{margin:0}
+.sc{display:block;line-height:1.55}
+.sc>span:first-child{display:block;font-family:var(--f-mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.sc i{font-style:normal;color:var(--wine);padding-inline:.15rem}
+.flow{line-height:1.7}
+.flow i{font-style:normal;color:var(--wine);padding-inline:.15rem}
+.pt-tag{font:600 .98rem/1 var(--f-hand);background:var(--postit);color:var(--postit-ink);padding:.14rem .42rem .1rem;transform:rotate(-2deg);display:inline-block;letter-spacing:0;text-transform:none}
+
+/* Menu des exercices */
+.exmenu{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,235px),1fr));gap:.7rem;margin-bottom:1.75rem}
+.exmenu a{display:grid;gap:.25rem;align-content:start;padding:.8rem .95rem .85rem;border:1px solid var(--line);border-radius:var(--radius);background:var(--surface);color:var(--ink);text-decoration:none}
+.exmenu a:hover{border-color:var(--wine)}
+.exmenu a[aria-current="true"]{border-color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
+.exmenu .t{font-weight:700;line-height:1.3}
+.exmenu .d{font-size:.88rem;color:var(--muted);line-height:1.4}
+.exmenu .meta{display:flex;gap:.4rem;flex-wrap:wrap;align-items:center;font-family:var(--f-mono);font-size:.74rem;color:var(--muted)}
+.exam-tag{font:600 .95rem/1 var(--f-hand);background:var(--postit);color:var(--postit-ink);padding:.12rem .42rem .08rem;letter-spacing:0}
+.ex-title{display:flex;flex-wrap:wrap;gap:.3rem .8rem;align-items:center}
+.ex-title h3{font-size:1.45rem;font-family:var(--f-display);font-weight:400}
+.mc{display:grid;gap:1.1rem;grid-template-columns:minmax(0,1fr)}
+.q-opts.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+.progress-bar{height:.4rem;background:var(--line);border-radius:2px;overflow:hidden}
+.progress-bar i{display:block;height:100%;background:var(--wine);width:calc(var(--p,0) * 100%);transition:width .2s}
+.summary{display:grid;gap:.9rem}
+.summary .big{font-family:var(--f-display);font-size:clamp(2.6rem,7vw,3.6rem);line-height:1}
+.summary ol{padding-left:1.25rem;display:grid;gap:.7rem}
+.summary li span{display:block;color:var(--muted);font-size:.93rem}
+
+/* Relier */
+.match{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,3fr);gap:1rem 1.5rem;align-items:start}
+.match>div{display:grid;gap:.5rem;min-width:0}
+.mt,.md{font:inherit;text-align:left;display:flex;gap:.65rem;align-items:flex-start;padding:.6rem .8rem;border:1px solid var(--line);border-radius:6px;background:var(--paper);color:var(--ink);cursor:pointer;width:100%}
+.mt .b,.md .b{flex:none;display:inline-grid;place-items:center;width:1.55rem;height:1.55rem;border-radius:50%;font:500 .78rem/1 var(--f-mono);border:1.5px solid var(--wine);color:var(--wine)}
+.md .b:empty{border-style:dashed;border-color:var(--muted)}
+.mt .sub{display:block;font-size:.8rem;color:var(--muted)}
+.mt[aria-pressed="true"]{border-color:var(--wine);box-shadow:inset 0 0 0 1.5px var(--wine)}
+.mt.linked .b,.md.linked .b{background:var(--wine);color:var(--paper)}
+.mt.good,.md.good{border-color:var(--ok);box-shadow:inset 0 0 0 1.5px var(--ok)}
+.mt.bad,.md.bad{border-color:var(--bad);box-shadow:inset 0 0 0 1.5px var(--bad)}
+.mt:disabled,.md:disabled{cursor:default;color:var(--ink)}
+.md .fix{display:block;font:500 .78rem/1.3 var(--f-mono);color:var(--bad);margin-top:.25rem}
+.match .mini{margin-bottom:.1rem}
+@media (max-width:640px){.match{grid-template-columns:minmax(0,1fr)}}
+
+/* Analyser deux vins */
+.wines{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:1.25rem}
+.wine{border:1px solid var(--line);border-radius:var(--radius);background:var(--paper);padding:1rem 1.05rem .6rem;display:grid;min-width:0}
+.wine h4{display:flex;align-items:center;gap:.6rem;font-size:1.12rem;margin-bottom:.5rem}
+.wine h4 i{flex:none;width:1.25rem;height:1.25rem;border-radius:50%;background:var(--c);border:1px solid var(--line)}
+.frow{display:grid;gap:.35rem;padding:.7rem 0;border-top:1px solid var(--line)}
+.frow .lab{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
+.frow .obs{font-size:.96rem}
+.frow select{font:inherit;padding:.4rem .5rem;border:1px solid var(--line);border-radius:4px;background:var(--surface);color:var(--ink);max-width:100%}
+.frow.good select{border-color:var(--ok);box-shadow:0 0 0 1px var(--ok)}
+.frow.bad select{border-color:var(--bad);box-shadow:0 0 0 1px var(--bad)}
+.frow .fix{font-size:.88rem;color:var(--bad)}
+
+/* Visionneuse : texte */
+.lb-inner{max-height:100%;overflow-y:auto;overscroll-behavior:contain}
+.lb img{max-height:calc(100vh - 17rem);max-height:calc(100dvh - 17rem)}
+.lb-text{color:var(--on-scrim);display:grid;gap:.45rem;max-width:78ch;font-size:.98rem}
+.lb-text .r{background:var(--postit);color:var(--postit-ink);padding:.45rem .7rem;font-weight:700;border-radius:2px;justify-self:start}
+.lb-text a{color:var(--on-scrim)}
+</style>
+<div class="page">
+<header class="site-head">
+  <p class="kicker">CEFOR Namur · Initiation à l'étude des vins · 2026</p>
+  <h1>Révisions d'œnologie</h1>
+  <p class="lede">Trois parties séparées : le cours complet, la théorie à étudier pour l'examen, et les exercices.</p>
+  <nav class="parts" aria-label="Parties du site">
+    <a href="#cours" data-part="cours"><span class="num">1</span><span class="pt">Le cours</span><span class="pd">La présentation du cours et le résumé complet des cours 1 à 5.</span></a>
+    <a href="#etudier" data-part="etudier" class="is-postit"><span class="num">2</span><span class="pt">À étudier</span><span class="pd">La fiche résumé globale, les 38 slides post-it expliquées, l'analyse du vin et ce qui sera évalué.</span></a>
+    <a href="#exercices" data-part="exercices"><span class="num">3</span><span class="pt">Exercices</span><span class="pd">11 exercices et des centaines de questions, dont le nuage de mots de l'examen.</span></a>
+  </nav>
+</header>
+
+<div class="bar">
+  <nav class="bar-parts" aria-label="Changer de partie">
+    <a href="#cours" data-part="cours"><span class="n">1</span>Le cours</a>
+    <a href="#etudier" data-part="etudier"><span class="n">2</span>À étudier</a>
+    <a href="#exercices" data-part="exercices"><span class="n">3</span>Exercices</a>
+  </nav>
+  <ul class="subnav" data-for="cours" aria-label="Dans le cours">
+    <li><a href="#presentation">Présentation</a></li>
+    <li><a href="#cours1">Cours 1 · Histoire, étiquette</a></li>
+    <li><a href="#cours2">Cours 2 · Raisin</a></li>
+    <li><a href="#cours3">Cours 3 · Blanc, vins doux</a></li>
+    <li><a href="#cours4">Cours 4 · Rouge, rosé, soins</a></li>
+    <li><a href="#cours5">Cours 5 · Cave, effervescents</a></li>
+  </ul>
+  <ul class="subnav" data-for="etudier" aria-label="Dans À étudier" hidden>
+    <li><a href="#resume">Fiche résumé</a></li>
+    <li><a href="#postit">Slides post-it</a></li>
+    <li><a href="#f-visuel">L'œil</a></li>
+    <li><a href="#f-olfactif">Le nez</a></li>
+    <li><a href="#f-gustatif">La bouche</a></li>
+    <li><a href="#f-evaluation">Évaluer</a></li>
+    <li><a href="#examen">L'examen</a></li>
+  </ul>
+  <ul class="subnav" data-for="exercices" aria-label="Exercices" hidden>
+    <li><a href="#x-nuage">Nuage de mots</a></li>
+    <li><a href="#x-relier">Relier</a></li>
+    <li><a href="#x-fiche">Analyser deux vins</a></li>
+    <li><a href="#x-examen">Examen blanc</a></li>
+    <li><a href="#x-qcm">QCM</a></li>
+    <li><a href="#x-vf">Vrai ou faux</a></li>
+    <li><a href="#x-chiffres">Chiffres clés</a></li>
+    <li><a href="#x-classer">Classer</a></li>
+    <li><a href="#x-intrus">L'intrus</a></li>
+    <li><a href="#x-def">Définitions</a></li>
+    <li><a href="#x-ordre">Dans l'ordre</a></li>
+  </ul>
+</div>
+
+<!-- ================= PARTIE 1 : LE COURS ================= -->
+<div class="part" id="cours">
+<header class="part-head">
+  <p class="kicker">Partie 1</p>
+  <h2>Le cours</h2>
+  <p class="lede">L'organisation du cours, puis le résumé complet de chaque séance, dans l'ordre des supports. Les post-it jaunes ouvrent la slide concernée avec son explication.</p>
+</header>
+
+<section id="presentation">
+  <header class="sec-head">
+    <p class="kicker">Présentation</p>
+    <h2>Le cours d'initiation à l'étude des vins</h2>
+    <p class="sub">D'après la présentation du premier cours (section œnologie et sommellerie du CEFOR).</p>
+  </header>
+  <div class="cols two">
+    <div class="panel">
+      <h4>Le CEFOR</h4>
+      <p>École officielle d'enseignement pour adultes : restaurateur, œnologie et sommellerie, boulanger-pâtissier, chocolatier-confiseur, bièrologie, fromages, plantes sauvages…</p>
+      <p>L'inscription vaut adhésion totale au ROI (règlement d'ordre intérieur), consultable sur www.cefor.be.</p>
+    </div>
+    <div class="panel">
+      <h4>Déroulement d'une séance</h4>
+      <ol class="steps">
+        <li data-n="17h45"><span><span class="t">Début du cours</span></span></li>
+        <li data-n="·"><span><span class="t">Théorie du jour</span></span></li>
+        <li data-n="·"><span><span class="t">Dégustation de 2 à 3 vins</span></span></li>
+        <li data-n="·"><span><span class="t">Break d'environ 20 minutes</span></span></li>
+        <li data-n="·"><span><span class="t">Dégustation de 2 à 3 vins</span></span></li>
+        <li data-n="22h10"><span><span class="t">Fin du cours</span></span></li>
+      </ol>
+    </div>
+    <div class="panel">
+      <h4>Présences et absences</h4>
+      <ul class="plain">
+        <li>Les présences sont prises à chaque cours.</li>
+        <li>Condition d'assiduité : ne pas s'absenter sans motif valable plus de <span class="num">20 %</span> du temps.</li>
+        <li>Toute absence se signale immédiatement ; le justificatif arrive dans les <span class="num">5</span> jours ouvrables, à info2@cefor.be avec nom, prénom et classe.</li>
+        <li>Une absence à un examen doit être justifiée par un motif valable.</li>
+        <li>Motifs valables : certificat médical, attestations légales (législation sociale), attestation de l'employeur pour présence au travail.</li>
+      </ul>
+    </div>
+    <div class="panel">
+      <h4>Organisation interne</h4>
+      <ul class="plain">
+        <li><span class="num">15 €</span> par cours, réglés une fois par mois (<span class="num">60 €</span> pour 4 cours).</li>
+        <li><span class="num">6</span> vins par séance ; une absence reste due (<span class="num">15 €</span>).</li>
+        <li>Ne pas oublier ses verres.</li>
+        <li>Un délégué de classe.</li>
+        <li>Fumeurs : en dehors du CEFOR, à plus de 10 m.</li>
+      </ul>
+    </div>
+    <div class="panel">
+      <h4>Programme · théorie</h4>
+      <ul class="plain">
+        <li>Historique et évolution des vignobles dans le monde</li>
+        <li>Définition légale du vin</li>
+        <li>Phases de la maturation du raisin</li>
+        <li>Principes de base qui influencent le caractère des vins</li>
+        <li>Phases de vinification des blancs, rosés, rouges et effervescents</li>
+        <li>Vinifications spéciales des moelleux et liquoreux</li>
+        <li>Soins essentiels lors de l'élevage</li>
+        <li>Stockage des vins</li>
+        <li>Mentions figurant sur les étiquettes</li>
+      </ul>
+    </div>
+    <div class="panel">
+      <h4>Programme · dégustation</h4>
+      <ul class="plain">
+        <li>Les phases de la dégustation : visuelle, olfactive, gustative</li>
+        <li>Les 4 saveurs élémentaires : salé, sucré, acidité, amertume</li>
+        <li>Les termes propres à la dégustation</li>
+        <li>Rédiger une fiche de dégustation simple</li>
+      </ul>
+      <h4 style="margin-top:.6rem">Supports de cours</h4>
+      <p>PowerPoints, fiches de dégustation et dossiers sur www.oenocefor.be : onglet « plus », puis espace initiation (mot de passe donné au premier cours).</p>
+    </div>
+  </div>
+  <div class="retenir">
+    <p class="label">Évaluation</p>
+    <p>Les compétences évaluées, le format des épreuves et la liste de révision sont dans la partie 2 : <a href="#examen">ce qui sera évalué</a>.</p>
+  </div>
+</section>
+
+<section id="cours1">
+  <header class="sec-head">
+    <p class="kicker">Cours 1</p>
+    <h2>Histoire, étiquette et bases de la dégustation</h2>
+    <p class="sub">Une slide post-it : les buts de la dégustation, et plus précisément la dégustation verticale.</p>
+  </header>
+
+  <div class="block" id="c1-histoire">
+    <h3>Bref historique du vignoble</h3>
+    <ol class="timeline">
+      <li><span class="when">Ère tertiaire</span><span>La vigne sauvage existe déjà.</span></li>
+      <li><span class="when">7000 av. J.-C.</span><span>Premiers vins en Asie Mineure. Légende d'un roi de Perse.</span></li>
+      <li><span class="when">2000 av. J.-C.</span><span>Le vin passe des Égyptiens aux Grecs, puis aux Romains.</span></li>
+      <li><span class="when">Époque romaine</span><span>Règles pour la viticulture et la date des vendanges, fête des Vinalies le 23 avril (vendre et goûter), clarification par collage, première mention « premier cru » (100 av. J.-C.), premières échoppes à Pompéi.</span></li>
+      <li><span class="when">92</span><span>Le vin gaulois est de qualité et très prisé à Rome. L'empereur Domitien fait arracher les vignes.</span></li>
+      <li><span class="when">281</span><span>L'empereur Probus encourage la plantation de la vigne.</span></li>
+      <li><span class="when">Moyen Âge</span><span>Grands vignobles : Corton-Charlemagne, Châteauneuf-du-Pape, Clos Vougeot.</span></li>
+      <li><span class="when">XVIII<sup>e</sup> siècle</span><span>Arrachage des vignes au profit du blé. Le terrible hiver de 1709.</span></li>
+      <li><span class="when">XIX<sup>e</sup> siècle</span><span>Les travaux de Pasteur.</span></li>
+      <li><span class="when">1864</span><span>Le phylloxéra apparaît dans le Gard. La solution : le greffage des pieds de vigne.</span></li>
+      <li><span class="when">1907</span><span>Révolution dans le Midi.</span></li>
+      <li><span class="when">1935</span><span>Création de l'INAO.</span></li>
+      <li><span class="when">1958</span><span>Création de la CEE.</span></li>
+      <li><span class="when">1984</span><span>Compromis de Dublin.</span></li>
+      <li><span class="when">Aujourd'hui</span><span>Réforme de l'OCM (organisation commune du marché). Diminution du vignoble européen, 1/3 en France.</span></li>
+    </ol>
+  </div>
+
+  <div class="block" id="c1-definition">
+    <h3>La définition légale du vin</h3>
+    <blockquote>« Produit obtenu exclusivement par la fermentation alcoolique totale ou partielle de raisins frais, foulés ou non, ou de moûts de raisin. »<cite>À connaître mot pour mot.</cite></blockquote>
+  </div>
+
+  <div class="block" id="c1-etiquette">
+    <h3>Lire et comprendre l'étiquette</h3>
+    <div class="cols two">
+      <div class="panel">
+        <h4>Mentions obligatoires</h4>
+        <ul class="plain">
+          <li>Nom et hiérarchie de l'appellation</li>
+          <li>Volume d'alcool</li>
+          <li>Volume de contenance (ex. <span class="num">750 ml</span>)</li>
+          <li>Embouteilleur</li>
+          <li>Numéro de lot</li>
+          <li>Mentions sanitaires</li>
+          <li>Depuis le <b>8 décembre 2023</b> : la valeur énergétique (ex. <span class="num">E = 348 kJ / 83 kcal</span>) et un QR code qui mène à la liste des ingrédients et à la fiche nutritionnelle</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <h4>Mentions facultatives</h4>
+        <ul class="plain">
+          <li>Marque ou nom du domaine</li>
+          <li>Le millésime</li>
+          <li>Le nom du ou des cépage(s)</li>
+          <li>Mise en bouteille à la propriété</li>
+          <li>Le type de culture (ex. bio)</li>
+          <li>Classement d'un concours, médailles</li>
+          <li>Vieilles vignes, nom de cuvée, élevé en fûts…</li>
+          <li>Mentions traditionnelles : sur lie, cru classé, cru bourgeois…</li>
+        </ul>
+      </div>
+    </div>
+    <div class="retenir">
+      <p class="label">Additifs soumis à étiquetage · règlement (UE) 2019/934</p>
+      <p>Régulateurs d'acidité (acide tartrique, acide malique…), conservateurs et antioxydants (dioxyde de soufre…), agents stabilisateurs, gaz d'emballage (argon, azote, dioxyde de carbone), autres pratiques (résine de pin d'Alep…).</p>
+    </div>
+  </div>
+
+  <div class="block" id="c1-degustation">
+    <h3>Bien déguster</h3>
+    <div class="cols two">
+      <div class="panel">
+        <h4>Le verre et la dose</h4>
+        <p>Le <b>verre INAO</b> : pied fin, corps qui se resserre vers le haut pour concentrer les arômes. Tous les verres identiques et à pied.</p>
+        <p>Dose : <span class="num">5 à 6 cl</span> maximum.</p>
+      </div>
+      <div class="panel">
+        <h4>Facteurs externes</h4>
+        <ul class="plain">
+          <li><b>Lumière</b> du jour, pas directement au soleil</li>
+          <li><b>Bruit</b> : lieu calme</li>
+          <li><b>Odeurs</b> : aucune ; ne pas fumer ni se parfumer</li>
+          <li><b>Table</b> spacieuse, plan de travail blanc, crachoir à portée</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <h4>Facteurs internes</h4>
+        <ul class="plain">
+          <li><b>État de santé</b> : un rhume accentue l'acidité et modifie l'odorat</li>
+          <li><b>État physiologique</b> : pendant la digestion, l'acuité diminue</li>
+          <li><b>Fatigue</b> : la finesse d'analyse diminue</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <h4>Organisation</h4>
+        <ul class="plain">
+          <li><b>Horaire</b> : idéalement le matin, digestion terminée</li>
+          <li><b>Ordre</b> : blanc, rosé, rouge, moelleux, liquoreux ; simples avant complexes ; jeunes avant évolués</li>
+          <li><b>Nombre</b> : <span class="num">15 à 18</span> vins maximum chez les pros</li>
+          <li><b>Température</b> un peu au-dessus de l'idéal : <span class="num">18 °C</span> rouges, <span class="num">13–14 °C</span> blancs et rosés</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="block" id="c1-buts">
+    <h3>Les buts de la dégustation <button type="button" class="pi" data-slide="c1-24">ne pas oublier !</button></h3>
+    <p class="prose">Déguster, c'est analyser, comparer, juger et classer.</p>
+    <dl class="defs">
+      <div><dt>Analyse globale</dt><dd>Décortiquer les aspects du vin (couleur, arômes, tanins, acidité, corps) pour comprendre ce que l'on déguste.</dd></div>
+      <div><dt>Comparaison</dt><dd>Deux vins très différents pour trouver des repères (terroir, cépage, élevage), ou très proches pour chercher des nuances.</dd></div>
+      <div><dt>Classement</dt><dd>Établir une hiérarchie entre vins comparables : même appellation, à la rigueur même région (ex. que des Saint-Émilion).</dd></div>
+      <div><dt><mark>Verticale</mark></dt><dd>Un <b>même vin</b> (même appellation, même domaine) sur <b>plusieurs millésimes</b>. On comprend l'évolution dans le temps et l'influence du millésime. Ex. château Mouton Rothschild 1998, 1999, 2000, 2001, 2002.</dd></div>
+      <div><dt>Horizontale</dt><dd>L'inverse : <b>différents vins</b> d'un <b>même millésime</b>. Ex. six Bourgognes de 2009.</dd></div>
+      <div><dt>À l'aveugle</dt><dd>Analyser sans savoir ce que c'est, pour retrouver cépage, région, millésime.</dd></div>
+    </dl>
+  </div>
+</section>
+
+<section id="cours2">
+  <header class="sec-head">
+    <p class="kicker">Cours 2</p>
+    <h2>Le raisin et l'analyse gustative</h2>
+    <p class="sub">Dix slides post-it : la maturité, la chaptalisation et toutes les échelles de l'analyse gustative.</p>
+  </header>
+
+  <div class="block" id="c2-raisin">
+    <h3>La composition du raisin</h3>
+    <p class="prose">La grappe : le <b>sarment</b> porte le <b>pédoncule</b>, qui se ramifie en <b>rafle</b> puis en <b>pédicelles</b>. La baie : <b>pellicule</b> (couverte de <b>pruine</b>), <b>pulpe</b>, <b>pépins</b> et <b>pinceau</b>.</p>
+    <div class="cols two">
+      <div class="tbl">
+        <table>
+          <thead><tr><th>Partie</th><th>Ce qu'elle apporte</th></tr></thead>
+          <tbody>
+            <tr><th>Pellicule</th><td>Matières colorantes (flavones ou anthocyanes), substances aromatiques (arômes du cépage), tanins plus fins que ceux de la rafle</td></tr>
+            <tr><th>Pulpe</th><td>Le jus : eau, sucre, acides, minéraux</td></tr>
+            <tr><th>Pépin</th><td>Tanins et substances huileuses</td></tr>
+            <tr><th>Rafle</th><td>Matières minérales et tanins</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="tbl">
+        <table>
+          <thead><tr><th>1 litre de jus de pulpe</th><th style="text-align:right">Quantité</th></tr></thead>
+          <tbody>
+            <tr><td>Eau</td><td class="r">700–800 g</td></tr>
+            <tr><td>Sucre</td><td class="r">100–300 g</td></tr>
+            <tr><td>Acides (malique, citrique, tartrique)</td><td class="r">5–15 g</td></tr>
+            <tr><td>Matières minérales</td><td class="r">2–3 g</td></tr>
+            <tr><td>Matières azotées, vitamines…</td><td class="r">0,5–1 g</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <p class="prose muted">La couleur est dans la pellicule : d'où le <b>blanc de blancs</b> (raisins blancs), le <b>blanc de noirs</b> (raisins noirs pressés sans macération) et le <b>noir de noirs</b> (raisin teinturier, à pulpe colorée).</p>
+  </div>
+
+  <div class="block" id="c2-phases">
+    <h3>Les phases de la maturation</h3>
+    <ol class="steps">
+      <li data-n="1"><span><span class="t">Floraison</span> <span class="num">mai–juin</span><span class="d">Environ 100 jours avant la vendange.</span></span></li>
+      <li data-n="2"><span><span class="t">Nouaison</span> <span class="num">juin–juillet</span><span class="d">Formation des grains.</span></span></li>
+      <li data-n="3"><span><span class="t">Véraison</span> <span class="num">juillet–août</span><span class="d">Changement de couleur des baies.</span></span></li>
+      <li data-n="4"><span><span class="t">Maturité</span> <span class="num">août–septembre</span><span class="d">Les grains se remplissent de sucre, l'acidité baisse.</span></span></li>
+      <li data-n="5"><span><span class="t">Surmaturité</span> <span class="num">octobre–novembre</span><span class="d">Recherchée pour les vins moelleux.</span></span></li>
+      <li data-n="6"><span><span class="t">Vendange</span> <span class="num">fin août–octobre</span><span class="d">Récolte des raisins. La date optimale est au sommet de la courbe, entre maturation et surmaturation.</span></span></li>
+    </ol>
+  </div>
+
+  <div class="block" id="c2-maturite">
+    <h3>La maturité du raisin <span class="pis"><button type="button" class="pi" data-slide="c2-16">ne pas oublier !</button><button type="button" class="pi" data-slide="c2-17">ne pas oublier !</button></span></h3>
+    <p class="prose">Le moment crucial pour la qualité des vins. Quatre éléments à surveiller :</p>
+    <dl class="defs">
+      <div><dt>Le sucre<span class="fig">17 g/L = 1° d'alcool</span></dt><dd>Il donnera l'alcool.</dd></div>
+      <div><dt>L'acidité</dt><dd>Acide malique et acide tartrique.</dd></div>
+      <div><dt>La couleur</dt><dd>Rôle important pour l'aspect du vin.</dd></div>
+      <div><dt>Les composants aromatiques</dt><dd>L'équilibre de l'expression variétale du cépage.</dd></div>
+    </dl>
+    <div class="retenir">
+      <p class="label">À retenir</p>
+      <p>La maturité détermine l'équilibre entre sucres, acides et arômes. Une bonne maturité assure une richesse aromatique et une structure harmonieuse.</p>
+      <p>Vendange <b>trop précoce</b> → vins acides et verts. Vendange <b>trop tardive</b> → vins mous et alcooleux.</p>
+      <p>On mesure le sucre du raisin avec un <b>réfractomètre</b>.</p>
+    </div>
+  </div>
+
+  <div class="block" id="c2-facteurs">
+    <h3>Les facteurs qui influencent la qualité du vin</h3>
+    <div class="cols two">
+      <div class="panel">
+        <h4>Le milieu cultural · la nature</h4>
+        <ul class="plain">
+          <li>Nature du sol et du sous-sol</li>
+          <li>Climat : lumière, température, vent, humidité</li>
+          <li>Orientation du vignoble</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <h4>Le facteur humain · l'intervention de l'homme</h4>
+        <ul class="plain">
+          <li>Choix du ou des cépages</li>
+          <li>Mode de conduite et rendements</li>
+          <li>Choix du porte-greffe (maladies)</li>
+          <li>Reconstitution du vignoble</li>
+          <li>Date des vendanges</li>
+          <li>Conduite des vinifications</li>
+          <li>Élevage du vin</li>
+          <li>Interventions diverses</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="block" id="c2-chaptalisation">
+    <h3>L'amélioration de la vendange : la chaptalisation <span class="pis"><button type="button" class="pi" data-slide="c2-24">ne pas oublier !</button><button type="button" class="pi" data-slide="c2-25">ne pas oublier !</button></span></h3>
+    <p class="prose">Conditions climatiques défavorables → vendanges insuffisamment mûres → peu de sucre → <b>peu d'alcool</b>.</p>
+    <p class="prose">La chaptalisation est l'ajout contrôlé de sucre (saccharose) dans le moût, avant ou pendant la fermentation, pour augmenter le degré alcoolique final. Elle ne vise pas à sucrer le vin mais à compenser un manque naturel de sucre. Elle est réglementée et autorisée seulement dans certaines régions et conditions.</p>
+    <div class="retenir">
+      <p class="label">Les chiffres</p>
+      <p>Ajout de <span class="num">2 à 3 kg</span> de saccharose par hectolitre. <span class="num">1,7 kg</span> par hectolitre = <span class="num">1°</span> d'alcool.</p>
+      <p class="muted">Astuce : c'est le même rapport que dans le raisin, 17 g par litre = 1,7 kg par hectolitre = 1°.</p>
+    </div>
+  </div>
+
+  <div class="block" id="c2-gustatif">
+    <h3>L'analyse gustative</h3>
+    <p class="prose">Les échelles (sucrosité, acidité, alcool, tanins, corps, persistance, équilibre) et les 4 saveurs sont détaillées dans la <a href="#f-gustatif">fiche de dégustation</a>. Trois clés d'interprétation marquées sur les slides :</p>
+    <dl class="defs">
+      <div><dt>Acidité élevée</dt><dd>Vin jeune, ou d'une région au climat froid.</dd><button type="button" class="pi" data-slide="c2-28">ne pas oublier !</button></div>
+      <div><dt>Alcool élevé</dt><dd>Vin d'une région au climat chaud.</dd><button type="button" class="pi" data-slide="c2-29">ne pas oublier !</button></div>
+      <div><dt>Tanin élevé</dt><dd>Vin jeune, macération longue et/ou élevage en fûts.</dd><button type="button" class="pi" data-slide="c2-30">ne pas oublier !</button></div>
+    </dl>
+  </div>
+</section>
+
+<section id="cours3">
+  <header class="sec-head">
+    <p class="kicker">Cours 3</p>
+    <h2>Fermentations, vinification en blanc et vins doux</h2>
+    <p class="sub">Dix slides post-it : chaque étape de la vinification en blanc, le passerillage, le Botrytis et le mutage.</p>
+  </header>
+
+  <div class="block" id="c3-fermentations">
+    <h3>Les deux fermentations</h3>
+    <p class="prose"><b>Fermentation :</b> « transformation chimique de matières organiques par l'action de microbes (moisissures, levures, bactéries) ». Trois questions à se poser : quelle substance, par qui, et en quoi ?</p>
+    <div class="tbl wide">
+      <table>
+        <thead><tr><th></th><th>Fermentation alcoolique</th><th>Fermentation malolactique</th></tr></thead>
+        <tbody>
+          <tr><th>Quelle substance ?</th><td>Le <b>sucre</b> (glucose et fructose)</td><td>L'<b>acide malique</b></td></tr>
+          <tr><th>Par qui ?</th><td>Les <b>levures</b> (<i>Saccharomyces cerevisiae</i>)</td><td>Les <b>bactéries</b> lactiques</td></tr>
+          <tr><th>En quoi ?</th><td><b>Alcool</b> + CO₂, glycérol, acide lactique…</td><td><b>Acide lactique</b></td></tr>
+          <tr><th>Résultat</th><td>Produit aussi de la chaleur et des composés aromatiques</td><td>Diminution de l'acidité : vin plus rond, plus stable. Une « désacidification biologique »</td></tr>
+          <tr><th>Quand ?</th><td>Toujours : l'étape centrale</td><td><b>Indispensable pour les rouges</b>, au choix pour les blancs</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="cols two">
+      <div class="panel">
+        <h4>Observations pendant la fermentation alcoolique</h4>
+        <ul class="plain">
+          <li>Bouillonnement du liquide</li>
+          <li>Formation d'un chapeau (rouge uniquement)</li>
+          <li>Augmentation de la température</li>
+          <li>Augmentation du degré alcoolique</li>
+          <li>Diminution de la densité</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <h4>Contrôle des températures</h4>
+        <dl class="defs">
+          <div><dt class="num">0 °C</dt><dd>Pas de fermentation</dd></div>
+          <div><dt class="num">10–11 °C</dt><dd>Ralentie</dd></div>
+          <div><dt class="num">20–28 °C</dt><dd><b>Température idéale</b></dd></div>
+          <div><dt class="num">35 °C</dt><dd>Ralentie</dd></div>
+          <div><dt class="num">40 °C</dt><dd>Arrêt de la fermentation</dd></div>
+        </dl>
+      </div>
+    </div>
+  </div>
+
+  <div class="block" id="c3-blanc">
+    <h3>La vinification classique en blanc</h3>
+    <ol class="steps">
+      <li data-n="1"><span><span class="t">Les vendanges</span></span></li>
+      <li data-n="2"><span><span class="t">Éraflage ou égrappage</span><span class="d">Séparer les baies de la rafle (partie ligneuse de la grappe). Évite les tanins verts et les goûts herbacés. Total ou partiel.</span></span><button type="button" class="pi" data-slide="c3-12">ne pas oublier !</button></li>
+      <li data-n="3"><span><span class="t">Pressurage</span><span class="d">Extraire le jus immédiatement après la récolte, avant toute macération, pour limiter l'extraction de tanins. Objectif : un moût clair, pur, aromatiquement frais.</span></span><button type="button" class="pi" data-slide="c3-14">ne pas oublier !</button></li>
+      <li data-n="4"><span><span class="t">Sulfitage</span><span class="d">Ajout de dioxyde de soufre (SO₂) au moût juste après le pressurage. Protège de l'oxydation, freine levures et bactéries indésirables, préserve fraîcheur et couleur.</span></span><button type="button" class="pi" data-slide="c3-16">ne pas oublier !</button></li>
+      <li data-n="5"><span><span class="t">Débourbage (clarification)</span><span class="d">Éliminer les bourbes (particules solides) du moût avant la fermentation, par décantation naturelle ou action mécanique.</span></span><button type="button" class="pi" data-slide="c3-18">ne pas oublier !</button></li>
+      <li data-n="6"><span><span class="t">Levurage</span><span class="d">Ajout de levures sélectionnées pour un départ rapide et régulier de la fermentation. Complète ou remplace les levures naturelles de la peau.</span></span><button type="button" class="pi" data-slide="c3-20">ne pas oublier !</button></li>
+      <li data-n="7"><span><span class="t">Fermentation alcoolique</span><span class="d">Sucre + levures = alcool. Sa durée et sa température influencent fortement le style final.</span></span><button type="button" class="pi" data-slide="c3-22">ne pas oublier !</button></li>
+      <li data-n="8"><span><span class="t">Fermentation malolactique <span class="tag">pas obligatoire en blanc</span></span><span class="d">Acide malique → acide lactique : adoucit l'acidité, rend le vin plus rond et plus stable.</span></span><button type="button" class="pi" data-slide="c3-24">ne pas oublier !</button></li>
+      <li data-n="9"><span><span class="t">Élevage</span><span class="d">Maturation entre la fermentation et la mise en bouteille, en cuve, en fût ou autre. Affine les arômes, assouplit les tanins, stabilise le vin.</span></span><button type="button" class="pi" data-slide="c3-26">ne pas oublier !</button></li>
+    </ol>
+  </div>
+
+  <div class="block" id="c3-speciaux">
+    <h3>Les vinifications spéciales : moelleux et liquoreux</h3>
+    <div class="cols">
+      <div class="panel">
+        <div class="head"><h4>Vins naturellement doux</h4><button type="button" class="pi" data-slide="c3-30">ne pas oublier !</button></div>
+        <p><b>Passerillage</b> : concentration du sucre par surmaturité, les raisins se dessèchent naturellement, <b>sur souche</b> (vendanges tardives) ou <b>hors souche</b> (sur claies, suspendus).</p>
+        <p><b>Pourriture noble</b> : le champignon <i>Botrytis cinerea</i> se développe avec une alternance humidité / sécheresse. Il perce la peau, l'eau s'évapore, sucres et arômes se concentrent. Donne des liquoreux complexes.</p>
+      </div>
+      <div class="panel">
+        <div class="head"><h4>Vins doux naturels (VDN)</h4><button type="button" class="pi" data-slide="c3-34">ne pas oublier !</button></div>
+        <p>Vins <b>mutés</b> par adjonction d'<b>alcool vinique</b> neutre à <span class="num">95°</span>, <b>en cours de fermentation</b>. L'alcool stoppe les levures et préserve une partie du sucre.</p>
+        <ul class="plain">
+          <li><span class="num">5 à 10 %</span> du volume du moût</li>
+          <li>Minimum <span class="num">15°</span> d'alcool acquis et <span class="num">21,5 %</span> d'alcool total (<span class="num">6,5 %</span> en puissance)</li>
+          <li>Mutage sur grains (avant pressurage) ou sur jus</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <div class="head"><h4>Vins de liqueur (VDL)</h4></div>
+        <p>Vins <b>mutés</b> par adjonction d'<b>alcool noble</b>, <b>avant fermentation</b>.</p>
+        <p>On obtient une <b>mistelle</b>.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="block" id="c3-olfactif">
+    <h3>L'analyse olfactive</h3>
+    <p class="prose">Arômes primaires, secondaires, tertiaires, premier et second nez, bouquet et familles d'arômes : voir la <a href="#f-olfactif">fiche de dégustation</a>.</p>
+  </div>
+</section>
+
+<section id="cours4">
+  <header class="sec-head">
+    <p class="kicker">Cours 4</p>
+    <h2>Vinification en rouge et en rosé, soins du vin</h2>
+    <p class="sub">Neuf slides post-it : foulage, macération, pigeage et remontage, goutte et presse, rosés, ouillage, collage, soutirage, filtration.</p>
+  </header>
+
+  <div class="block" id="c4-rouge">
+    <h3>La vinification du vin rouge</h3>
+    <ol class="steps">
+      <li data-n="1"><span><span class="t">Les vendanges</span></span></li>
+      <li data-n="2"><span><span class="t">Éraflage <span class="tag">facultatif</span></span><span class="d">Retirer la rafle.</span></span></li>
+      <li data-n="3"><span><span class="t">Foulage</span><span class="d">Éclater légèrement la peau des baies pour libérer le jus, en préservant les pépins. Souvent mécanique, réglé pour éviter l'amertume d'un écrasement excessif.</span></span><button type="button" class="pi" data-slide="c4-06">ne pas oublier !</button></li>
+      <li data-n="4"><span><span class="t">Sulfitage <span class="tag">facultatif</span></span></span></li>
+      <li data-n="5"><span><span class="t">Levurage <span class="tag">facultatif</span></span></span></li>
+      <li data-n="6"><span><span class="t">Macération + fermentation alcoolique</span><span class="d">Peaux, pulpes, pépins (parfois rafles) restent en contact avec le moût : extraction de la couleur, des tanins et d'une partie des arômes. Levure + sucre = alcool, dégagement de CO₂, réchauffement, densité en baisse, formation du chapeau.</span></span><button type="button" class="pi" data-slide="c4-10">ne pas oublier !</button></li>
+      <li data-n="6 bis"><span><span class="t">Remontage ou pigeage</span><span class="d"><b>Pigeage</b> : enfoncer le chapeau de marc dans le moût. <b>Remontage</b> : pomper le jus du bas de la cuve pour arroser le chapeau. Couleur, structure tannique, arômes.</span></span><button type="button" class="pi" data-slide="c4-14">ne pas oublier !</button></li>
+      <li data-n="7"><span><span class="t">Décuvage du vin de goutte</span><span class="d">Le vin qui s'écoule sans pression.</span></span></li>
+      <li data-n="8"><span><span class="t">Pressurage : vin de presse</span><span class="d">Après fermentation et macération, on presse le marc. Le vin de presse est plus riche en tanins et en couleur.</span></span><button type="button" class="pi" data-slide="c4-18">ne pas oublier !</button></li>
+      <li data-n="9"><span><span class="t">Assemblage <span class="tag">facultatif</span> + fermentation malolactique <span class="tag must">toujours en rouge</span></span><span class="d">Le vigneron assemble ou non vin de goutte et vin de presse, selon le style recherché.</span></span></li>
+      <li data-n="10"><span><span class="t">Élevage</span></span></li>
+    </ol>
+  </div>
+
+  <div class="block" id="c4-compare">
+    <h3>Blanc ou rouge : ce qui change</h3>
+    <div class="tbl wide">
+      <table>
+        <thead><tr><th>Étape</th><th>Blanc</th><th>Rouge</th></tr></thead>
+        <tbody>
+          <tr><th>Pressurage</th><td><b>Avant</b> la fermentation, juste après la récolte</td><td><b>Après</b> fermentation et macération (vin de presse)</td></tr>
+          <tr><th>Macération</th><td>Évitée</td><td>Oui, pendant la fermentation alcoolique</td></tr>
+          <tr><th>Foulage</th><td>Raisins entiers ou légèrement foulés</td><td>Oui</td></tr>
+          <tr><th>Débourbage</th><td>Oui, avant la fermentation</td><td>Non</td></tr>
+          <tr><th>Remontage / pigeage</th><td>Non (pas de chapeau)</td><td>Oui</td></tr>
+          <tr><th>Malolactique</th><td>Au choix</td><td>Toujours</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="block" id="c4-roses">
+    <h3>Les vinifications des rosés <button type="button" class="pi" data-slide="c4-24">ne pas oublier !</button></h3>
+    <div class="cols two">
+      <div class="panel">
+        <h4>Vin gris · rosé de pressurage</h4>
+        <p>Raisins rouges <b>pressés directement</b> après la récolte, sans macération prolongée.</p>
+        <p>→ Rosé <b>très pâle et nerveux</b>, grande fraîcheur aromatique.</p>
+      </div>
+      <div class="panel">
+        <h4>Rosé de saignée</h4>
+        <p><b>Macération d'environ 48 h</b>, puis on prélève (« saigne ») une partie du jus d'une cuve de rouge.</p>
+        <p>→ Rosé <b>plus foncé et plus structuré</b>. Le rouge restant est concentré.</p>
+      </div>
+    </div>
+    <p class="muted prose">Visuellement très différents, et gustativement aussi.</p>
+  </div>
+
+  <div class="block" id="c4-soins">
+    <h3>Les soins essentiels pendant l'élevage</h3>
+    <dl class="defs">
+      <div><dt>Ouillage</dt><dd>Compléter régulièrement le niveau des fûts ou des cuves pour compenser l'évaporation (la « part des anges »), avec le même vin ou un vin de qualité équivalente. But : <b>éviter l'oxydation</b>.</dd><button type="button" class="pi" data-slide="c4-28">ne pas oublier !</button></div>
+      <div><dt>Collage</dt><dd>Clarification : on ajoute une substance qui se lie aux particules en suspension et les fait tomber au fond. Blanc d'œuf, bentonite, colle de poisson, gélatine, gels de silice… Vin plus limpide, stable, parfois plus rond.</dd><button type="button" class="pi" data-slide="c4-30">ne pas oublier !</button></div>
+      <div><dt>Soutirage</dt><dd>Transférer le vin d'un contenant à un autre en le séparant de ses <b>lies</b> (dépôts). Aère légèrement, clarifie. Répété plusieurs fois pendant l'élevage.</dd><button type="button" class="pi" data-slide="c4-32">ne pas oublier !</button></div>
+      <div><dt>Filtration</dt><dd>Passer le vin à travers un support filtrant pour retenir les particules. Vin limpide et stable microbiologiquement. Filtration grosse, fine ou stérile.</dd><button type="button" class="pi" data-slide="c4-35">ne pas oublier !</button></div>
+      <div><dt>Mise en bouteille</dt><dd>Dernière étape après la filtration.</dd></div>
+    </dl>
+  </div>
+
+  <div class="block">
+    <h3>L'analyse visuelle</h3>
+    <p class="prose">Intensité, couleur de la robe, viscosité, limpidité, gaz carbonique : voir la <a href="#f-visuel">fiche de dégustation</a>.</p>
+  </div>
+</section>
+
+<section id="cours5">
+  <header class="sec-head">
+    <p class="kicker">Cours 5</p>
+    <h2>Stockage des vins et effervescents</h2>
+    <p class="sub">Huit slides post-it : cinq des sept règles d'or de la cave et les trois méthodes de prise de mousse.</p>
+  </header>
+
+  <div class="block" id="c5-stockage">
+    <h3>Les 7 règles d'or de la cave</h3>
+    <dl class="defs">
+      <div><dt>L'endroit</dt><dd>Cave naturelle, armoire à vin ou cave artificielle : les trois offrent un excellent vieillissement. <b>À éviter</b> : salon, cheminée, sous l'escalier, garage, cabanon, sous le lit…</dd></div>
+      <div><dt>L'humidité<span class="fig">70–75 %</span></dt><dd>Nécessaire pour conserver les bouchons, donc le vin. Trop peu : bouchons desséchés, oxydation. Trop : pas néfaste, sauf pour l'étiquette. Moyens : humidité naturelle, humidificateur, arroser de temps en temps.</dd><button type="button" class="pi" data-slide="c5-09">ne pas oublier !</button></div>
+      <div><dt>La température<span class="fig">10–12 °C, constante</span></dt><dd>Elle règle la durée de vie du vin. Trop chaud : le vin évolue plus vite. Trop froid : évolution lente et risque de précipitations. Surtout éviter les écarts violents.</dd><button type="button" class="pi" data-slide="c5-12">ne pas oublier !</button></div>
+      <div><dt>La luminosité<span class="fig">faible, indirecte</span></dt><dd>Inutile au vieillissement. Jamais dirigée vers le vin. Pas de néon : il donne le « goût de lumière » et oxyde le vin. L'halogène chauffe la pièce. Mieux vaut éclairer le plafond que les bouteilles.</dd><button type="button" class="pi" data-slide="c5-13">ne pas oublier !</button></div>
+      <div><dt>L'aération</dt><dd>Évite moisissures et mauvaises odeurs. Soupirail, purificateur d'air ou appel d'air. Sans aération : vin contaminé (odeurs, champignons), étiquettes abîmées.</dd><button type="button" class="pi" data-slide="c5-15">ne pas oublier !</button></div>
+      <div><dt>Le voisinage</dt><dd>N'entreposer que du vin, des alcools, des bières, des cidres. <b>Dangereux</b> : peinture, acétone, javel, mazout, essence, vinaigre, moutarde, torchons, tondeuse, poubelles.</dd><button type="button" class="pi" data-slide="c5-16">ne pas oublier !</button></div>
+      <div><dt>La gestion du trésor<span class="fig">max. 24 bouteilles du même vin</span></dt><dd>Acheter des millésimes jeunes, choisir l'équilibre blanc / rouge, préférer la qualité à la quantité. La rotation permet de boire chaque vin à son bon potentiel.</dd></div>
+    </dl>
+  </div>
+
+  <div class="block" id="c5-effervescents">
+    <h3>Les effervescents : 4 techniques</h3>
+    <p class="prose"><b>Vins gazéifiés</b> : le gaz carbonique est ajouté, sans prise de mousse naturelle (ex. « vin mousseux gazéifié »). Les trois autres méthodes partent d'une <b>vinification en blanc ou en rosé</b> :</p>
+    <div class="tbl wide">
+      <table>
+        <thead><tr>
+          <th></th>
+          <th>Méthode ancestrale (rurale)<br><button type="button" class="pi" data-slide="c5-26">ne pas oublier !</button></th>
+          <th>Méthode Charmat (cuve close)<br><button type="button" class="pi" data-slide="c5-30">ne pas oublier !</button></th>
+          <th>Méthode traditionnelle<br><button type="button" class="pi" data-slide="c5-33">ne pas oublier !</button></th>
+        </tr></thead>
+        <tbody>
+          <tr><th>1<sup>re</sup> fermentation</th><td>Commencée puis <b>arrêtée</b> vers <span class="num">5–7 %</span> d'alcool, par le froid, puis filtration</td><td>Complète, en cuve : un vin tranquille</td><td>Complète, en cuve : un vin tranquille</td></tr>
+          <tr><th>Liqueur de tirage</th><td>Aucune</td><td>Sucre + levures ajoutés <b>dans la cuve</b></td><td>Ajoutée <b>dans la bouteille</b></td></tr>
+          <tr><th>Prise de mousse</th><td>En bouteille, au printemps : la fermentation reprend</td><td>En <b>cuve fermée</b> (close) pressurisée</td><td>En <b>bouteille</b>, puis vieillissement sur lattes (sur lies)</td></tr>
+          <tr><th>Ensuite</th><td>Non dégorgé ou partiellement</td><td>Filtration tangentielle, liqueur de dosage, tirage isobarométrique (mise en bouteille sous pression)</td><td>Remuage (pupitre ou giropalette), dégorgement, liqueur de dosage (ou d'expédition)</td></tr>
+          <tr><th>Résultat</th><td>Sucré, faible en alcool, bulles fines, profil parfois rustique</td><td>Fruité et léger, arômes primaires préservés</td><td>Complexité aromatique, finesse des bulles, potentiel de garde</td></tr>
+          <tr><th>Exemple du cours</th><td>Cerdon</td><td>Brut méthode Charmat</td><td>Touraine méthode traditionnelle</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="block">
+    <h3>Évaluer un vin</h3>
+    <p class="prose">Stade d'évolution, potentiel de garde, typicité et style : voir la <a href="#f-evaluation">fiche de dégustation</a>.</p>
+  </div>
+</section>
+
+</div>
+
+<!-- ================= PARTIE 2 : À ÉTUDIER ================= -->
+<div class="part" id="etudier" hidden>
+<header class="part-head">
+  <p class="kicker">Partie 2</p>
+  <h2>À étudier</h2>
+  <p class="lede">Toute la théorie de l'examen : la fiche résumé pour tout revoir d'un coup d'œil, les 38 slides marquées du post-it avec leur explication, l'analyse du vin, et ce qui sera évalué.</p>
+</header>
+
+<section id="resume">
+  <header class="sec-head">
+    <p class="kicker">Fiche résumé globale</p>
+    <h2>Toute la matière en une fiche</h2>
+    <p class="sub">Pour cibler l'essentiel juste avant l'examen. Les cases marquées <span class="pt-tag">post-it</span> reprennent des slides signalées par le prof. Chaque case renvoie au détail.</p>
+  </header>
+  <div class="sheet">
+
+    <div class="scard">
+      <h4>Le vin · définition légale</h4>
+      <p>« Produit obtenu exclusivement par la fermentation alcoolique totale ou partielle de raisins frais, foulés ou non, ou de moûts de raisin. »</p>
+      <a class="more" href="#c1-definition">Détail →</a>
+    </div>
+
+    <div class="scard">
+      <h4>Chiffres à connaître</h4>
+      <dl class="kv">
+        <dt>17 g/L</dt><dd>de sucre = 1° d'alcool</dd>
+        <dt>1,7 kg/hl</dt><dd>de sucre ajouté = 1° (chaptalisation)</dd>
+        <dt>2–3 kg/hl</dt><dd>dose de chaptalisation</dd>
+        <dt>20–28 °C</dt><dd>fermentation idéale · arrêt à 40 °C</dd>
+        <dt>95°</dt><dd>alcool de mutage des VDN · 5–10 % du moût</dd>
+        <dt>15° / 21,5 %</dt><dd>VDN : alcool acquis / total (6,5 % en puissance)</dd>
+        <dt>± 48 h</dt><dd>macération d'un rosé de saignée</dd>
+        <dt>5–7 %</dt><dd>arrêt de la fermentation, méthode ancestrale</dd>
+        <dt>10–12 °C</dt><dd>cave, constante</dd>
+        <dt>70–75 %</dt><dd>humidité de la cave</dd>
+        <dt>24</dt><dd>bouteilles max d'un même vin</dd>
+        <dt>5–6 cl</dt><dd>par verre de dégustation</dd>
+        <dt>15–18</dt><dd>vins max en dégustation pro</dd>
+        <dt>18 °C</dt><dd>rouges présentés · 13–14 °C blancs et rosés</dd>
+        <dt>4 · 8 · 12 s</dt><dd>limites de persistance courte, moyenne, longue, prolongée</dd>
+        <dt>100 jours</dt><dd>entre floraison et vendange</dd>
+      </dl>
+    </div>
+
+    <div class="scard">
+      <h4>Le raisin</h4>
+      <ul>
+        <li><b>Pellicule</b> : couleur (anthocyanes, flavones), arômes du cépage, tanins fins</li>
+        <li><b>Pulpe</b> : le jus. Par litre : 700–800 g d'eau, 100–300 g de sucre, 5–15 g d'acides (malique, citrique, tartrique)</li>
+        <li><b>Pépin</b> : tanins, substances huileuses</li>
+        <li><b>Rafle</b> : tanins, matières minérales</li>
+      </ul>
+      <a class="more" href="#c2-raisin">Détail →</a>
+    </div>
+
+    <div class="scard">
+      <h4>Maturation et maturité <span class="pt-tag">post-it</span></h4>
+      <p class="flow">Floraison <i>›</i> nouaison <i>›</i> véraison (couleur) <i>›</i> maturité <i>›</i> surmaturité (moelleux) <i>›</i> vendange</p>
+      <p>À surveiller : <b>sucre</b>, <b>acidité</b> (malique, tartrique), <b>couleur</b>, <b>arômes</b>.</p>
+      <p>Trop tôt : vins <b>acides et verts</b>. Trop tard : vins <b>mous et alcooleux</b>.</p>
+      <a class="more" href="#c2-maturite">Détail →</a>
+    </div>
+
+    <div class="scard">
+      <h4>Qualité du vin · 2 types de facteurs</h4>
+      <p><b>Milieu cultural</b> (nature) : sol et sous-sol, climat (lumière, température, vent, humidité), orientation.</p>
+      <p><b>Facteur humain</b> : cépages, mode de conduite et rendements, porte-greffe, reconstitution du vignoble, date des vendanges, vinification, élevage.</p>
+      <a class="more" href="#c2-facteurs">Détail →</a>
+    </div>
+
+    <div class="scard">
+      <h4>Chaptalisation <span class="pt-tag">post-it</span></h4>
+      <p>Raisins pas assez mûrs <i>›</i> peu de sucre <i>›</i> peu d'alcool. On ajoute du sucre (saccharose) au moût pour <b>augmenter le degré</b>, pas pour sucrer. 2–3 kg/hl ; 1,7 kg/hl = 1°. Réglementée.</p>
+      <a class="more" href="#c2-chaptalisation">Détail →</a>
+    </div>
+
+    <div class="scard">
+      <h4>Les fermentations <span class="pt-tag">post-it</span></h4>
+      <p><b>Alcoolique</b> : sucre <i>›</i> alcool + CO₂, par les <b>levures</b>. Idéale 20–28 °C, arrêt à 40 °C.</p>
+      <p><b>Malolactique</b> : acide malique <i>›</i> acide lactique, par les <b>bactéries</b>. Moins d'acidité. Toujours en rouge, au choix en blanc.</p>
+      <a class="more" href="#c3-fermentations">Détail →</a>
+    </div>
+
+    <div class="scard">
+      <h4>Vinification en blanc <span class="pt-tag">post-it</span></h4>
+      <p class="flow">Vendanges <i>›</i> éraflage <i>›</i> pressurage <i>›</i> sulfitage <i>›</i> débourbage <i>›</i> levurage <i>›</i> fermentation alcoolique <i>›</i> malolactique (facultative) <i>›</i> élevage</p>
+      <p>On presse <b>avant</b> la fermentation, sans macération.</p>
+      <a class="more" href="#c3-blanc">Détail →</a>
+    </div>
+
+    <div class="scard">
+      <h4>Vinification en rouge <span class="pt-tag">post-it</span></h4>
+      <p class="flow">Vendanges <i>›</i> éraflage (fac.) <i>›</i> foulage <i>›</i> sulfitage (fac.) <i>›</i> levurage (fac.) <i>›</i> macération + fermentation alcoolique, avec remontage ou pigeage <i>›</i> décuvage du vin de goutte <i>›</i> pressurage : vin de presse <i>›</i> assemblage (fac.) + malolactique <i>›</i> élevage</p>
+      <p>On presse <b>après</b> la fermentation. Le vin de presse est plus tannique et coloré.</p>
+      <a class="more" href="#c4-rouge">Détail →</a>
+    </div>
+
+    <div class="scard">
+      <h4>Les rosés <span class="pt-tag">post-it</span></h4>
+      <p><b>Vin gris</b> (pressurage direct) : rosé pâle et nerveux.</p>
+      <p><b>Saignée</b> (± 48 h de macération, on prélève du jus d'une cuve de rouge) : rosé plus foncé et structuré.</p>
+      <a class="more" href="#c4-roses">Détail →</a>
+    </div>
+
+    <div class="scard">
+      <h4>Moelleux et liquoreux <span class="pt-tag">post-it</span></h4>
+      <p><b>Naturellement doux</b> : passerillage (raisins séchés, sur ou hors souche) ou pourriture noble (<i>Botrytis cinerea</i>).</p>
+      <p><b>VDN</b> : mutage à l'alcool vinique à 95°, <b>pendant</b> la fermentation.</p>
+      <p><b>VDL</b> : alcool noble <b>avant</b> fermentation, donne une mistelle.</p>
+      <a class="more" href="#c3-speciaux">Détail →</a>
+    </div>
+
+    <div class="scard">
+      <h4>Soins pendant l'élevage <span class="pt-tag">post-it</span></h4>
+      <ul>
+        <li><b>Ouillage</b> : compléter les fûts (part des anges), contre l'oxydation</li>
+        <li><b>Collage</b> : une substance piège les particules (blanc d'œuf, bentonite, colle de poisson, gélatine, gels de silice)</li>
+        <li><b>Soutirage</b> : séparer le vin de ses lies</li>
+        <li><b>Filtration</b> : grosse, fine ou stérile ; vin limpide et stable</li>
+      </ul>
+      <a class="more" href="#c4-soins">Détail →</a>
+    </div>
+
+    <div class="scard">
+      <h4>Effervescents <span class="pt-tag">post-it</span></h4>
+      <ul>
+        <li><b>Gazéifié</b> : CO₂ ajouté</li>
+        <li><b>Ancestrale</b> : fermentation arrêtée par le froid (5–7 %), reprise en bouteille sans liqueur de tirage ; sucré, peu d'alcool</li>
+        <li><b>Charmat</b> : 2<sup>e</sup> fermentation en cuve close ; fruité, léger</li>
+        <li><b>Traditionnelle</b> : 2<sup>e</sup> fermentation en bouteille, remuage, dégorgement, liqueur d'expédition ; complexe, de garde</li>
+      </ul>
+      <a class="more" href="#c5-effervescents">Détail →</a>
+    </div>
+
+    <div class="scard">
+      <h4>La cave · 7 règles d'or <span class="pt-tag">post-it</span></h4>
+      <dl class="kv">
+        <dt>Endroit</dt><dd>cave naturelle, armoire à vin, cave artificielle</dd>
+        <dt>Humidité</dt><dd>70–75 %</dd>
+        <dt>Température</dt><dd>10–12 °C, constante</dd>
+        <dt>Lumière</dt><dd>faible, indirecte, pas de néon</dd>
+        <dt>Aération</dt><dd>soupirail, purificateur, appel d'air</dd>
+        <dt>Voisinage</dt><dd>vins, alcools, bières, cidres uniquement</dd>
+        <dt>Gestion</dt><dd>max 24 bouteilles d'un vin, millésimes jeunes, équilibre blanc / rouge</dd>
+      </dl>
+      <a class="more" href="#c5-stockage">Détail →</a>
+    </div>
+
+    <div class="scard">
+      <h4>Déguster <span class="pt-tag">post-it</span></h4>
+      <p>Verre INAO, 5–6 cl. Le matin, dans le calme, sans odeurs. Ordre : blanc <i>›</i> rosé <i>›</i> rouge <i>›</i> moelleux <i>›</i> liquoreux.</p>
+      <p>Buts : analyse globale, comparaison, classement, <mark>verticale</mark> (un même vin, plusieurs millésimes), horizontale (un millésime, plusieurs vins), à l'aveugle.</p>
+      <a class="more" href="#c1-buts">Détail →</a>
+    </div>
+
+    <div class="scard">
+      <h4>L'œil</h4>
+      <ul>
+        <li><b>Intensité</b> : un rouge perd sa couleur avec l'âge, un blanc fonce</li>
+        <li><b>Couleur</b> blanc : jaune vert <i>›</i> jaune pâle <i>›</i> vert d'eau <i>›</i> paille <i>›</i> or <i>›</i> ambré</li>
+        <li><b>Couleur</b> rouge : violacé <i>›</i> grenat <i>›</i> rubis <i>›</i> vermillon <i>›</i> orange <i>›</i> brique</li>
+        <li><b>Viscosité</b> : faible, fluide, grasse, teintée</li>
+        <li><b>Limpidité</b> : limpide ou trouble (pas forcément un défaut : non filtré)</li>
+        <li><b>Perlant</b> : fines bulles de CO₂, signe de jeunesse</li>
+      </ul>
+      <a class="more" href="#f-visuel">Détail →</a>
+    </div>
+
+    <div class="scard">
+      <h4>Le nez</h4>
+      <p>Premier nez sans agiter (défauts, « net ») puis second nez après agitation.</p>
+      <p><b>Primaires</b> (cépage : fruits, fleurs, végétal) <i>›</i> <b>secondaires</b> (fermentations : alimentaire, balsamique, minéral) <i>›</i> <b>tertiaires</b> (élevage : empyreumatique, boisé, épices, animal, sous-bois).</p>
+      <div class="sc"><span>Intensité</span>faiblement <i>›</i> moyennement <i>›</i> très aromatique</div>
+      <div class="sc"><span>Bouquet</span>fermé, ouvert, évolué, réduit, oxydé, marqué par l'élevage</div>
+      <a class="more" href="#f-olfactif">Détail →</a>
+    </div>
+
+    <div class="scard">
+      <h4>La bouche <span class="pt-tag">post-it</span></h4>
+      <p>4 saveurs : sucré (bout, immédiat), acide (côtés), salé (bords), amer (arrière, lent). 3 temps : attaque (2–3 s), milieu (≈ 10 s), finale.</p>
+      <div class="sc"><span>Sucrosité</span>extra sec <i>›</i> sec <i>›</i> pointe de sucre <i>›</i> demi-sec <i>›</i> moelleux <i>›</i> liquoreux</div>
+      <div class="sc"><span>Acidité</span>souple <i>›</i> frais <i>›</i> nerveux <i>›</i> vert</div>
+      <div class="sc"><span>Alcool</span>léger <i>›</i> modéré <i>›</i> généreux <i>›</i> corsé <i>›</i> capiteux</div>
+      <div class="sc"><span>Tanins</span>fondu <i>›</i> savoureux <i>›</i> présent <i>›</i> astringent</div>
+      <div class="sc"><span>Corps</span>décharné <i>›</i> mince <i>›</i> rond <i>›</i> ferme <i>›</i> volumineux <i>›</i> musclé</div>
+      <div class="sc"><span>Persistance</span>courte (&lt; 4 s) <i>›</i> moyenne (4–8 s) <i>›</i> longue (8–12 s) <i>›</i> prolongée (&gt; 12 s)</div>
+      <div class="sc"><span>Équilibre</span>sucrosité, acidité, alcool, tanins ou harmonieux</div>
+      <a class="more" href="#f-gustatif">Détail →</a>
+    </div>
+
+    <div class="scard">
+      <h4>Clés d'interprétation <span class="pt-tag">post-it</span></h4>
+      <ul>
+        <li>Acidité élevée : vin <b>jeune</b> ou climat <b>froid</b></li>
+        <li>Alcool élevé : climat <b>chaud</b></li>
+        <li>Tanin élevé : vin <b>jeune</b>, macération <b>longue</b> et/ou <b>fût</b></li>
+        <li>L'alcool amplifie la sensation sucrée</li>
+        <li>Larmes grasses : vin riche en alcool</li>
+      </ul>
+    </div>
+
+    <div class="scard">
+      <h4>Évaluer le vin</h4>
+      <div class="sc"><span>Stade d'évolution</span>passé, fragile, épanoui, s'ouvre, fermé</div>
+      <div class="sc"><span>Potentiel de garde</span>trop évolué <i>›</i> à boire rapidement <i>›</i> dans l'année <i>›</i> dans 2/3 ans <i>›</i> attendre 4/5 ans</div>
+      <div class="sc"><span>Typicité</span>atypique <i>›</i> médiocre <i>›</i> correct <i>›</i> typé <i>›</i> racé</div>
+      <div class="sc"><span>Style</span>plaisant, gourmand, élégant, puissant ou riche, grand vin raffiné, marginal, déviant</div>
+      <a class="more" href="#f-evaluation">Détail →</a>
+    </div>
+
+    <div class="scard">
+      <h4>Histoire</h4>
+      <dl class="kv">
+        <dt>7000 av. J.-C.</dt><dd>premiers vins, Asie Mineure</dd>
+        <dt>100 av. J.-C.</dt><dd>première mention « premier cru »</dd>
+        <dt>92</dt><dd>Domitien fait arracher les vignes</dd>
+        <dt>281</dt><dd>Probus encourage la plantation</dd>
+        <dt>1709</dt><dd>le terrible hiver</dd>
+        <dt>1864</dt><dd>phylloxéra dans le Gard : greffage</dd>
+        <dt>1907</dt><dd>révolution dans le Midi</dd>
+        <dt>1935</dt><dd>création de l'INAO</dd>
+        <dt>1958</dt><dd>création de la CEE</dd>
+        <dt>1984</dt><dd>compromis de Dublin</dd>
+      </dl>
+      <a class="more" href="#c1-histoire">Détail →</a>
+    </div>
+
+    <div class="scard">
+      <h4>L'étiquette</h4>
+      <p><b>Obligatoire</b> : appellation, volume d'alcool, contenance, embouteilleur, lot, mentions sanitaires, et depuis le 8 décembre 2023 la valeur énergétique et un QR code (ingrédients, fiche nutritionnelle).</p>
+      <p><b>Facultatif</b> : marque, millésime, cépage, mise en bouteille à la propriété, bio, médailles, vieilles vignes, élevé en fûts, sur lie, cru classé…</p>
+      <a class="more" href="#c1-etiquette">Détail →</a>
+    </div>
+
+    <div class="scard">
+      <h4>Pièges fréquents</h4>
+      <ul>
+        <li><b>Ferme</b> (corps) ≠ <b>fermé</b> (bouquet, stade d'évolution)</li>
+        <li><b>Débourbage</b> (moût, avant fermentation) ≠ <b>soutirage</b> (vin, pendant l'élevage)</li>
+        <li><b>Pigeage</b> (enfoncer le chapeau) ≠ <b>remontage</b> (l'arroser)</li>
+        <li><b>VDN</b> (pendant la fermentation) ≠ <b>VDL</b> (avant)</li>
+        <li><b>Verticale</b> (même vin) ≠ <b>horizontale</b> (même millésime)</li>
+        <li>Levures pour l'alcoolique, bactéries pour la malolactique</li>
+        <li>Chaptaliser ne sucre pas le vin</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="postit">
+  <header class="sec-head">
+    <p class="kicker">Post-it « ne pas oublier ! »</p>
+    <h2>Les 38 slides marquées par le prof, expliquées</h2>
+    <p class="sub">Pour chaque slide : ce qu'il faut retenir, une explication et, quand il y en a un, le piège à éviter. Cliquez sur une slide pour l'agrandir.</p>
+  </header>
+  <div class="filters" role="group" aria-label="Filtrer par cours" id="pfilters"></div>
+  <div id="pgroups"></div>
+</section>
+
+<section id="fiche">
+  <header class="sec-head">
+    <p class="kicker">Fiche de dégustation</p>
+    <h2>Le vocabulaire, étape par étape</h2>
+    <p class="sub">L'ordre d'analyse : l'œil, le nez, la bouche, puis l'évaluation. À l'examen pratique, il faut associer chaque terme à sa définition et choisir les bons termes pour décrire deux vins. Les barres vont du moins (−) au plus (+), comme sur les slides.</p>
+  </header>
+
+  <div class="sub-block" id="f-visuel">
+    <h3><span class="kicker">1 · L'œil</span> Analyse visuelle</h3>
+    <div class="cols">
+      <div class="panel">
+        <h4>Intensité de la robe</h4>
+        <p>La profondeur de la teinte. Elle vient du cépage, du temps de macération, des rendements et de l'âge. Un rouge <b>perd</b> sa couleur en vieillissant ; un blanc <b>se fonce</b>.</p>
+      </div>
+      <div class="panel">
+        <h4>Couleur de la robe</h4>
+        <p>Le cépage d'abord (les cabernets donnent des robes plus intenses que le pinot noir), mais surtout la vinification : la couleur du rouge vient de la pellicule, donc de la macération. La maturité compte aussi. L'oxydation brunit.</p>
+      </div>
+      <div class="panel">
+        <h4>Limpidité et gaz</h4>
+        <p><b>Limpide</b> ou <b>trouble / voilé / laiteux</b>. Un trouble peut signaler une dégradation bactérienne ou un élevage médiocre, mais pas forcément : beaucoup de vins sont « non filtrés ».</p>
+        <p>Quelques fines bulles en surface (<b>perlant</b>) : le CO₂ naturel, signe de jeunesse.</p>
+      </div>
+    </div>
+    <div class="robes" aria-label="Nuances de robe">
+      <div class="robe-row"><h4>Blancs</h4><ol>
+        <li><i style="--c:#E3E89A"></i>Jaune vert</li><li><i style="--c:#F2EAA2"></i>Jaune pâle</li><li><i style="--c:#DCE6BE"></i>Vert d'eau</li><li><i style="--c:#EDD67E"></i>Paille</li><li><i style="--c:#DDB03A"></i>Or / doré</li><li><i style="--c:#BF7A1C"></i>Ambré</li>
+      </ol><p class="robe-axis"><span>jeune</span><span>évolué, liquoreux</span></p></div>
+      <div class="robe-row"><h4>Rouges</h4><ol>
+        <li><i style="--c:#4F1242"></i>Reflet violacé</li><li><i style="--c:#6A1224"></i>Grenat</li><li><i style="--c:#971A2F"></i>Rubis</li><li><i style="--c:#B3302A"></i>Vermillon</li><li><i style="--c:#A95A2A"></i>Orange</li><li><i style="--c:#8E4630"></i>Brique</li>
+      </ol><p class="robe-axis"><span>jeune</span><span>évolué (tuilé)</span></p></div>
+      <div class="robe-row"><h4>Rosés</h4><ol>
+        <li><i style="--c:#EED8CD"></i>Gris</li><li><i style="--c:#F1B3BC"></i>Rose</li><li><i style="--c:#D5506A"></i>Framboise</li><li><i style="--c:#BE2A40"></i>Cerise</li><li><i style="--c:#EFA088"></i>Saumoné</li><li><i style="--c:#E48B57"></i>Orangé</li>
+      </ol></div>
+    </div>
+    <div class="ladders" data-ladders="Visuel"></div>
+  </div>
+
+  <div class="sub-block" id="f-olfactif">
+    <h3><span class="kicker">2 · Le nez</span> Analyse olfactive</h3>
+    <div class="cols">
+      <div class="panel">
+        <h4>Deux voies</h4>
+        <p><b>Directe</b> : on hume (on parle d'« odeur »).</p>
+        <p><b>Rétronasale</b> : par le passage entre le palais et les fosses nasales, vin en bouche (on parle d'« arôme »).</p>
+      </div>
+      <div class="panel">
+        <h4>Deux nez</h4>
+        <p><b>Premier nez</b>, sans remuer : on repère un défaut éventuel (sinon le vin est « net ») et les premières familles d'arômes.</p>
+        <p><b>Second nez</b>, après avoir fait tourner le vin : on l'oxygène et on précise les arômes.</p>
+      </div>
+      <div class="panel">
+        <h4>Chiffres</h4>
+        <p>Environ <span class="num">600</span> arômes identifiés dans les vins. Un vin contient en moyenne <span class="num">300</span> composés aromatiques, dont <span class="num">7</span> décelables par un nez exercé, pour moins de <span class="num">1 g</span> par litre.</p>
+        <p>Goût de bouchon : le 2-4-6 trichloroanisole (TCA), détectable à 90 milliardièmes de gramme par litre.</p>
+      </div>
+    </div>
+    <div class="retenir">
+      <p class="label">L'ordre d'apparition des arômes</p>
+      <p><b>Primaires</b> (du raisin, du cépage) → <b>secondaires</b> (des fermentations) → <b>tertiaires</b> (de l'élevage en fût et du vieillissement en bouteille, liés à l'oxygène).</p>
+    </div>
+    <div class="ladders" data-ladders="Olfactif"></div>
+    <div class="tbl wide">
+      <table>
+        <thead><tr><th>Famille</th><th>Catégorie</th><th>Exemples</th></tr></thead>
+        <tbody>
+          <tr><th>Fruits</th><td class="cat">Primaire</td><td>Citron, orange, pamplemousse, pomme, abricot, pêche, poire, coing, fraise, cerise, prune, figue, groseille, cassis, sureau, mûre, banane, melon, ananas, litchi, mangue, noisette, amande</td></tr>
+          <tr><th>Végétal</th><td class="cat">Primaire</td><td>Bourgeon de cassis, buis, herbacé, fenouil, fougère, menthe, poivron vert</td></tr>
+          <tr><th>Floral</th><td class="cat">Primaire</td><td>Rose, aubépine, tilleul, fleur d'oranger, géranium, pivoine, acacia, violette, miel</td></tr>
+          <tr><th>Alimentaire</th><td class="cat">Secondaire</td><td>Pain frais, biscuit, beurre, levure, bière, caramel, bonbons, lacté / yaourt, chocolat</td></tr>
+          <tr><th>Balsamique</th><td class="cat">Secondaire</td><td>Résine, térébenthine, soufre, vernis, acétone, colle à bois</td></tr>
+          <tr><th>Minéral</th><td class="cat">Secondaire</td><td>Iode, craie, argile, pierre à fusil / silex, galet mouillé, terre humide, terreau</td></tr>
+          <tr><th>Empyreumatique</th><td class="cat">Tertiaire</td><td>Fumée, goudron, pétrole, toasté, notes grillées, caoutchouc, suie, brûlé</td></tr>
+          <tr><th>Épices / aromates</th><td class="cat">Tertiaire</td><td>Poivre, muscade, cannelle, laurier, thym, clou de girofle, vanille, safran, réglisse</td></tr>
+          <tr><th>Animal</th><td class="cat">Tertiaire</td><td>Cuir, fourrure, gibier, venaison, jus de viande, chien mouillé, étable</td></tr>
+          <tr><th>Boisé</th><td class="cat">Tertiaire</td><td>Bois neuf, cèdre, pin, chêne</td></tr>
+          <tr><th>Végétal tertiaire</th><td class="cat">Tertiaire</td><td>Foin, feuilles mortes, tabac, humus, truffe, champignons, sous-bois, thé</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="sub-block" id="f-gustatif">
+    <h3><span class="kicker">3 · La bouche</span> Analyse gustative</h3>
+    <p class="prose">Une substance n'a de goût que si elle est soluble dans la salive. La <b>salivation</b> est une réaction très importante : les acides font saliver davantage que les autres saveurs.</p>
+    <div class="tbl wide">
+      <table>
+        <thead><tr><th>Saveur</th><th>Salivation</th><th>Où et quand</th><th>Interprétation</th></tr></thead>
+        <tbody>
+          <tr><th>Sucré</th><td>Salive épaisse et visqueuse</td><td>Bout de la langue. Immédiat, maximum après 2 s, disparaît après 10 s</td><td>Souplesse, gras, moelleux. Amplifié par l'alcool et par la température. Fixe les arômes : les liquoreux ont un nez moins explosif</td></tr>
+          <tr><th>Acide</th><td>Salive fluide et abondante</td><td>Côtés et dessous. Rapide, persiste comme le salé</td><td>Fraîcheur. Acides malique, tartrique, citrique. Lié à la salinité</td></tr>
+          <tr><th>Salé</th><td>Pas de modification</td><td>Bords avant, centre (minéralité). Rapide, persiste plus que le sucré</td><td>Fraîcheur, relève la sapidité. Souvent masqué par les autres saveurs</td></tr>
+          <tr><th>Amer</th><td>Diminue, bouche sèche</td><td>Partie postérieure. Lent, augmente et dure longtemps</td><td>Souvent associé à l'astringence des tanins</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="muted prose">Au cours 1, la slide des 4 saveurs montre la « carte de la langue » tamponnée <b>FAUX</b> : les zones ne sont que des repères. Retenez surtout la vitesse et la durée de chaque saveur.</p>
+    <ol class="steps">
+      <li data-n="1"><span><span class="t">L'attaque</span> <span class="num">2–3 s</span><span class="d">Petite gorgée, on aspire un filet d'air. Le sucré se sent en premier.</span></span></li>
+      <li data-n="2"><span><span class="t">Le milieu de bouche</span> <span class="num">≈ 10 s</span><span class="d">On remue le vin : température, viscosité, gaz carbonique, astringence. On juge l'harmonie et le volume.</span></span></li>
+      <li data-n="3"><span><span class="t">La fin de bouche (finale)</span><span class="d">Dominée par les tanins pour un rouge, elle dit tout sur la structure. La persistance (longueur) établit la hiérarchie des vins.</span></span></li>
+    </ol>
+    <div class="ladders" data-ladders="Gustatif"></div>
+  </div>
+
+  <div class="sub-block" id="f-evaluation">
+    <h3><span class="kicker">4 · Le jugement</span> Évaluation du vin</h3>
+    <p class="prose">Elle ne se complète que lorsqu'on connaît l'identité du vin. Objectif : estimer le stade d'évolution et le potentiel de garde, qualifier la typicité et le caractère global.</p>
+    <div class="ladders" data-ladders="Évaluation"></div>
+  </div>
+</section>
+
+<section id="examen">
+  <header class="sec-head">
+    <p class="kicker">Examen</p>
+    <h2>Ce qui sera évalué</h2>
+    <p class="sub">D'après la présentation du cours 1 et la slide « Pour l'évaluation !! » de la fin du cours 4.</p>
+  </header>
+
+  <div class="cols two">
+    <div class="panel">
+      <h4>Seuil de réussite · 50 %</h4>
+      <p>L'étudiant sera capable :</p>
+      <ul class="plain">
+        <li>de préciser l'importance des <a href="#c2-facteurs">pratiques viticoles</a> sur la qualité des vins ;</li>
+        <li>de préciser les <a href="#c3-blanc">phases de vinification</a> pour la détermination des différents types de vin ;</li>
+        <li>d'identifier les caractéristiques d'une <a href="#c5-stockage">bonne cave à vin</a> ;</li>
+        <li>d'appliquer les techniques d'<a href="#fiche">analyse d'un vin</a> à travers la dégustation.</li>
+      </ul>
+      <p class="warn">Une compétence non acquise entraîne l'échec : non acquis = 0 %.</p>
+    </div>
+    <div class="panel">
+      <h4>Degré de maîtrise · 50 à 100 %</h4>
+      <p>Au-delà du seuil, on tient compte :</p>
+      <ul class="plain">
+        <li>du degré de pertinence pour commenter les facteurs qui influencent la qualité d'un vin ;</li>
+        <li>de la finesse de l'analyse lors de la dégustation d'un vin ;</li>
+        <li>du niveau de précision des critères de qualité lors du stockage des vins.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="block">
+    <h3>Les épreuves</h3>
+    <div class="cols two">
+      <div class="qcm">
+        <p class="mini">Écrit · QCM puis justification</p>
+        <p>Exemple donné au cours 1 :</p>
+        <p class="qcm-q">Qu'est-ce que le vigneron recherche principalement lors de la vendange ?</p>
+        <ol type="a">
+          <li>Un important volume de raisin</li>
+          <li>La maturation parfaite du raisin</li>
+          <li>Une faible quantité de sucre</li>
+          <li>Un raisin riche en acidité</li>
+        </ol>
+        <p>Puis : <em>Quelle(s) influence(s) cela peut-il avoir sur la qualité du vin ?</em></p>
+        <details>
+          <summary>Voir la réponse et une justification type</summary>
+          <p><b>b) La maturation parfaite du raisin.</b></p>
+          <p>La maturité détermine l'équilibre entre sucres, acides et arômes. Une bonne maturité donne une richesse aromatique et une structure harmonieuse. Une vendange trop précoce donne des vins acides et verts ; trop tardive, des vins mous et alcooleux. Le sucre fixe aussi le degré : 17 g de sucre par litre forment 1° d'alcool.</p>
+        </details>
+      </div>
+      <div class="qcm">
+        <p class="mini">Pratique · en laboratoire</p>
+        <ul class="plain">
+          <li>Un <b>nuage de mots</b> de la fiche de dégustation : rattacher chaque mot à la bonne rubrique (ex. corps → rond, ferme ; sucrosité → sec). <a href="#x-nuage">Exercice nuage de mots</a></li>
+          <li>Identifier des termes techniques à partir d'une définition. <a href="#x-relier">Exercice relier</a></li>
+          <li>Choisir les bons termes techniques lors de l'analyse de deux vins. <a href="#x-fiche">Exercice analyser deux vins</a></li>
+        </ul>
+        <div class="retenir">
+          <p class="label">Méthode</p>
+          <p>Pour chaque vin : œil (intensité, couleur, viscosité, limpidité), nez (intensité, catégorie, bouquet), bouche (sucrosité, acidité, alcool, tanins, corps, persistance, équilibre), puis évaluation (stade, garde, typicité, style).</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="block">
+    <h3>Liste de révision <span class="progress" id="progress"></span></h3>
+    <p class="muted prose">Cochez au fur et à mesure. Vos coches sont gardées dans ce navigateur.</p>
+    <p class="mini">Slide « Pour l'évaluation !! » · cours 4</p>
+    <ul class="checklist">
+      <li class="check"><input type="checkbox" id="chk-maturite"><label for="chk-maturite">La maturité du raisin</label><a href="#c2-maturite">Revoir</a></li>
+      <li class="check"><input type="checkbox" id="chk-correction"><label for="chk-correction">La correction de la vendange (chaptalisation)</label><a href="#c2-chaptalisation">Revoir</a></li>
+      <li class="check"><input type="checkbox" id="chk-elevage"><label for="chk-elevage">L'élevage du vin et ses soins</label><a href="#c4-soins">Revoir</a></li>
+      <li class="check"><input type="checkbox" id="chk-blanc"><label for="chk-blanc">Vinification en blanc sec</label><a href="#c3-blanc">Revoir</a></li>
+      <li class="check"><input type="checkbox" id="chk-doux"><label for="chk-doux">Vins moelleux et liquoreux, VDN et VDL</label><a href="#c3-speciaux">Revoir</a></li>
+      <li class="check"><input type="checkbox" id="chk-rouge"><label for="chk-rouge">Vinification en rouge</label><a href="#c4-rouge">Revoir</a></li>
+      <li class="check"><input type="checkbox" id="chk-rose"><label for="chk-rose">Vinification des rosés</label><a href="#c4-roses">Revoir</a></li>
+      <li class="check"><input type="checkbox" id="chk-effervescents"><label for="chk-effervescents">Les effervescents</label><a href="#c5-effervescents">Revoir</a></li>
+      <li class="check"><input type="checkbox" id="chk-stockage"><label for="chk-stockage">Le stockage et la conservation des vins</label><a href="#c5-stockage">Revoir</a></li>
+      <li class="check"><input type="checkbox" id="chk-termes"><label for="chk-termes">Relier les définitions aux termes des étapes de la dégustation</label><a href="#x-relier">S'entraîner</a></li>
+      <li class="check"><input type="checkbox" id="chk-analyse"><label for="chk-analyse">Analyser deux vins avec des termes techniques</label><a href="#fiche">Revoir</a></li>
+    </ul>
+    <p class="mini" style="margin-top:.75rem">Aussi au programme du cours</p>
+    <ul class="checklist">
+      <li class="check"><input type="checkbox" id="chk-nuage"><label for="chk-nuage">Nuage de mots : rattacher les termes de la fiche à leur rubrique</label><a href="#x-nuage">S'entraîner</a></li>
+      <li class="check"><input type="checkbox" id="chk-facteurs"><label for="chk-facteurs">Les facteurs qui influencent la qualité du vin</label><a href="#c2-facteurs">Revoir</a></li>
+      <li class="check"><input type="checkbox" id="chk-histoire"><label for="chk-histoire">Historique du vignoble et définition légale du vin</label><a href="#c1-histoire">Revoir</a></li>
+      <li class="check"><input type="checkbox" id="chk-etiquette"><label for="chk-etiquette">Les mentions sur l'étiquette</label><a href="#c1-etiquette">Revoir</a></li>
+      <li class="check"><input type="checkbox" id="chk-saveurs"><label for="chk-saveurs">Les 4 saveurs élémentaires</label><a href="#f-gustatif">Revoir</a></li>
+      <li class="check"><input type="checkbox" id="chk-conditions"><label for="chk-conditions">Conditions et buts de la dégustation</label><a href="#c1-degustation">Revoir</a></li>
+    </ul>
+  </div>
+</section>
+</div>
+
+<!-- ================= PARTIE 3 : EXERCICES ================= -->
+<div class="part" id="exercices" hidden>
+<header class="part-head">
+  <p class="kicker">Partie 3</p>
+  <h2>Exercices</h2>
+  <p class="lede">Onze exercices, tirés au hasard à chaque essai. Les trois premiers reprennent les formats annoncés pour l'examen. L'examen blanc mélange tout sur 20 questions.</p>
+</header>
+
+<section id="x-menu">
+  <nav class="exmenu" aria-label="Choisir un exercice">
+    <a href="#x-nuage"><span class="meta"><span class="exam-tag">format examen</span></span><span class="t">Nuage de mots</span><span class="d">Rattacher les mots de la fiche à leur rubrique.</span></a>
+    <a href="#x-relier"><span class="meta"><span class="exam-tag">format examen</span></span><span class="t">Relier termes et définitions</span><span class="d">5 termes, 5 définitions à associer.</span></a>
+    <a href="#x-fiche"><span class="meta"><span class="exam-tag">format examen</span></span><span class="t">Analyser deux vins</span><span class="d">Compléter la fiche d'un blanc et d'un rouge.</span></a>
+    <a href="#x-examen"><span class="meta" data-count="examen"></span><span class="t">Examen blanc</span><span class="d">Un peu de tout, avec une note finale.</span></a>
+    <a href="#x-qcm"><span class="meta" data-count="qcm"></span><span class="t">QCM de théorie</span><span class="d">Comme l'exemple de QCM du cours 1.</span></a>
+    <a href="#x-vf"><span class="meta" data-count="vf"></span><span class="t">Vrai ou faux</span><span class="d">Des affirmations à trancher vite.</span></a>
+    <a href="#x-chiffres"><span class="meta" data-count="chiffres"></span><span class="t">Chiffres clés</span><span class="d">Températures, doses, degrés, dates.</span></a>
+    <a href="#x-classer"><span class="meta" data-count="classer"></span><span class="t">Classer</span><span class="d">Blanc ou rouge, quelle méthode, quel facteur…</span></a>
+    <a href="#x-intrus"><span class="meta" data-count="intrus"></span><span class="t">Trouver l'intrus</span><span class="d">Un mot n'est pas de la même rubrique.</span></a>
+    <a href="#x-def"><span class="meta" data-count="def"></span><span class="t">Définition ↔ terme</span><span class="d">Dans les deux sens.</span></a>
+    <a href="#x-ordre"><span class="meta" data-count="ordre"></span><span class="t">Remettre dans l'ordre</span><span class="d">Échelles, vinifications, méthodes, dates.</span></a>
+  </nav>
+
+  <div class="ex" id="x-nuage" data-ex="nuage">
+    <div class="ex-title"><h3>Nuage de mots</h3><span class="exam-tag">format examen</span></div>
+    <div class="ex-bar">
+      <label for="nTheme">Partie</label>
+      <select id="nTheme">
+        <option value="bouche">Bouche (analyse gustative)</option>
+        <option value="oeilnez">Œil et nez</option>
+        <option value="eval">Évaluation du vin</option>
+        <option value="tout">Toute la fiche</option>
+        <option value="aromes">Arômes : primaires, secondaires, tertiaires</option>
+      </select>
+      <label for="nMode">Mode</label>
+      <select id="nMode">
+        <option value="3">Trier entre 3 rubriques</option>
+        <option value="1">Une rubrique à la fois</option>
+      </select>
+      <span class="score" id="nScore">0 / 0</span>
+    </div>
+    <p class="ex-prompt" id="nPrompt"></p>
+    <div class="rubs" id="nRubs"></div>
+    <div class="cloud" id="nCloud"></div>
+    <div class="ex-foot">
+      <p id="nFeedback" aria-live="polite"></p>
+      <div class="ex-actions"><button type="button" class="btn ghost" id="nCheck">Vérifier</button><button type="button" class="btn" id="nNext">Nouveau nuage</button></div>
+    </div>
+  </div>
+
+  <div class="ex" id="x-relier" data-ex="relier" hidden>
+    <div class="ex-title"><h3>Relier termes et définitions</h3><span class="exam-tag">format examen</span></div>
+    <div class="ex-bar">
+      <label for="rDom">Thème</label>
+      <select id="rDom">
+        <option value="all">Tout le vocabulaire</option>
+        <option value="degust">Œil, nez, bouche</option>
+        <option value="eval">Évaluation du vin</option>
+        <option value="vinif">Vinification et soins</option>
+        <option value="buts">Types de dégustation</option>
+      </select>
+      <span class="score" id="rScore">0 / 0</span>
+    </div>
+    <p class="ex-prompt">Touchez un terme, puis la définition qui lui correspond. Le numéro du terme s'affiche sur la définition choisie.</p>
+    <div class="match">
+      <div><p class="mini">Termes</p><div id="rTerms" style="display:grid;gap:.5rem"></div></div>
+      <div><p class="mini">Définitions</p><div id="rDefs" style="display:grid;gap:.5rem"></div></div>
+    </div>
+    <div class="ex-foot">
+      <p id="rFb" aria-live="polite"></p>
+      <div class="ex-actions"><button type="button" class="btn ghost" id="rCheck">Vérifier</button><button type="button" class="btn" id="rNext">Nouvelle série</button></div>
+    </div>
+  </div>
+
+  <div class="ex" id="x-fiche" data-ex="fiche" hidden>
+    <div class="ex-title"><h3>Analyser deux vins</h3><span class="exam-tag">format examen</span></div>
+    <p class="ex-prompt">Chaque ligne décrit ce que l'on observe. Choisissez le terme technique de la fiche qui correspond. Les profils sont tirés au hasard.</p>
+    <div class="wines" id="fWines"></div>
+    <div class="ex-foot">
+      <p id="fFb" aria-live="polite"></p>
+      <div class="ex-actions"><span class="score" id="fScore">0 / 0</span><button type="button" class="btn ghost" id="fCheck">Vérifier</button><button type="button" class="btn" id="fNext">Deux autres vins</button></div>
+    </div>
+  </div>
+
+  <div class="ex" id="x-examen" data-ex="examen" hidden>
+    <div class="ex-title"><h3>Examen blanc</h3></div>
+    <p class="ex-prompt">20 questions mélangées : théorie, vrai ou faux, chiffres, définitions et intrus. La note s'affiche à la fin, avec les questions à revoir.</p>
+  </div>
+
+  <div class="ex" id="x-qcm" data-ex="qcm" hidden>
+    <div class="ex-title"><h3>QCM de théorie</h3></div>
+  </div>
+
+  <div class="ex" id="x-vf" data-ex="vf" hidden>
+    <div class="ex-title"><h3>Vrai ou faux</h3></div>
+  </div>
+
+  <div class="ex" id="x-chiffres" data-ex="chiffres" hidden>
+    <div class="ex-title"><h3>Chiffres clés</h3></div>
+  </div>
+
+  <div class="ex" id="x-classer" data-ex="classer" hidden>
+    <div class="ex-title"><h3>Classer</h3></div>
+    <p class="ex-prompt">Un élément à la fois : choisissez la bonne case.</p>
+  </div>
+
+  <div class="ex" id="x-intrus" data-ex="intrus" hidden>
+    <div class="ex-title"><h3>Trouver l'intrus</h3></div>
+  </div>
+
+  <div class="ex" id="x-def" data-ex="def" hidden>
+    <div class="ex-title"><h3>Définition ↔ terme</h3></div>
+  </div>
+
+  <div class="ex" id="x-ordre" data-ex="ordre" hidden>
+    <div class="ex-title"><h3>Remettre dans l'ordre</h3></div>
+    <div class="ex-bar">
+      <label for="oSet">Série</label>
+      <select id="oSet"><option value="rand">Au hasard</option></select>
+      <span class="score" id="oScore">0 / 0</span>
+    </div>
+    <p class="ex-prompt" id="oPrompt"></p>
+    <ol class="slots" id="oSlots"></ol>
+    <p class="mini">Touchez les éléments dans l'ordre · touchez un élément placé pour le retirer</p>
+    <div class="pool" id="oPool"></div>
+    <div class="ex-foot">
+      <p id="oFeedback" aria-live="polite"></p>
+      <div class="ex-actions"><button type="button" class="btn ghost" id="oCheck">Vérifier</button><button type="button" class="btn" id="oNext">Série suivante</button></div>
+    </div>
+  </div>
+</section>
+</div>
+
+<footer>
+  <p>D'après les supports du cours d'initiation à l'étude des vins du CEFOR Namur (2026) : présentation du cours, Apprentissage 1 à 5, dossiers d'analyse gustative, olfactive et visuelle, et fiche « Évaluer un vin ».</p>
+  <p>Supports complets à télécharger sur www.oenocefor.be (onglet « plus », espace initiation).</p>
+</footer>
+</div>
+
+<div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-labelledby="lbcap">
+  <div class="lb-inner">
+    <img id="lbimg" alt="">
+    <div class="lb-bar">
+      <button type="button" id="lbprev" aria-label="Slide précédente">←</button>
+      <p id="lbcap"></p>
+      <button type="button" id="lbnext" aria-label="Slide suivante">→</button>
+      <button type="button" id="lbclose">Fermer</button>
+    </div>
+    <div class="lb-text" id="lbtext"></div>
+  </div>
+</div>
+<script>
+const COURSES={1:"Histoire, étiquette, dégustation",2:"Le raisin et l'analyse gustative",3:"Fermentations, blanc et vins doux",4:"Rouge, rosé et soins du vin",5:"Stockage et effervescents"};
+/* [id, cours, n° slide, titre, à retenir, explication, piège] */
+const SLIDES=[
+ ["c1-24",1,24,"Les buts de la dégustation","Verticale = un même vin sur plusieurs millésimes.","Le post-it est collé à côté de « La verticale ». On déguste le même vin (même appellation, même domaine) sur plusieurs millésimes, par exemple château Mouton Rothschild de 1998 à 2002. On voit ainsi comment le vin évolue avec le temps et ce que chaque millésime apporte. Les autres buts : analyse globale, comparaison, classement, horizontale et dégustation à l'aveugle.","Verticale : même vin, années différentes. Horizontale : même année, vins différents."],
+ ["c2-16",2,16,"La maturité du raisin","Quatre éléments : sucre (17 g/L = 1° d'alcool), acidité (malique, tartrique), couleur, arômes.","La maturité est le moment crucial pour la qualité des vins. Le sucre donnera l'alcool : il faut 17 g de sucre par litre pour obtenir 1° d'alcool. L'acidité vient surtout des acides malique et tartrique. La couleur compte pour l'aspect du vin, et les composants aromatiques donnent l'expression du cépage. Le vigneron vendange quand l'équilibre entre ces éléments est idéal.","17 g par litre, pas 1,7 g ni 170 g."],
+ ["c2-17",2,17,"Pourquoi la maturité compte","Trop tôt : vins acides et verts. Trop tard : vins mous et alcooleux.","La maturité fixe l'équilibre entre sucres, acides et arômes. Une bonne maturité donne une richesse aromatique et une structure harmonieuse : c'est le moment où le fruit exprime tout son potentiel. C'est aussi la réponse à la question d'examen « Qu'est-ce que le vigneron recherche principalement lors de la vendange ? » : la maturation parfaite du raisin.",""],
+ ["c2-24",2,24,"Conditions climatiques défavorables","Raisins pas assez mûrs → peu de sucre → peu d'alcool → chaptalisation.","Quand la météo est mauvaise, les raisins n'atteignent pas une maturité suffisante et contiennent trop peu de sucre. Le vin serait trop faible en alcool. On peut alors chaptaliser : ajouter du saccharose au moût, 2 à 3 kg par hectolitre. 1,7 kg par hectolitre donne 1° d'alcool en plus.","1,7 kg par hectolitre, c'est le même rapport que 17 g par litre."],
+ ["c2-25",2,25,"La chaptalisation","Ajout contrôlé de sucre au moût pour augmenter le degré, pas pour sucrer.","Le sucre est ajouté avant ou pendant la fermentation ; les levures le transforment en alcool, donc le vin n'est pas plus sucré. La pratique compense un manque naturel de sucre dû à une maturité insuffisante. Elle est réglementée et autorisée seulement dans certaines régions et conditions.","Ne pas confondre avec le mutage, qui ajoute de l'alcool pour garder du sucre."],
+ ["c2-27",2,27,"Sucrosité des vins","Extra sec → sec → sec avec une pointe de sucre → demi-sec → moelleux → liquoreux.","C'est la première étape de l'analyse gustative, pour les blancs et les rosés. On juge surtout à la salive : fluide et abondante pour un vin sec, elle s'épaissit avec le sucre, jusqu'à une sensation épaisse comme une liqueur pour un liquoreux. La plupart des vins sont secs.",""],
+ ["c2-28",2,28,"Acidité","Souple → frais → nerveux → vert. Acidité élevée = vin jeune ou climat froid.","L'acidité donne la fraîcheur, et il y en a dans tous les vins. Plus elle est forte, plus on salive : souple (pas de fraîcheur), frais (rafraîchissant), nerveux (léger picotement, un peu citrique), vert (agressif, frissonnant). Une acidité élevée oriente vers un vin jeune ou une région au climat froid.",""],
+ ["c2-29",2,29,"Alcool","Léger → modéré → généreux → corsé → capiteux. Alcool élevé = climat chaud.","On juge la sensation de chaleur en bouche : manque d'alcool (léger), normale (modéré), chaleureuse sans gêner (généreux), évidente dès le milieu de bouche (corsé), brûlante comme une eau-de-vie (capiteux). Un climat chaud donne des raisins plus sucrés, donc des vins plus alcoolisés.",""],
+ ["c2-30",2,30,"Tanin","Fondu → savoureux → présent → astringent. Tanin élevé = vin jeune, macération longue et/ou élevage en fûts.","Les tanins (vins rouges) se sentent à l'assèchement de la bouche. Fondu : aucun assèchement. Savoureux : un peu, sans déranger. Présent : la salive disparaît en fin de bouche. Astringent : très asséchant, il agresse les gencives. Les tanins viennent de la pellicule, des pépins, de la rafle et du bois, d'où le lien avec une macération longue et le fût.",""],
+ ["c2-31",2,31,"Corps","Décharné → mince → rond → ferme → volumineux → musclé.","Le corps est la carrure du vin, liée à l'alcool, à l'acidité et aux tanins. Décharné : sans matière. Mince : léger, il manque un peu d'acidité, d'alcool ou de tanins. Rond : équilibré. Ferme : austère, droit (tanins, acidité). Volumineux : il emplit la bouche (alcool). Musclé : de la chair, de la mâche, de la puissance.","« Ferme » décrit le corps ; « fermé » décrit le bouquet ou le stade d'évolution."],
+ ["c2-32",2,32,"Persistance et équilibre","Courte (< 4 s), moyenne (4–8 s), longue (8–12 s), prolongée (> 12 s).","La persistance mesure combien de temps les sensations restent en bouche après la gorgée. Elle établit la hiérarchie des vins : un grand vin est long en bouche. La prédominance de l'équilibre dit quelle sensation domine : sucrosité (douceur), acidité (fraîcheur), alcool (chaleur), tanins (assèchement), ou harmonieux si rien ne domine. La slide cite aussi « plat ».",""],
+ ["c3-12",3,12,"L'éraflage","Séparer les baies de la rafle avant la vinification.","La rafle est la partie ligneuse de la grappe. La retirer évite d'apporter des tanins verts et des goûts herbacés, surtout dans les rouges. L'éraflage, ou égrappage, peut être total ou partiel selon le style recherché. En rouge, il est facultatif.",""],
+ ["c3-14",3,14,"Le pressurage en blanc","En blanc, on presse juste après la récolte, avant toute macération.","Les raisins, entiers ou légèrement foulés, sont pressés tout de suite pour extraire le jus sans tirer les tanins ni les composés de la peau. On veut un moût clair, pur et aromatiquement frais, prêt pour le débourbage puis la fermentation.","En rouge, le pressurage vient après la fermentation."],
+ ["c3-16",3,16,"Le sulfitage","Ajout de SO₂ au moût, juste après le pressurage.","Le dioxyde de soufre protège immédiatement le jus de l'oxydation et freine les levures et bactéries indésirables avant la fermentation. Il préserve la fraîcheur aromatique et la couleur du futur vin. En rouge, il est facultatif. Le SO₂ fait partie des additifs soumis à étiquetage.",""],
+ ["c3-18",3,18,"Le débourbage","Clarifier le moût avant la fermentation en retirant les bourbes.","Après le pressurage, le jus contient des particules solides en suspension : les bourbes. On les élimine par décantation naturelle (on laisse reposer) ou par action mécanique. On obtient un jus limpide, pour un vin plus pur et plus aromatique.","Débourbage : le moût, avant la fermentation. Soutirage : le vin, pendant l'élevage."],
+ ["c3-20",3,20,"Le levurage","Ajout de levures sélectionnées au début de la fermentation.","Il assure un départ rapide et régulier de la fermentation alcoolique et permet de maîtriser le profil aromatique. Il complète ou remplace les levures naturellement présentes sur la peau des raisins. En rouge, il est facultatif.",""],
+ ["c3-22",3,22,"La fermentation alcoolique","Sucres (glucose, fructose) + levures → alcool + CO₂.","C'est l'étape centrale de la vinification. Elle produit aussi de la chaleur et des composés aromatiques. On l'observe au bouillonnement, à la hausse de la température et du degré, à la baisse de la densité (et au chapeau en rouge). Température idéale : 20 à 28 °C ; elle s'arrête à 40 °C. Sa durée et sa température influencent fortement le style.",""],
+ ["c3-24",3,24,"La fermentation malolactique","Acide malique → acide lactique, par des bactéries.","C'est une désacidification biologique : le vin devient plus rond et plus stable microbiologiquement. Elle est indispensable pour les rouges et au choix pour les blancs, selon le style recherché.","Levures pour la fermentation alcoolique, bactéries pour la malolactique."],
+ ["c3-26",3,26,"L'élevage","La maturation du vin entre la fermentation et la mise en bouteille.","En cuve, en fût ou dans d'autres contenants, l'élevage affine les arômes, assouplit les tanins et stabilise le vin. Sa durée, son mode et les matériaux choisis influencent directement le style et la complexité. C'est pendant l'élevage qu'ont lieu les soins : ouillage, collage, soutirage, filtration.",""],
+ ["c3-30",3,30,"Passerillage et Botrytis cinerea","Deux façons de concentrer le sucre pour les vins naturellement doux.","Passerillage : on laisse les raisins se dessécher, sur pied (vendanges tardives) ou après la récolte, sur claies ou suspendus. Pourriture noble : le champignon Botrytis cinerea, favorisé par une alternance d'humidité et de sécheresse, perce la peau ; l'eau s'évapore, sucres et arômes se concentrent. Il donne des liquoreux complexes.",""],
+ ["c3-34",3,34,"Le mutage des VDN","Alcool vinique neutre à 95° ajouté en cours de fermentation.","L'alcool stoppe les levures : une partie du sucre naturel reste, et le vin est à la fois doux et alcoolisé. On ajoute 5 à 10 % du volume du moût. Un VDN a au moins 15° d'alcool acquis et 21,5 % d'alcool total (6,5 % en puissance). Le mutage peut se faire sur grains (avant pressurage) ou sur jus.","VDN : alcool vinique, pendant la fermentation. VDL : alcool noble, avant la fermentation (mistelle)."],
+ ["c4-06",4,6,"Le foulage","Éclater légèrement la peau des baies pour libérer le jus.","Réalisé avant la fermentation, il met le jus en contact avec la pulpe et favorise l'extraction du moût, en préservant les pépins. Aujourd'hui souvent mécanique, il est réglé pour éviter un écrasement excessif qui donnerait de l'amertume.",""],
+ ["c4-10",4,10,"La macération","Peaux, pulpes et pépins restent au contact du moût en fermentation.","C'est ce qui fait un vin rouge : la couleur, les tanins et une partie des arômes viennent de la pellicule. Sa durée et sa température influencent directement la structure, l'intensité et le style du vin. Elle se déroule en même temps que la fermentation alcoolique.",""],
+ ["c4-14",4,14,"Pigeage et remontage","Pigeage = enfoncer le chapeau. Remontage = l'arroser avec le jus pompé en bas de cuve.","Pendant la fermentation, les peaux et les pépins remontent et forment le chapeau de marc. Pour extraire couleur et tanins et éviter que le chapeau sèche, on l'enfonce dans le moût (pigeage) ou on l'arrose avec le jus pompé au bas de la cuve (remontage), ce qui homogénéise aussi la cuve.",""],
+ ["c4-18",4,18,"Vin de goutte et vin de presse","Goutte = écoulé sans pression. Presse = obtenu en pressant le marc, plus riche en tanins et en couleur.","En rouge, le pressurage vient après la fermentation et la macération. On décuve d'abord le vin de goutte, puis on presse le marc pour obtenir le vin de presse. Le vigneron les assemble ou non selon le style recherché. La malolactique a ensuite toujours lieu en rouge.",""],
+ ["c4-24",4,24,"Rosé de pressurage et de saignée","Pressurage direct = rosé pâle et nerveux (vin gris). Saignée = rosé plus foncé et structuré.","Rosé de pressurage : les raisins rouges sont pressés tout de suite, sans macération prolongée ; le jus est très clair et garde une grande fraîcheur. Rosé de saignée : après environ 48 h de macération, on prélève une partie du jus d'une cuve de rouge ; le rosé est plus coloré et le rouge restant se concentre. Ils sont très différents à l'œil et en bouche.",""],
+ ["c4-28",4,28,"L'ouillage","Compléter les fûts pour compenser l'évaporation et éviter l'oxydation.","Pendant l'élevage, le vin s'évapore naturellement : c'est la « part des anges ». Si le fût n'est plus plein, l'air oxyde le vin. On complète donc régulièrement le niveau avec le même vin ou un vin de qualité équivalente.",""],
+ ["c4-30",4,30,"Le collage","Clarifier en ajoutant une substance qui piège les particules.","La substance (protéine, argile…) se lie aux particules en suspension ; elles se regroupent et se déposent au fond de la cuve, où on les élimine. Produits : blanc d'œuf, bentonite, colle de poisson, gélatine, gels de silice. Le vin devient plus limpide, plus stable, parfois plus rond. Les Romains pratiquaient déjà le collage.",""],
+ ["c4-32",4,32,"Le soutirage","Transférer le vin d'un contenant à un autre pour le séparer de ses lies.","Les lies sont les dépôts solides au fond du contenant. Le soutirage aère légèrement le vin, élimine des particules indésirables et favorise la clarification. On le répète plusieurs fois pendant l'élevage.",""],
+ ["c4-35",4,35,"La filtration","Faire passer le vin à travers un filtre qui retient les particules.","On obtient un vin limpide et stable microbiologiquement. La filtration peut être grosse, fine ou stérile ; le choix doit préserver au mieux les qualités du vin. Certains vignerons ne filtrent pas : le vin peut alors être un peu trouble sans être mauvais (mention « non filtré »). Vient ensuite la mise en bouteille.",""],
+ ["c5-09",5,9,"L'humidité","70 à 75 %.","L'humidité garde les bouchons en bon état, et donc le vin. Trop sèche, la cave dessèche les bouchons et favorise l'oxydation. Trop humide, ce n'est pas néfaste, sauf pour les étiquettes. On s'aide d'une humidité naturelle, d'un humidificateur, ou en arrosant de temps en temps.",""],
+ ["c5-12",5,12,"La température","10 à 12 °C, constante.","La température règle la durée de vie du vin. Trop chaud, il évolue plus vite. Trop froid, il évolue lentement et risque des précipitations. Le plus important : éviter les écarts violents.",""],
+ ["c5-13",5,13,"La luminosité","Faible et indirecte, jamais dirigée vers le vin, pas de néon.","La lumière n'est pas utile au vieillissement. Le néon donne le « goût de lumière » et oxyde le vin ; l'halogène chauffe la pièce. Mieux vaut éclairer le plafond que les bouteilles.",""],
+ ["c5-15",5,15,"L'aération","Un air qui circule : soupirail, purificateur ou appel d'air.","L'aération évite les moisissures et la concentration de mauvaises odeurs, qui peuvent contaminer le vin (odeurs, champignons). Sans aération, les étiquettes s'abîment aussi plus vite.",""],
+ ["c5-16",5,16,"Le voisinage","Rien d'autre que du vin, des alcools, des bières, des cidres.","La cave est faite pour recevoir du vin et des boissons. Peinture, acétone, javel, mazout, essence, vinaigre, moutarde, torchons, tondeuse à gazon et poubelles sont dangereux pour le vin.",""],
+ ["c5-26",5,26,"La méthode ancestrale","Fermentation interrompue vers 5–7 %, puis reprise en bouteille, sans liqueur de tirage.","On commence la fermentation alcoolique, on l'arrête par le froid vers 5 à 7 % d'alcool, on filtre, puis on met en bouteille. Au printemps, la fermentation reprend dans la bouteille et le CO₂ piégé crée les bulles. Le vin est non dégorgé ou partiellement dégorgé : bulles fines, profil sucré, peu d'alcool, parfois rustique (ex. Cerdon).",""],
+ ["c5-30",5,30,"La méthode Charmat","Seconde fermentation dans une grande cuve close, sous pression.","Le vin tranquille reçoit une liqueur de tirage (sucre + levures) dans une cuve fermée où se fait la prise de mousse. Il est ensuite filtré (filtration tangentielle), reçoit une liqueur de dosage et est mis en bouteille sous pression (tirage isobarométrique). Il garde ses arômes primaires : un vin fruité et léger.",""],
+ ["c5-33",5,33,"La méthode traditionnelle","Seconde fermentation en bouteille, puis dégorgement.","On ajoute la liqueur de tirage dans chaque bouteille, où se fait la prise de mousse ; le vin vieillit ensuite sur lies, sur lattes. Le remuage (pupitre ou giropalette) amène le dépôt vers le col, le dégorgement l'élimine, puis la liqueur d'expédition (ou de dosage) complète avant le bouchage définitif. Résultat : complexité aromatique, bulles fines, potentiel de garde.","Charmat : en cuve close. Traditionnelle : en bouteille."]
+];
+
+const VOCAB=[
+ {step:"Visuel",name:"Viscosité (les larmes)",scale:false,note:"Les larmes traduisent le gras (glycérol) et surtout la teneur en alcool.",items:[
+  ["Faible","Les larmes coulent vite : peu d'alcool peut-être, sans que ce soit un défaut."],
+  ["Fluide","Des larmes fines coulent normalement, avec abondance. La plupart des vins."],
+  ["Grasse","De grosses larmes coulent très lentement et tapissent le verre : vin riche en alcool."],
+  ["Teintée","Larmes colorées : souvent un raisin teinturier, dit « noir de noir »."]]},
+ {step:"Olfactif",name:"Intensité aromatique",note:"La puissance odorante.",items:[
+  ["Faiblement aromatique","Discret, peu d'expression aromatique, voire imperceptible."],
+  ["Moyennement aromatique","Les parfums se révèlent sans difficulté."],
+  ["Très aromatique","Explosion immédiate des arômes."]]},
+ {step:"Olfactif",name:"Catégorie aromatique dominante",scale:false,items:[
+  ["Arômes primaires","Arômes variétaux du cépage : fruits, fleurs, végétal vert."],
+  ["Arômes secondaires","Arômes des fermentations : alimentaire, balsamique, minéral."],
+  ["Arômes tertiaires","Arômes d'élevage et d'évolution : empyreumatique, boisé, animal, épices."]]},
+ {step:"Olfactif",name:"Bouquet",scale:false,note:"L'ensemble du nez : il indique le stade d'évolution du vin.",items:[
+  ["Fermé","Le nez boude, il ne sent pas grand-chose : trop jeune ou mauvaise passe."],
+  ["Ouvert","Le nez se dévoile pleinement, le vin est à maturité."],
+  ["Évolué","Le nez se concentre sur des arômes de la famille végétale tertiaire."],
+  ["Réduit","Nez bizarre : lavette, poussière, cave. Il peut encore évoluer."],
+  ["Oxydé","Rappelle franchement un vieux porto ou un madère : le vin est fichu."],
+  ["Marqué par l'élevage","Le bois neuf domine et écrase les autres arômes."]]},
+ {step:"Gustatif",name:"Sucrosité",slide:"c2-27",note:"Blancs et rosés. La première étape de l'analyse gustative.",items:[
+  ["Extra sec","Sensation sucrée nulle : la salive ne s'épaissit pas, elle est même fortement abondante."],
+  ["Sec","Aucune sensation sucrée, salive abondante. La majorité des vins."],
+  ["Sec avec une pointe de sucre","Une faible quantité de sucre nacre le palais et épaissit un peu la salive."],
+  ["Demi-sec","La sensation sucrée est directement présente en bouche, sans être trop riche."],
+  ["Moelleux","Beaucoup de sucre, salive franchement épaisse. Type vin de dessert."],
+  ["Liquoreux","Sucre abondant, sensation épaisse comme une liqueur. Vin de dessert ou de fin de repas."]]},
+ {step:"Gustatif",name:"Acidité",slide:"c2-28",note:"La fraîcheur, présente dans tous les vins. Élevée = vin jeune ou climat froid.",items:[
+  ["Souple","Peu d'acidité, salivation normale, pas de sensation de fraîcheur."],
+  ["Frais","Acidité présente et rafraîchissante, salivation abondante."],
+  ["Nerveux","Acidité un peu citrique, léger picotement sur la langue, salive fortement abondante."],
+  ["Vert","Acidité franchement élevée : sensation frissonnante et agressive sur la langue."]]},
+ {step:"Gustatif",name:"Alcool",slide:"c2-29",note:"Alcool élevé = vin d'une région au climat chaud.",items:[
+  ["Léger","Sensation légère en bouche, impression de manque d'alcool."],
+  ["Modéré","Sensation d'alcool normale, pas de chaleur particulière."],
+  ["Généreux","Sensation chaleureuse : l'alcool est présent sans être dérangeant."],
+  ["Corsé","Chaleur évidente : l'alcool s'impose dès le milieu de bouche."],
+  ["Capiteux","Sensation brûlante comme une eau-de-vie, surtout en fin de bouche : l'alcool domine."]]},
+ {step:"Gustatif",name:"Tanins",slide:"c2-30",note:"Vins rouges. Élevés = vin jeune, macération longue et/ou élevage en fûts.",items:[
+  ["Fondu","Aucun assèchement : pas de tanin au départ, ou signe d'évolution."],
+  ["Savoureux","Le tanin ne s'impose pas mais assèche un peu la bouche, sans déranger."],
+  ["Présent","Le tanin assèche la bouche, la salive disparaît en fin de bouche."],
+  ["Astringent","Tanin riche et très asséchant : il domine la bouche et agresse les gencives."]]},
+ {step:"Gustatif",name:"Corps",slide:"c2-31",note:"La carrure du vin, liée à l'alcool, l'acidité et les tanins.",items:[
+  ["Décharné","Vin fluet, sans matière ni squelette : fragile ou trop évolué."],
+  ["Mince","Vin léger : il manque peut-être un peu d'acidité, d'alcool ou de tanins."],
+  ["Rond","Équilibré, sans prédominance d'alcool, de tanins ou d'acidité."],
+  ["Ferme","Impression d'austérité, de droiture, liée aux tanins et à l'acidité."],
+  ["Volumineux","Le vin emplit la bouche et s'impose, souvent grâce à l'alcool."],
+  ["Musclé","De la chair et de la mâche : richesse et puissance en bouche."]]},
+ {step:"Gustatif",name:"Persistance en bouche",slide:"c2-32",note:"La longueur établit la hiérarchie des vins.",items:[
+  ["Courte","Moins de 4 secondes."],
+  ["Moyenne","Environ 4 à 8 secondes."],
+  ["Longue","Environ 8 à 12 secondes."],
+  ["Prolongée","Plus de 12 secondes."]]},
+ {step:"Gustatif",name:"Prédominance de l'équilibre",slide:"c2-32",scale:false,note:"La sensation qui domine en bouche.",items:[
+  ["Sucrosité","C'est la sensation de douceur qui prédomine."],
+  ["Acidité","C'est la sensation de fraîcheur qui prédomine."],
+  ["Alcool","C'est la sensation de chaleur qui prédomine."],
+  ["Tanins","C'est la sensation asséchante qui prédomine."],
+  ["Harmonieux","Équilibre dans la globalité, ou entre deux ou trois de ces sensations."]]},
+ {step:"Évaluation",name:"Stade d'évolution",scale:false,items:[
+  ["Passé","Le vin a perdu toutes ses qualités, il est déséquilibré et prend des notes de madère."],
+  ["Fragile","Signes de faiblesse : corps fluet, manque d'acidité…"],
+  ["Épanoui","À maturité, au milieu de sa forme, bel équilibre en général."],
+  ["S'ouvre","S'ouvre peu à peu, encore jeune : déjà prêt à boire mais peut encore évoluer."],
+  ["Fermé","Paraît encore un peu dur : matière serrée, peu expressif."]]},
+ {step:"Évaluation",name:"Potentiel de garde",items:[
+  ["Trop évolué","À ne plus garder en cave : vin fichu."],
+  ["À boire rapidement","À boire dans les mois qui viennent."],
+  ["À boire dans l'année","À boire dans une période d'un an."],
+  ["À boire dans 2/3 ans","Bon maintenant, avec encore du potentiel pour évoluer."],
+  ["Attendre 4/5 ans","Encore un peu jeune, avec une belle matière pour évoluer."]]},
+ {step:"Évaluation",name:"Typicité",items:[
+  ["Atypique","Ne ressemble en rien aux typicités de l'appellation, du cépage, de la région."],
+  ["Médiocre","Manque de typicité par rapport à l'appellation, au cépage, à la région."],
+  ["Correct","Ressemble aux typicités de l'appellation, du cépage, de la région."],
+  ["Typé","Répond parfaitement aux typicités de l'appellation, du cépage, de la région."],
+  ["Racé","Un modèle de référence pour l'appellation, le cépage, la région."]]},
+ {step:"Évaluation",name:"Style de vin",scale:false,items:[
+  ["Plaisant","Agréable, facile à boire, sans prétention."],
+  ["Gourmand","Fruité, charmeur, avec des tanins savoureux ou une acidité fraîche."],
+  ["Élégant","Séduit par un équilibre harmonieux dans son intégralité."],
+  ["Puissant ou riche","De la carrure par ses tanins, l'alcool, le sucre ou même l'acidité."],
+  ["Grand vin raffiné","Grande classe, précision dans son ensemble : il a de la conversation."],
+  ["Marginal","Iconoclaste, surprenant par son style différent des autres."],
+  ["Déviant","Contaminé par les arômes de brettanomyces (odeurs d'étable, de putréfaction)."]]},
+ {step:"Vinification",name:"Opérations de vinification",items:[
+  ["Éraflage","Séparer les baies de la rafle avant la vinification, pour éviter tanins verts et goûts herbacés."],
+  ["Foulage","Éclater légèrement la peau des baies pour libérer le jus, sans écraser les pépins."],
+  ["Pressurage","En blanc : extraire le jus juste après la récolte, avant toute macération."],
+  ["Sulfitage","Ajouter du SO₂ au moût pour le protéger de l'oxydation et freiner levures et bactéries indésirables."],
+  ["Débourbage","Clarifier le moût avant la fermentation en éliminant les particules solides en suspension."],
+  ["Levurage","Ajouter des levures sélectionnées pour un départ rapide et régulier de la fermentation."],
+  ["Macération","Laisser peaux, pulpes et pépins au contact du moût en fermentation pour extraire couleur, tanins et arômes."],
+  ["Pigeage","Enfoncer le chapeau de marc dans le moût."],
+  ["Remontage","Pomper le jus du bas de la cuve pour l'arroser sur le chapeau de marc."],
+  ["Chaptalisation","Ajouter du sucre au moût pour augmenter le degré alcoolique, pas pour sucrer le vin."],
+  ["Mutage","Ajouter de l'alcool à 95° en cours de fermentation pour stopper l'action des levures."],
+  ["Passerillage","Concentrer le sucre des raisins par dessiccation, sur pied ou après la récolte."],
+  ["Pourriture noble","Concentration des sucres et des arômes par l'action du champignon Botrytis cinerea."],
+  ["Fermentation alcoolique","Transformation des sucres en alcool et en gaz carbonique par les levures."],
+  ["Fermentation malolactique","Transformation de l'acide malique en acide lactique par des bactéries."],
+  ["Élevage","Période de maturation entre la fermentation et la mise en bouteille."],
+  ["Ouillage","Compléter régulièrement le niveau des fûts pour compenser la « part des anges »."],
+  ["Collage","Ajouter une substance (protéine, argile…) qui se lie aux particules en suspension pour clarifier le vin."],
+  ["Soutirage","Transférer le vin d'un contenant à un autre en le séparant de ses lies."],
+  ["Filtration","Faire passer le vin à travers un support qui retient les particules en suspension."],
+  ["Dégorgement","Méthode traditionnelle : éliminer le dépôt de levures après le vieillissement sur lies."],
+  ["Liqueur de tirage","Sucre et levures ajoutés au vin tranquille pour provoquer la prise de mousse."]]},
+ {step:"Organisation",name:"Types de dégustation",items:[
+  ["Analyse globale","Décortiquer couleur, arômes, tanins, acidité, corps… pour comprendre ce que l'on déguste."],
+  ["Comparaison","Comparer deux vins très différents (repères) ou très proches (nuances)."],
+  ["Classement","Établir une hiérarchie entre vins comparables, par exemple uniquement des Saint-Émilion."],
+  ["Verticale","Un même vin, du même domaine, sur plusieurs millésimes."],
+  ["Horizontale","Différents vins d'un même millésime."],
+  ["À l'aveugle","Analyser un vin sans savoir ce que c'est, pour retrouver cépage, région, millésime."]]}
+];
+
+
+const EXTRA_RUBS=[
+  {part:"Œil",name:"Limpidité",words:["Limpide","Trouble","Voilé","Laiteux"]},
+  {part:"Œil",name:"Robe d'un vin blanc",words:["Jaune vert","Jaune pâle","Vert d'eau","Paille","Or / doré","Ambré"]},
+  {part:"Œil",name:"Robe d'un vin rouge",words:["Reflet violacé","Grenat","Rubis","Vermillon","Orange","Brique"]},
+  {part:"Œil",name:"Robe d'un vin rosé",words:["Gris","Rose","Framboise","Cerise","Saumoné","Orangé"]}
+];
+const AROMES=[
+  {part:"Arômes",name:"Arômes primaires",words:["Citron","Pamplemousse","Pomme","Abricot","Pêche","Poire","Coing","Fraise","Cerise","Cassis","Mûre","Banane","Litchi","Amande","Bourgeon de cassis","Buis","Fenouil","Menthe","Poivron vert","Rose","Aubépine","Tilleul","Fleur d'oranger","Violette","Acacia","Miel"]},
+  {part:"Arômes",name:"Arômes secondaires",words:["Pain frais","Biscuit","Beurre","Levure","Bière","Caramel","Bonbon","Yaourt","Chocolat","Résine","Térébenthine","Vernis","Acétone","Colle à bois","Iode","Craie","Argile","Pierre à fusil","Galet mouillé","Terre humide"]},
+  {part:"Arômes",name:"Arômes tertiaires",words:["Fumée","Goudron","Pétrole","Toasté","Grillé","Poivre","Muscade","Cannelle","Clou de girofle","Vanille","Réglisse","Cuir","Fourrure","Gibier","Jus de viande","Bois neuf","Cèdre","Chêne","Foin","Feuilles mortes","Tabac","Humus","Truffe","Sous-bois"]}
+];
+
+/* [affirmation, vrai ?, explication] */
+const VF=[
+ ["Il faut 17 g de sucre par litre pour obtenir 1° d'alcool.",true,"17 g/L = 1°, soit 1,7 kg par hectolitre."],
+ ["La chaptalisation sert à rendre le vin plus sucré.",false,"Elle augmente le degré alcoolique : les levures transforment le sucre ajouté en alcool."],
+ ["La chaptalisation est autorisée partout, sans condition.",false,"Elle est réglementée et autorisée seulement dans certaines régions et conditions."],
+ ["La fermentation malolactique est réalisée par des levures.",false,"Par des bactéries lactiques. Les levures font la fermentation alcoolique."],
+ ["La fermentation malolactique diminue l'acidité du vin.",true,"Elle transforme l'acide malique en acide lactique : le vin est plus rond."],
+ ["La fermentation malolactique est obligatoire pour les vins blancs.",false,"Elle est au choix pour les blancs, indispensable pour les rouges."],
+ ["La fermentation malolactique a toujours lieu pour les vins rouges.",true,"« Toujours pour le rouge »."],
+ ["La fermentation alcoolique s'arrête vers 40 °C.",true,"Idéale entre 20 et 28 °C, ralentie à 35 °C, arrêtée à 40 °C."],
+ ["À 0 °C, la fermentation alcoolique est simplement ralentie.",false,"À 0 °C, il n'y a pas de fermentation. Elle est ralentie vers 10–11 °C."],
+ ["En vinification en blanc, on presse les raisins après la fermentation.",false,"En blanc, on presse juste après la récolte, avant la fermentation."],
+ ["Le débourbage se fait avant la fermentation.",true,"Il clarifie le moût en retirant les bourbes."],
+ ["Le soutirage consiste à séparer le vin de ses lies.",true,"On transfère le vin dans un autre contenant."],
+ ["L'ouillage sert à clarifier le vin.",false,"Il compense l'évaporation (part des anges) pour éviter l'oxydation."],
+ ["La bentonite est utilisée pour le collage.",true,"Avec le blanc d'œuf, la colle de poisson, la gélatine, les gels de silice."],
+ ["Le vin de presse est plus riche en tanins que le vin de goutte.",true,"Il est plus riche en tanins et en couleur."],
+ ["Le remontage consiste à enfoncer le chapeau de marc dans le moût.",false,"C'est le pigeage. Le remontage arrose le chapeau avec le jus pompé en bas de cuve."],
+ ["Un bon foulage écrase les pépins pour extraire plus de tanins.",false,"Le foulage préserve les pépins ; un écrasement excessif donne de l'amertume."],
+ ["L'éraflage évite les tanins verts et les goûts herbacés.",true,"La rafle apporte des tanins verts."],
+ ["Un rosé de saignée est plus pâle qu'un vin gris.",false,"Le vin gris (pressurage direct) est le plus pâle ; la saignée donne un rosé plus foncé."],
+ ["Un vin gris est obtenu par pressurage direct de raisins rouges.",true,"D'où un rosé pâle et nerveux."],
+ ["Le Botrytis cinerea est responsable de la pourriture noble.",true,"Il concentre sucres et arômes : liquoreux complexes."],
+ ["Le passerillage peut se faire sur souche ou hors souche.",true,"Sur pied (vendanges tardives) ou sur claies, suspendus."],
+ ["Pour un VDN, on ajoute l'alcool avant la fermentation.",false,"En cours de fermentation. Avant la fermentation, c'est un vin de liqueur (mistelle)."],
+ ["Une mistelle est un vin de liqueur.",true,"Alcool noble ajouté avant fermentation."],
+ ["Un VDN doit avoir au moins 15° d'alcool acquis.",true,"Et 21,5 % d'alcool total."],
+ ["La température idéale d'une cave est de 10 à 12 °C.",true,"Constante, sans écart violent."],
+ ["Une cave trop humide abîme surtout le vin.",false,"Trop d'humidité n'est pas néfaste, sauf pour l'étiquette."],
+ ["Le néon est conseillé pour éclairer une cave.",false,"Il donne le « goût de lumière » et oxyde le vin."],
+ ["On peut ranger la moutarde et le vinaigre dans la cave à vin.",false,"Seulement vins, alcools, bières, cidres."],
+ ["Il est conseillé de ne pas acheter plus de 24 bouteilles du même vin.",true,"Qualité plutôt que quantité."],
+ ["Le garage est un bon endroit pour stocker du vin.",false,"À éviter, comme le salon, la cheminée, le dessous de l'escalier."],
+ ["Dans la méthode traditionnelle, la prise de mousse se fait en bouteille.",true,"Liqueur de tirage dans la bouteille, puis vieillissement sur lattes."],
+ ["Dans la méthode Charmat, la prise de mousse se fait en bouteille.",false,"En cuve close."],
+ ["La méthode ancestrale donne un vin sucré et faible en alcool.",true,"La fermentation est interrompue vers 5–7 %."],
+ ["Le dégorgement fait partie de la méthode Charmat.",false,"Il fait partie de la méthode traditionnelle ; la Charmat filtre le vin."],
+ ["La méthode ancestrale utilise une liqueur de tirage.",false,"La fermentation reprend en bouteille sans ajout de liqueur de tirage."],
+ ["Une dégustation verticale compare différents vins d'un même millésime.",false,"Ça, c'est l'horizontale. La verticale : un même vin, plusieurs millésimes."],
+ ["On sert le rouge avant le blanc.",false,"Blanc, rosé, rouge, moelleux, liquoreux."],
+ ["Pour déguster, on verse 5 à 6 cl de vin.",true,"5 à 6 cl maximum."],
+ ["Le verre INAO se resserre vers le haut pour concentrer les arômes.",true,"C'est le verre des dégustations techniques."],
+ ["Le meilleur moment pour déguster est juste après le repas.",false,"Pendant la digestion, l'acuité diminue. L'idéal est le matin."],
+ ["En dégustation, les rouges sont présentés vers 18 °C.",true,"Et 13–14 °C pour les blancs et rosés."],
+ ["Une acidité élevée indique souvent un vin de climat chaud.",false,"Plutôt un vin jeune ou d'un climat froid."],
+ ["Un alcool élevé indique souvent un vin de climat chaud.",true,"Plus de soleil, plus de sucre, plus d'alcool."],
+ ["L'alcool amplifie la sensation sucrée.",true,"Un vin plus alcoolisé paraît plus sucré."],
+ ["L'amer se perçoit rapidement et disparaît vite.",false,"Il est lent à se développer et dure longtemps."],
+ ["Les acides font saliver davantage que les autres saveurs.",true,"Salive fluide et abondante."],
+ ["Le sucré se perçoit sur le bout de la langue, immédiatement.",true,"Maximum après 2 s, disparaît après 10 s."],
+ ["Le premier nez se fait après avoir fait tourner le vin.",false,"Le premier nez se fait sans remuer ; le second après agitation."],
+ ["Les arômes secondaires viennent des fermentations.",true,"Familles alimentaire, balsamique, minérale."],
+ ["Le cuir et le gibier sont des arômes primaires.",false,"Ce sont des arômes tertiaires (famille animale)."],
+ ["Un nez « réduit » peut encore évoluer.",true,"Lavette, poussière, cave : il peut s'améliorer."],
+ ["Un vin rouge perd de sa couleur en vieillissant.",true,"Il passe du violacé au tuilé et perd en intensité."],
+ ["Un vin blanc s'éclaircit en vieillissant.",false,"Il se fonce : doré, puis ambré."],
+ ["Un vin trouble est toujours un vin défectueux.",false,"Il peut être non filtré."],
+ ["Des larmes grasses indiquent un vin riche en alcool.",true,"Elles coulent lentement et tapissent le verre."],
+ ["Un nez oxydé rappelle un vieux porto ou un madère.",true,"Le vin est fichu."],
+ ["Le millésime est une mention obligatoire sur l'étiquette.",false,"C'est une mention facultative."],
+ ["Le volume d'alcool est une mention obligatoire.",true,"Avec l'appellation, la contenance, l'embouteilleur, le lot et les mentions sanitaires."],
+ ["Depuis 2023, un QR code peut donner la liste des ingrédients.",true,"Depuis le 8 décembre 2023, avec la fiche nutritionnelle."],
+ ["Le phylloxéra est apparu dans le Gard en 1864.",true,"La solution a été le greffage des pieds de vigne."],
+ ["L'INAO a été créé en 1958.",false,"En 1935. La CEE date de 1958."],
+ ["Le goût de bouchon est dû au TCA (trichloroanisole).",true,"90 milliardièmes de gramme par litre suffisent."],
+ ["La véraison est la formation des grains.",false,"C'est le changement de couleur. La formation des grains est la nouaison."],
+ ["L'orientation du vignoble fait partie du facteur humain.",false,"Elle fait partie du milieu cultural (la nature)."],
+ ["Le choix du porte-greffe fait partie du facteur humain.",true,"Comme les cépages, les rendements, la date des vendanges."],
+ ["Une persistance de plus de 12 secondes est dite prolongée.",true,"Longue : 8 à 12 s."],
+ ["Un vin « ferme » a un nez qui ne sent pas grand-chose.",false,"Ça, c'est un nez « fermé ». « Ferme » décrit un corps austère, droit."],
+ ["L'évaluation du vin se complète quand on connaît son identité.",true,"Stade, garde, typicité, style."],
+ ["Un vin « déviant » est contaminé par des brettanomyces.",true,"Odeurs d'étable, de putréfaction."]
+];
+
+/* [question, bonne réponse, [3 leurres], explication] */
+const CHIFFRES=[
+ ["Sucre nécessaire pour 1° d'alcool","17 g par litre",["1,7 g par litre","170 g par litre","7 g par litre"],"Soit 1,7 kg par hectolitre."],
+ ["Sucre ajouté pour gagner 1° (chaptalisation)","1,7 kg par hectolitre",["17 kg par hectolitre","0,17 kg par hectolitre","7 kg par hectolitre"],"C'est le même rapport que 17 g par litre."],
+ ["Dose habituelle de chaptalisation","2 à 3 kg par hectolitre",["20 à 30 kg par hectolitre","0,2 à 0,3 kg par hectolitre","10 kg par hectolitre"],""],
+ ["Température idéale de fermentation alcoolique","20 à 28 °C",["10 à 12 °C","30 à 38 °C","0 à 5 °C"],""],
+ ["Arrêt de la fermentation alcoolique","40 °C",["28 °C","35 °C","50 °C"],"À 35 °C elle est seulement ralentie."],
+ ["Fermentation ralentie par le froid","10–11 °C",["20 °C","0 °C","28 °C"],"À 0 °C, pas de fermentation du tout."],
+ ["Degré de l'alcool de mutage des VDN","95°",["40°","70°","15°"],""],
+ ["Part d'alcool ajoutée pour muter un VDN","5 à 10 % du moût",["1 à 2 % du moût","20 à 30 % du moût","50 % du moût"],""],
+ ["Alcool acquis minimum d'un VDN","15°",["12°","21,5°","6,5°"],"Et 21,5 % d'alcool total."],
+ ["Alcool total minimum d'un VDN","21,5 %",["15 %","6,5 %","30 %"],"Dont 6,5 % en puissance."],
+ ["Macération d'un rosé de saignée","environ 48 h",["environ 2 h","2 semaines","6 mois"],""],
+ ["Arrêt de la fermentation, méthode ancestrale","5 à 7 % d'alcool",["10 à 12 % d'alcool","1 à 2 % d'alcool","15 % d'alcool"],""],
+ ["Température d'une cave","10 à 12 °C",["16 à 18 °C","4 à 6 °C","20 à 22 °C"],""],
+ ["Humidité d'une cave","70 à 75 %",["30 à 40 %","50 %","95 %"],""],
+ ["Bouteilles maximum d'un même vin","24",["6","60","120"],""],
+ ["Dose de vin pour déguster","5 à 6 cl",["10 à 12 cl","1 cl","25 cl"],""],
+ ["Nombre maximum de vins en dégustation pro","15 à 18",["5 à 6","30 à 40","50"],""],
+ ["Température de présentation des rouges","18 °C",["12 °C","22 °C","8 °C"],"Un peu au-dessus de l'idéal de consommation."],
+ ["Température de présentation des blancs et rosés","13 à 14 °C",["6 à 8 °C","18 °C","20 °C"],""],
+ ["Persistance courte","moins de 4 s",["moins de 10 s","moins de 1 s","8 à 12 s"],""],
+ ["Persistance moyenne","4 à 8 s",["8 à 12 s","1 à 2 s","plus de 12 s"],""],
+ ["Persistance longue","8 à 12 s",["4 à 8 s","plus de 12 s","1 à 2 s"],""],
+ ["Durée de l'attaque en bouche","2 à 3 s",["10 s","30 s","1 min"],"Le milieu de bouche dure une dizaine de secondes."],
+ ["Floraison avant la vendange","environ 100 jours",["environ 30 jours","environ 200 jours","1 an"],""],
+ ["Eau dans 1 litre de jus de pulpe","700 à 800 g",["100 à 300 g","500 g","950 g"],""],
+ ["Sucre dans 1 litre de jus de pulpe","100 à 300 g",["5 à 15 g","700 à 800 g","20 à 30 g"],""],
+ ["Acides dans 1 litre de jus de pulpe","5 à 15 g",["100 à 300 g","0,5 à 1 g","50 g"],""],
+ ["Arômes identifiés dans les vins","environ 600",["environ 60","environ 6 000","environ 30"],"Un vin en contient environ 300, dont 7 décelables."],
+ ["Absences sans motif valable tolérées","20 %",["10 %","50 %","5 %"],""],
+ ["Délai pour un justificatif d'absence","5 jours ouvrables",["1 jour","15 jours","1 mois"],""],
+ ["Apparition du phylloxéra dans le Gard","1864",["1709","1907","1935"],""],
+ ["Création de l'INAO","1935",["1958","1907","1984"],""],
+ ["Première mention « premier cru »","100 av. J.-C.",["92","1935","1709"],""],
+ ["Fête des Vinalies chez les Romains","23 avril",["1er mai","15 août","11 novembre"],""]
+];
+
+/* séries de classement : {name, buckets, items:[texte, case, explication]} */
+const CLASSER=[
+ {name:"Blanc, rouge ou les deux ?",buckets:["Blanc","Rouge","Les deux"],items:[
+  ["Pressurage avant la fermentation",0,"En blanc, on presse juste après la récolte."],
+  ["Pressurage après la fermentation",1,"En rouge, on presse le marc : vin de presse."],
+  ["Débourbage du moût",0,"Clarification du jus avant fermentation, en blanc."],
+  ["Macération des peaux pendant la fermentation",1,"Elle donne couleur et tanins."],
+  ["Remontage ou pigeage",1,"On travaille le chapeau de marc."],
+  ["Formation d'un chapeau de marc",1,"Uniquement en rouge."],
+  ["Fermentation alcoolique",2,"Tous les vins."],
+  ["Malolactique toujours réalisée",1,"Indispensable en rouge."],
+  ["Malolactique au choix",0,"Facultative en blanc."],
+  ["Vin de goutte et vin de presse",1,""],
+  ["Élevage",2,""],
+  ["Vendanges",2,""],
+  ["Sulfitage juste après le pressurage",0,"En rouge, le sulfitage est facultatif, après le foulage."],
+  ["Décuvage",1,"On écoule le vin de goutte."],
+  ["Assemblage goutte + presse",1,""]]},
+ {name:"Quelle méthode d'effervescent ?",buckets:["Ancestrale","Charmat","Traditionnelle"],items:[
+  ["Fermentation arrêtée par le froid",0,""],
+  ["Prise de mousse au printemps, en bouteille",0,""],
+  ["Pas de liqueur de tirage",0,""],
+  ["Vin sucré et faible en alcool",0,""],
+  ["Exemple : Cerdon",0,""],
+  ["Prise de mousse en cuve close",1,""],
+  ["Filtration tangentielle",1,""],
+  ["Tirage isobarométrique",1,""],
+  ["Arômes primaires préservés, vin fruité et léger",1,""],
+  ["Liqueur de tirage ajoutée dans la bouteille",2,""],
+  ["Remuage sur pupitre ou giropalette",2,""],
+  ["Dégorgement puis liqueur d'expédition",2,""],
+  ["Vieillissement sur lattes",2,""],
+  ["Grande complexité et potentiel de garde",2,""]]},
+ {name:"Naturellement doux, VDN ou VDL ?",buckets:["Naturellement doux","VDN","VDL"],items:[
+  ["Passerillage",0,"Concentration du sucre par dessiccation."],
+  ["Pourriture noble",0,"Botrytis cinerea."],
+  ["Vendanges tardives",0,"Passerillage sur souche."],
+  ["Raisins séchés sur claies",0,"Passerillage hors souche."],
+  ["Alcool vinique à 95°",1,""],
+  ["Mutage en cours de fermentation",1,""],
+  ["Au moins 15° acquis et 21,5 % total",1,""],
+  ["Mutage sur grains ou sur jus",1,""],
+  ["Alcool noble",2,""],
+  ["Mutage avant la fermentation",2,""],
+  ["Mistelle",2,""]]},
+ {name:"Milieu cultural ou facteur humain ?",buckets:["Milieu cultural","Facteur humain"],items:[
+  ["Nature du sol",0,""],["Sous-sol",0,""],["Climat",0,""],["Lumière",0,""],["Vent",0,""],["Humidité",0,""],["Orientation du vignoble",0,""],
+  ["Choix des cépages",1,""],["Mode de conduite",1,""],["Rendements",1,""],["Choix du porte-greffe",1,""],["Reconstitution du vignoble",1,""],["Date des vendanges",1,""],["Conduite des vinifications",1,""],["Élevage du vin",1,""]]},
+ {name:"Mention obligatoire ou facultative ?",buckets:["Obligatoire","Facultative"],items:[
+  ["Volume d'alcool",0,""],["Volume de contenance",0,""],["Embouteilleur",0,""],["Numéro de lot",0,""],["Mentions sanitaires",0,""],["Nom et hiérarchie de l'appellation",0,""],["Valeur énergétique (depuis 2023)",0,""],
+  ["Millésime",1,""],["Nom du cépage",1,""],["Marque ou nom du domaine",1,""],["Mise en bouteille à la propriété",1,""],["Culture bio",1,""],["Médailles de concours",1,""],["Vieilles vignes",1,""],["Élevé en fûts",1,""],["Sur lie",1,""],["Cru classé",1,""]]},
+ {name:"L'œil, le nez ou la bouche ?",buckets:["Œil","Nez","Bouche"],items:[
+  ["Viscosité",0,""],["Limpidité",0,""],["Intensité de la robe",0,""],["Larmes",0,""],["Perlant",0,""],["Reflets violacés",0,""],
+  ["Bouquet",1,""],["Premier nez",1,""],["Intensité aromatique",1,""],["Arômes tertiaires",1,""],["Nez réduit",1,""],["Marqué par l'élevage",1,""],
+  ["Sucrosité",2,""],["Tanins",2,""],["Corps",2,""],["Persistance",2,""],["Attaque",2,""],["Astringent",2,""],["Capiteux",2,""],["Nerveux",2,""]]},
+ {name:"Quelle partie du raisin ?",buckets:["Pellicule","Pulpe","Pépin","Rafle"],items:[
+  ["Matières colorantes (anthocyanes)",0,""],["Arômes du cépage",0,""],["Tanins les plus fins",0,""],
+  ["700 à 800 g d'eau par litre",1,""],["Le sucre du jus",1,""],["Acides malique, tartrique, citrique",1,""],
+  ["Substances huileuses",2,""],
+  ["Partie ligneuse de la grappe",3,""],["Tanins verts, goûts herbacés",3,""]]},
+ {name:"Quel soin ?",buckets:["Ouillage","Collage","Soutirage","Filtration"],items:[
+  ["Compenser la part des anges",0,""],["Éviter l'oxydation dans le fût",0,""],
+  ["Blanc d'œuf, bentonite, gélatine",1,""],["Une substance se lie aux particules",1,""],
+  ["Séparer le vin de ses lies",2,""],["Changer le vin de contenant",2,""],
+  ["Grosse, fine ou stérile",3,""],["Support filtrant",3,""]]},
+ {name:"Quelle règle de la cave ?",buckets:["Température","Humidité","Luminosité","Voisinage"],items:[
+  ["10 à 12 °C",0,""],["Éviter les écarts violents",0,""],["Risque de précipitations si trop froid",0,""],
+  ["70 à 75 %",1,""],["Bouchons desséchés",1,""],["Seule l'étiquette souffre de l'excès",1,""],
+  ["Pas de néon",2,""],["Goût de lumière",2,""],["Éclairer le plafond",2,""],
+  ["Pas de vinaigre ni de moutarde",3,""],["Pas de tondeuse ni de mazout",3,""]]},
+ {name:"Arôme primaire, secondaire ou tertiaire ?",buckets:["Primaire","Secondaire","Tertiaire"],items:null}
+];
+
+const scales=VOCAB.filter(g=>g.scale!==false&&["Gustatif","Olfactif","Évaluation"].includes(g.step)).map(g=>({name:g.name,scale:true,items:g.items.map(x=>[x[0]])}));
+  const SEQS=[
+    {name:"Phases de la maturation",items:[["Floraison","mai–juin"],["Nouaison","juin–juillet"],["Véraison","juillet–août"],["Maturité","août–septembre"],["Surmaturité","octobre–novembre"]]},
+    {name:"Vinification en blanc",items:[["Vendanges"],["Éraflage ou égrappage"],["Pressurage"],["Sulfitage"],["Débourbage"],["Levurage"],["Fermentation alcoolique"],["Fermentation malolactique (facultative)"],["Élevage"]]},
+    {name:"Vinification en rouge",items:[["Vendanges"],["Éraflage (facultatif)"],["Foulage"],["Sulfitage (facultatif)"],["Levurage (facultatif)"],["Macération + fermentation alcoolique"],["Remontage ou pigeage"],["Décuvage du vin de goutte"],["Pressurage : vin de presse"],["Assemblage + fermentation malolactique"],["Élevage"]]},
+    {name:"Méthode traditionnelle",items:[["Fermentation complète en cuve : vin tranquille"],["Liqueur de tirage ajoutée dans la bouteille"],["Prise de mousse en bouteille, vieillissement sur lattes"],["Remuage sur pupitre ou giropalette"],["Dégorgement"],["Liqueur de dosage (d'expédition)"]]},
+    {name:"Méthode Charmat (cuve close)",items:[["Fermentation complète en cuve : vin tranquille"],["Liqueur de tirage (sucre + levures) dans la cuve"],["Prise de mousse en cuve close"],["Filtration tangentielle"],["Liqueur de dosage et tirage isobarométrique"]]},
+    {name:"Méthode ancestrale",items:[["Début de fermentation alcoolique (5 à 7 %)"],["Arrêt de la fermentation par le froid, filtration"],["Tirage en bouteille"],["Prise de mousse au printemps, en bouteille"]]},
+    {name:"Histoire du vignoble",items:[["Premiers vins en Asie Mineure","7000 av. J.-C."],["Domitien fait arracher les vignes","92"],["Probus encourage la plantation de la vigne","281"],["Le terrible hiver","1709"],["Apparition du phylloxéra dans le Gard","1864"],["Révolution dans le Midi","1907"],["Création de l'INAO","1935"],["Création de la CEE","1958"],["Compromis de Dublin","1984"]]},
+    {name:"Ordre de service en dégustation",items:[["Blanc"],["Rosé"],["Rouge"],["Moelleux"],["Liquoreux"]]},
+    {name:"Les étapes de l'analyse",items:[["Analyse visuelle"],["Analyse olfactive"],["Analyse gustative"],["Évaluation du vin"]]},
+    {name:"Les 3 temps en bouche",items:[["L'attaque"],["Le milieu de bouche"],["La fin de bouche (finale)"]]}
+  ].concat(scales);
+
+const QCM=[
+    ["Combien de sucre faut-il pour former 1° d'alcool ?",["17 g par litre","1,7 g par litre","170 g par litre","7 g par litre"],"17 g de sucre par litre donnent 1° d'alcool, soit 1,7 kg par hectolitre (le chiffre de la chaptalisation)."],
+    ["Qu'est-ce que la chaptalisation ?",["Ajouter du sucre au moût pour augmenter le degré alcoolique","Ajouter du sucre au vin pour le rendre plus doux","Ajouter de l'alcool pour stopper la fermentation","Ajouter du SO₂ pour éviter l'oxydation"],"Elle ne vise pas à sucrer le vin mais à compenser un manque naturel de sucre. Elle est réglementée."],
+    ["Combien de saccharose ajoute-t-on en général lors d'une chaptalisation ?",["2 à 3 kg par hectolitre","20 à 30 kg par hectolitre","200 à 300 g par hectolitre","1 kg par litre"],"2 à 3 kg par hectolitre ; 1,7 kg par hectolitre = 1° d'alcool."],
+    ["Une vendange trop précoce donne des vins…",["acides et verts","mous et alcooleux","liquoreux","oxydés"],"Trop tardive, elle donne des vins mous et alcooleux."],
+    ["Qu'est-ce que le vigneron recherche principalement lors de la vendange ?",["La maturation parfaite du raisin","Un important volume de raisin","Une faible quantité de sucre","Un raisin riche en acidité"],"La maturité fixe l'équilibre entre sucres, acides et arômes (exemple de QCM donné au cours 1)."],
+    ["La véraison, c'est…",["le changement de couleur des baies","la formation des grains","la floraison","la récolte"],"Juillet–août. La nouaison est la formation des grains (juin–juillet)."],
+    ["La floraison a lieu environ…",["100 jours avant la vendange","30 jours avant la vendange","200 jours avant la vendange","juste après la vendange"],"En mai–juin, environ 100 jours avant la vendange."],
+    ["La fermentation alcoolique transforme…",["le sucre en alcool, par les levures","l'acide malique en acide lactique, par les bactéries","l'alcool en vinaigre","l'acide tartrique en sucre"],"Levures (Saccharomyces cerevisiae) + sucre = alcool + CO₂, glycérol…"],
+    ["La fermentation malolactique transforme…",["l'acide malique en acide lactique","le sucre en alcool","l'acide lactique en acide malique","l'alcool en acide acétique"],"Par des bactéries. Résultat : l'acidité diminue, le vin est plus rond et plus stable."],
+    ["La fermentation malolactique est…",["indispensable en rouge, au choix en blanc","obligatoire en blanc, interdite en rouge","obligatoire pour tous les vins","réservée aux effervescents"],"« Indispensable pour les rouges !! Au choix pour les blancs »."],
+    ["À quelle température la fermentation alcoolique s'arrête-t-elle ?",["40 °C","28 °C","20 °C","10 °C"],"Idéale entre 20 et 28 °C, ralentie à 10–11 °C et à 35 °C, arrêtée à 40 °C, nulle à 0 °C."],
+    ["En vinification en blanc, le pressurage a lieu…",["juste après la récolte, avant la fermentation","après la fermentation alcoolique","après la malolactique","pendant l'élevage"],"En rouge, c'est l'inverse : on presse après la fermentation et la macération."],
+    ["Le débourbage consiste à…",["clarifier le moût avant la fermentation","retirer la rafle","séparer le vin de ses lies pendant l'élevage","compléter le niveau des fûts"],"Ne pas confondre avec le soutirage, qui sépare le vin de ses lies pendant l'élevage."],
+    ["Quelle opération sépare le vin de ses lies en le changeant de contenant ?",["Le soutirage","L'ouillage","Le collage","Le débourbage"],"Le soutirage aère légèrement le vin et aide à le clarifier. Il est répété pendant l'élevage."],
+    ["L'ouillage sert surtout à…",["éviter l'oxydation en compensant l'évaporation","clarifier le vin","ajouter des levures","augmenter le degré"],"On complète les fûts pour compenser la « part des anges »."],
+    ["Lequel n'est PAS un produit de collage ?",["Le saccharose","Le blanc d'œuf","La bentonite","La colle de poisson"],"Collage : blanc d'œuf, bentonite, colle de poisson, gélatine, gels de silice. Le saccharose sert à la chaptalisation."],
+    ["Par rapport au vin de goutte, le vin de presse est…",["plus riche en tanins et en couleur","plus pâle et plus léger","plus sucré","identique"],"Le vin de goutte s'écoule sans pression ; le vin de presse vient du pressurage du marc."],
+    ["Le pigeage consiste à…",["enfoncer le chapeau de marc dans le moût","pomper le jus pour arroser le chapeau","presser le marc","retirer la rafle"],"Arroser le chapeau avec le jus pompé en bas de cuve, c'est le remontage."],
+    ["Un rosé de saignée est…",["plus foncé et plus structuré qu'un vin gris","plus pâle et plus nerveux qu'un vin gris","un mélange de blanc et de rouge","obtenu par pressurage direct"],"Saignée : environ 48 h de macération. Vin gris : pressurage direct, rosé pâle et nerveux."],
+    ["La pourriture noble est due à…",["Botrytis cinerea","Saccharomyces cerevisiae","le phylloxéra","Brettanomyces"],"Le champignon perce la peau, l'eau s'évapore, sucres et arômes se concentrent."],
+    ["Le passerillage, c'est…",["concentrer le sucre en laissant sécher les raisins","ajouter de l'alcool au moût","l'action d'un champignon sur le raisin","ajouter du sucre au moût"],"Sur souche (vendanges tardives) ou hors souche (sur claies, suspendus)."],
+    ["Pour un vin doux naturel (VDN), le mutage se fait…",["avec de l'alcool vinique à 95°, en cours de fermentation","avec de l'alcool noble, avant fermentation","avec du sucre, avant fermentation","par le froid, en fin de fermentation"],"L'alcool stoppe les levures et garde une partie du sucre. 5 à 10 % du volume du moût."],
+    ["Une mistelle, c'est…",["un vin de liqueur, muté avant fermentation","un vin doux naturel","un vin effervescent","un vin passerillé"],"Vins de liqueur : adjonction d'alcool noble avant fermentation."],
+    ["Un VDN doit avoir au minimum…",["15° d'alcool acquis et 21,5 % d'alcool total","12° acquis et 15 % total","21,5° acquis","6,5° acquis"],"15° acquis, 21,5 % au total, dont 6,5 % en puissance (sous forme de sucre)."],
+    ["Quelle est la bonne température d'une cave ?",["10 à 12 °C, constante","16 à 18 °C","4 à 6 °C","peu importe si elle varie"],"Trop chaud : le vin évolue plus vite. Trop froid : évolution lente, précipitations. Éviter les écarts violents."],
+    ["Quelle humidité faut-il dans une cave ?",["70 à 75 %","30 à 40 %","50 %","95 à 100 %"],"Trop peu : bouchons desséchés, oxydation. Trop : seule l'étiquette souffre."],
+    ["Pourquoi éviter le néon dans une cave ?",["Il donne le « goût de lumière » et oxyde le vin","Il chauffe trop la pièce","Il assèche les bouchons","Il consomme trop"],"C'est l'halogène qui chauffe la pièce. Mieux vaut éclairer le plafond que les bouteilles."],
+    ["Combien de bouteilles d'un même vin au maximum conseille-t-on ?",["24","6","60","120"],"Préférer la qualité à la quantité et acheter des millésimes jeunes."],
+    ["Lequel ne doit PAS être stocké dans une cave à vin ?",["Du vinaigre","De la bière","Du cidre","Des alcools"],"Vinaigre, moutarde, peinture, javel, mazout, torchons, tondeuse… sont dangereux pour le vin."],
+    ["Dans la méthode traditionnelle, la prise de mousse a lieu…",["en bouteille","en cuve close","il n'y en a pas","en fût"],"Liqueur de tirage dans la bouteille, puis vieillissement sur lattes, remuage, dégorgement."],
+    ["Quelle méthode arrête la fermentation par le froid vers 5–7 % d'alcool ?",["La méthode ancestrale","La méthode Charmat","La méthode traditionnelle","La gazéification"],"La fermentation reprend en bouteille au printemps : vin sucré et peu alcoolisé (ex. Cerdon)."],
+    ["La méthode Charmat donne plutôt des vins…",["fruités et légers","très complexes, de longue garde","sucrés et peu alcoolisés","tranquilles"],"La seconde fermentation en cuve close préserve les arômes primaires."],
+    ["Une dégustation verticale compare…",["un même vin sur plusieurs millésimes","différents vins d'un même millésime","des vins sans connaître leur identité","des vins de régions différentes"],"C'est la slide post-it du cours 1. L'horizontale : différents vins, même millésime."],
+    ["Dans quel ordre sert-on les vins ?",["Blanc, rosé, rouge, moelleux, liquoreux","Rouge, rosé, blanc, liquoreux","Liquoreux, moelleux, blanc, rouge","Rosé, blanc, liquoreux, rouge"],"Aussi : les plus simples avant les plus complexes, les plus jeunes avant les plus évolués."],
+    ["Quelle quantité verse-t-on pour déguster ?",["5 à 6 cl","10 à 12 cl","1 à 2 cl","15 cl"],"5 à 6 cl maximum, dans un verre INAO."],
+    ["Une acidité élevée indique plutôt…",["un vin jeune ou d'un climat froid","un vin d'un climat chaud","un vin très évolué","un élevage en fût"],"Alcool élevé = climat chaud. Tanin élevé = vin jeune, macération longue et/ou fût."],
+    ["Un tanin élevé indique plutôt…",["un vin jeune, une macération longue et/ou un élevage en fûts","un vin très âgé","un vin de climat froid","un vin blanc"],"Clé d'interprétation marquée d'un post-it (cours 2)."],
+    ["En quelle année le phylloxéra apparaît-il dans le Gard ?",["1864","1709","1907","1935"],"La solution : le greffage des pieds de vigne."],
+    ["Quelle institution est créée en 1935 ?",["L'INAO","La CEE","L'OCM","L'OIV"],"La CEE est créée en 1958, le compromis de Dublin date de 1984."],
+    ["Laquelle est une mention OBLIGATOIRE sur l'étiquette ?",["Le volume d'alcool","Le millésime","Le nom du cépage","Les médailles"],"Millésime, cépage et médailles sont facultatifs."],
+    ["Quelle famille d'arômes est tertiaire ?",["Animale (cuir, gibier)","Florale (rose, violette)","Alimentaire (pain frais, beurre)","Fruitée (cassis, cerise)"],"Tertiaires : empyreumatique, boisé, épices, animal, végétal tertiaire."],
+    ["Le premier nez se fait…",["sans remuer le vin","après avoir fait tourner le vin","le vin en bouche","après avoir avalé"],"Il sert à repérer un défaut (sinon le vin est « net ») et les premières familles d'arômes."],
+    ["Des larmes grasses qui coulent lentement indiquent…",["un vin riche en alcool","un vin sans alcool","un vin trouble","un vin oxydé"],"Les larmes traduisent le glycérol et surtout l'alcool."],
+    ["Un vin trouble est-il forcément mauvais ?",["Non, il peut être non filtré","Oui, toujours","Oui, s'il est rouge","Seulement s'il est blanc"],"Un trouble peut aussi signaler une dégradation bactérienne ou un élevage médiocre."],
+    ["Le goût de bouchon est dû…",["au TCA (trichloroanisole)","au SO₂","au Botrytis","à l'acide malique"],"90 milliardièmes de gramme par litre suffisent à le détecter."]
+  ];
+
+
+/* ===== Outils ===== */
+const $=s=>document.querySelector(s);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const shuf=a=>{for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;};
+const pick=a=>a[Math.floor(Math.random()*a.length)];
+function makeDeck(arr){let order=[],i=0;return{next(){if(i>=order.length){order=shuf(arr.map((_,k)=>k));i=0;}return arr[order[i++]];},get pos(){return i;},total:arr.length};}
+const IMG=window.IMG||{};
+const src=id=>IMG[id]||("slides/"+id+".jpg");
+const PART={Visuel:"Œil",Olfactif:"Nez",Gustatif:"Bouche","Évaluation":"Évaluation"};
+const RUBS=VOCAB.filter(g=>PART[g.step]&&g.name!=="Catégorie aromatique dominante").map(g=>({part:PART[g.step],name:g.name,words:g.items.map(x=>x[0])})).concat(EXTRA_RUBS);
+const DEF_DOMS={all:null,vinif:["Vinification"],degust:["Visuel","Olfactif","Gustatif"],eval:["Évaluation"],buts:["Organisation"]};
+const catOf=g=>g.step==="Vinification"?"Vinification et soins":g.step==="Organisation"?"Types de dégustation":g.step+" · "+g.name;
+
+/* ===== Parties et navigation ===== */
+const PARTS=["cours","etudier","exercices"];
+function showPart(id){
+  PARTS.forEach(p=>{document.getElementById(p).hidden=p!==id;});
+  document.querySelectorAll("[data-part]").forEach(a=>a.setAttribute("aria-current",a.dataset.part===id?"true":"false"));
+  document.querySelectorAll(".subnav").forEach(u=>{u.hidden=u.dataset.for!==id;});
+  try{localStorage.setItem("oeno-part",id);}catch(e){}
+}
+function route(){
+  const h=decodeURIComponent(location.hash.slice(1));
+  let el=h?document.getElementById(h):null;
+  let part=el?(PARTS.includes(el.id)?el:el.closest(".part")):null;
+  if(!part){let s=null;try{s=localStorage.getItem("oeno-part");}catch(e){}part=document.getElementById(PARTS.includes(s)?s:"cours");el=null;}
+  showPart(part.id);
+  if(el&&el.dataset.ex)openEx(el.dataset.ex);
+  if(el){const target=el;requestAnimationFrame(()=>target.scrollIntoView({block:"start"}));}
+}
+window.addEventListener("hashchange",route);
+document.addEventListener("click",e=>{const a=e.target.closest('a[href^="#"]');if(a&&a.getAttribute("href")===location.hash){e.preventDefault();route();}});
+
+/* ===== Slides post-it expliquées ===== */
+(function(){
+  const root=$("#pgroups"),filters=$("#pfilters");
+  const mk=(label,val)=>{const b=document.createElement("button");b.type="button";b.textContent=label;b.dataset.f=val;b.setAttribute("aria-pressed",val==="all"?"true":"false");filters.appendChild(b);};
+  mk("Tous · "+SLIDES.length,"all");
+  [1,2,3,4,5].forEach(c=>{
+    const list=SLIDES.filter(s=>s[1]===c);mk("Cours "+c+" · "+list.length,String(c));
+    const g=document.createElement("div");g.className="pgroup";g.dataset.course=c;
+    g.innerHTML='<h3 class="sgroup-title"><span class="kicker">Cours '+c+'</span>'+esc(COURSES[c])+'<span class="count">'+list.length+' slide'+(list.length>1?'s':'')+'</span></h3>';
+    list.forEach(s=>{
+      const a=document.createElement("article");a.className="pcard";a.id="pi-"+s[0];
+      a.innerHTML='<button type="button" class="shot" data-slide="'+s[0]+'" aria-label="Agrandir la slide '+s[2]+' du cours '+c+'"><img src="'+src(s[0])+'" alt="Slide '+s[2]+' du cours '+c+' : '+esc(s[3])+'" loading="lazy" width="1100" height="825"></button>'+
+        '<div class="pcard-body"><p class="slide-no">Cours '+c+' · slide '+s[2]+'</p><h4>'+esc(s[3])+'</h4><p class="retenir-line">'+esc(s[4])+'</p><p>'+esc(s[5])+'</p>'+(s[6]?'<p class="piege"><b>Piège :</b> '+esc(s[6])+'</p>':'')+'</div>';
+      g.appendChild(a);
+    });
+    root.appendChild(g);
+  });
+  filters.addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;
+    filters.querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",x===b?"true":"false"));
+    root.querySelectorAll(".pgroup").forEach(g=>{g.hidden=!(b.dataset.f==="all"||g.dataset.course===b.dataset.f);});});
+})();
+
+/* ===== Visionneuse ===== */
+(function(){
+  const lb=$("#lb"),img=$("#lbimg"),cap=$("#lbcap"),txt=$("#lbtext");let idx=0,opener=null;
+  function show(i){
+    idx=(i+SLIDES.length)%SLIDES.length;const s=SLIDES[idx];
+    img.src=src(s[0]);img.alt="Slide "+s[2]+" du cours "+s[1]+" : "+s[3];
+    cap.innerHTML='<span>Cours '+s[1]+' · slide '+s[2]+' · '+(idx+1)+'/'+SLIDES.length+'</span>'+esc(s[3]);
+    txt.innerHTML='<p class="r">'+esc(s[4])+'</p><p>'+esc(s[5])+'</p>'+(s[6]?'<p><b>Piège :</b> '+esc(s[6])+'</p>':'');
+    lb.querySelector(".lb-inner").scrollTop=0;
+  }
+  function open(id,from){opener=from;show(SLIDES.findIndex(s=>s[0]===id));lb.hidden=false;document.body.style.overflow="hidden";$("#lbclose").focus();}
+  function close(){lb.hidden=true;document.body.style.overflow="";if(opener&&document.contains(opener))opener.focus();}
+  document.addEventListener("click",e=>{const t=e.target.closest("[data-slide]");if(t){e.preventDefault();open(t.dataset.slide,t);}});
+  $("#lbprev").onclick=()=>show(idx-1);$("#lbnext").onclick=()=>show(idx+1);$("#lbclose").onclick=close;
+  lb.addEventListener("click",e=>{if(e.target===lb)close();});
+  document.addEventListener("keydown",e=>{if(lb.hidden)return;if(e.key==="Escape")close();else if(e.key==="ArrowLeft")show(idx-1);else if(e.key==="ArrowRight")show(idx+1);});
+})();
+
+/* ===== Échelles de la fiche ===== */
+document.querySelectorAll("[data-ladders]").forEach(box=>{
+  VOCAB.filter(g=>g.step===box.dataset.ladders).forEach(g=>{
+    const isScale=g.scale!==false,n=g.items.length;
+    const el=document.createElement("div");el.className="ladder"+(isScale?"":" is-list");
+    el.innerHTML='<div class="ladder-head"><h4>'+esc(g.name)+'</h4>'+(g.slide?'<button type="button" class="pi" data-slide="'+g.slide+'">ne pas oublier !</button>':'')+'</div>'+
+      (g.note?'<p class="ladder-note">'+esc(g.note)+'</p>':'')+
+      '<ol>'+g.items.map((it,i)=>'<li>'+(isScale?'<i class="m" style="--w:'+((i+1)/n).toFixed(3)+'" aria-hidden="true"></i>':'')+'<span><b>'+esc(it[0])+'</b><span class="def">'+esc(it[1])+'</span></span></li>').join("")+'</ol>'+
+      (isScale?'<p class="ladder-axis" aria-hidden="true">du moins (−) au plus (+)</p>':'');
+    box.appendChild(el);
+  });
+});
+
+/* ===== Liste de révision ===== */
+(function(){
+  const KEY="oeno-revision-v1";let saved={};
+  try{saved=JSON.parse(localStorage.getItem(KEY)||"{}")||{};}catch(e){saved={};}
+  const boxes=[...document.querySelectorAll(".check input")];
+  const upd=()=>{$("#progress").textContent=boxes.filter(b=>b.checked).length+" / "+boxes.length+" revus";};
+  boxes.forEach(b=>{b.checked=!!saved[b.id];b.addEventListener("change",()=>{saved[b.id]=b.checked;try{localStorage.setItem(KEY,JSON.stringify(saved));}catch(e){}upd();});});
+  upd();
+})();
+
+/* ===== Générateurs de questions ===== */
+function qFromQCM(x){const o=shuf(x[1].map((t,i)=>({t,ok:i===0})));return{cat:"Théorie",q:x[0],opts:o.map(y=>y.t),a:o.findIndex(y=>y.ok),ex:x[2]};}
+function qFromVF(x){return{cat:"Vrai ou faux",q:x[0],opts:["Vrai","Faux"],a:x[1]?0:1,ex:x[2],two:true};}
+function qFromChiffre(x){const o=shuf([x[1]].concat(x[2]));return{cat:"Chiffres clés",q:x[0]+" ?",opts:o,a:o.indexOf(x[1]),ex:x[3]};}
+let lastDef="";
+function genDef(dom,dir){
+  const d=DEF_DOMS[dom];const pool=[];
+  VOCAB.forEach(g=>{if(!d||d.includes(g.step))g.items.forEach(it=>pool.push({t:it[0],d:it[1],g}));});
+  let item;do{item=pick(pool);}while(pool.length>1&&item.t+item.g.name===lastDef);lastDef=item.t+item.g.name;
+  let others=shuf(item.g.items.filter(x=>x[0]!==item.t)).slice(0,3);
+  if(others.length<3){const extra=shuf(VOCAB.filter(g=>g!==item.g&&g.step===item.g.step).flatMap(g=>g.items).filter(x=>x[0]!==item.t&&!others.some(o=>o[0]===x[0])));others=others.concat(extra.slice(0,3-others.length));}
+  if(dir==="td"){const opts=shuf([item.d].concat(others.map(o=>o[1])));return{cat:catOf(item.g),q:"Que veut dire « "+item.t+" » ?",opts,a:opts.indexOf(item.d),slide:item.g.slide};}
+  const opts=shuf([item.t].concat(others.map(o=>o[0])));
+  return{cat:catOf(item.g),q:item.d,opts,a:opts.indexOf(item.t),ex:"« "+item.t+" » : "+item.d,slide:item.g.slide};
+}
+const INTRUS_PARTS={tout:["Œil","Nez","Bouche","Évaluation"],bouche:["Bouche"],oeilnez:["Œil","Nez"],eval:["Évaluation"]};
+function genIntrus(part){
+  const groups=(part==="aromes"?AROMES:RUBS.filter(r=>INTRUS_PARTS[part].includes(r.part))).filter(r=>r.words.length>=3);
+  const g=pick(groups);const three=shuf(g.words.slice()).slice(0,3);
+  let others=groups.filter(o=>o!==g&&o.words.some(w=>!g.words.includes(w)));
+  const og=pick(others);const intr=pick(og.words.filter(w=>!g.words.includes(w)));
+  const opts=shuf(three.concat(intr));
+  return{cat:"L'intrus · "+g.part,q:"Quel mot n'appartient pas à la même rubrique que les trois autres ?",opts,a:opts.indexOf(intr),ex:"« "+intr+" » appartient à « "+og.name+" ». Les trois autres appartiennent à « "+g.name+" »."};
+}
+CLASSER.forEach(s=>{if(!s.items)s.items=AROMES.flatMap((r,i)=>r.words.map(w=>[w,i,w+" : arôme "+["primaire","secondaire","tertiaire"][i]+"."]));s.deck=makeDeck(s.items);});
+
+/* ===== Panneau à choix multiples ===== */
+function mcPanel(key,cfg){
+  const panel=document.getElementById("x-"+key);
+  const box=document.createElement("div");box.className="mc";
+  box.innerHTML='<div class="ex-bar">'+(cfg.controls||"")+'<span class="score">0 / 0</span></div><div class="progress-bar" hidden><i></i></div><p class="kicker q-cat"></p><p class="q-def q-text"></p><div class="q-opts"></div><div class="explain" hidden></div><div class="ex-foot"><p class="q-fb" aria-live="polite"></p><button type="button" class="btn q-next">Question suivante</button></div><div class="summary" hidden></div>';
+  panel.appendChild(box);
+  const f=s=>box.querySelector(s);let good=0,asked=0,cur=null;
+  const api={f,box,show,reset(){good=0;asked=0;f(".score").textContent="0 / 0";show();},get good(){return good;},get asked(){return asked;}};
+  function show(){
+    const q=cfg.next();
+    if(!q){if(cfg.done)cfg.done(api);return;}
+    cur=q;f(".summary").hidden=true;[".q-cat",".q-text",".q-opts",".ex-foot"].forEach(s=>{f(s).hidden=false;});
+    f(".q-cat").textContent=q.cat||"";f(".q-text").textContent=q.q;
+    f(".explain").hidden=true;f(".q-fb").textContent="";
+    const o=f(".q-opts");o.innerHTML="";o.classList.toggle("two",!!q.two);
+    q.opts.forEach((t,i)=>{const b=document.createElement("button");b.type="button";b.textContent=t;b.onclick=()=>answer(i,b);o.appendChild(b);});
+  }
+  function answer(i,b){
+    const q=cur,ok=i===q.a;asked++;if(ok)good++;
+    f(".q-opts").querySelectorAll("button").forEach((x,k)=>{x.disabled=true;if(k===q.a)x.classList.add("is-right");});
+    if(!ok)b.classList.add("is-wrong");
+    f(".q-fb").innerHTML=ok?'<span class="ok">Juste.</span>':'<span class="ko">Non.</span> Bonne réponse : « '+esc(q.opts[q.a])+' ».';
+    if(q.ex||q.slide){const e=f(".explain");e.innerHTML=(q.ex?esc(q.ex):"")+(q.slide?' <button type="button" class="pi" data-slide="'+q.slide+'">voir la slide</button>':'');e.hidden=false;}
+    f(".score").textContent=good+" / "+asked;
+    if(cfg.onAnswer)cfg.onAnswer(q,ok,i);
+    f(".q-next").focus({preventScroll:true});
+  }
+  f(".q-next").onclick=show;
+  return api;
+}
+
+/* ===== Exercices ===== */
+const EX={};const EX_DONE={};
+function openEx(key){
+  document.querySelectorAll("#exercices .ex[data-ex]").forEach(p=>{p.hidden=p.dataset.ex!==key;});
+  document.querySelectorAll('.exmenu a, .subnav[data-for="exercices"] a').forEach(a=>a.setAttribute("aria-current",a.getAttribute("href")==="#x-"+key?"true":"false"));
+  if(!EX_DONE[key]&&EX[key]){EX_DONE[key]=true;EX[key]();}
+}
+
+EX.qcm=()=>{const d=makeDeck(QCM);const m=mcPanel("qcm",{controls:'<span class="kicker cnt"></span>',next:()=>{const q=qFromQCM(d.next());m.f(".cnt").textContent="Question "+d.pos+" / "+d.total;return q;}});m.show();};
+EX.vf=()=>{const d=makeDeck(VF);const m=mcPanel("vf",{controls:'<span class="kicker cnt"></span>',next:()=>{const q=qFromVF(d.next());m.f(".cnt").textContent="Affirmation "+d.pos+" / "+d.total;return q;}});m.show();};
+EX.chiffres=()=>{const d=makeDeck(CHIFFRES);const m=mcPanel("chiffres",{controls:'<span class="kicker cnt"></span>',next:()=>{const q=qFromChiffre(d.next());m.f(".cnt").textContent="Question "+d.pos+" / "+d.total;return q;}});m.show();};
+EX.classer=()=>{
+  const opts='<label for="clSet">Série</label><select id="clSet"><option value="rand">Toutes les séries</option>'+CLASSER.map((s,i)=>'<option value="'+i+'">'+esc(s.name)+'</option>').join("")+'</select>';
+  const m=mcPanel("classer",{controls:opts,next:()=>{const v=$("#clSet").value;const s=v==="rand"?pick(CLASSER):CLASSER[+v];const it=s.deck.next();return{cat:s.name,q:it[0],opts:s.buckets.slice(),a:it[1],ex:it[2]||"",two:s.buckets.length===2};}});
+  $("#clSet").onchange=()=>m.reset();m.show();
+};
+EX.intrus=()=>{
+  const opts='<label for="inPart">Partie</label><select id="inPart"><option value="tout">Toute la fiche</option><option value="bouche">Bouche</option><option value="oeilnez">Œil et nez</option><option value="eval">Évaluation</option><option value="aromes">Arômes</option></select>';
+  const m=mcPanel("intrus",{controls:opts,next:()=>genIntrus($("#inPart").value)});
+  $("#inPart").onchange=()=>m.reset();m.show();
+};
+EX.def=()=>{
+  const opts='<label for="dfDom">Thème</label><select id="dfDom"><option value="all">Tout le vocabulaire</option><option value="degust">Œil, nez, bouche</option><option value="eval">Évaluation du vin</option><option value="vinif">Vinification et soins</option><option value="buts">Types de dégustation</option></select><label for="dfDir">Sens</label><select id="dfDir"><option value="dt">Définition → terme</option><option value="td">Terme → définition</option></select>';
+  const m=mcPanel("def",{controls:opts,next:()=>genDef($("#dfDom").value,$("#dfDir").value)});
+  $("#dfDom").onchange=()=>m.reset();$("#dfDir").onchange=()=>m.reset();m.show();
+};
+EX.examen=()=>{
+  const qd=makeDeck(QCM),vd=makeDeck(VF),cd=makeDeck(CHIFFRES);let list=[],idx=0,wrong=[];
+  function build(){
+    list=[];for(let i=0;i<6;i++)list.push(qFromQCM(qd.next()));for(let i=0;i<4;i++)list.push(qFromVF(vd.next()));
+    for(let i=0;i<3;i++)list.push(qFromChiffre(cd.next()));for(let i=0;i<4;i++)list.push(genDef("all","dt"));for(let i=0;i<3;i++)list.push(genIntrus("tout"));
+    list=shuf(list);idx=0;wrong=[];
+  }
+  const m=mcPanel("examen",{controls:'<span class="kicker cnt"></span>',
+    next:()=>{if(idx>=list.length)return null;const q=list[idx++];m.f(".cnt").textContent="Question "+idx+" / "+list.length;const pb=m.f(".progress-bar");pb.hidden=false;pb.firstElementChild.style.setProperty("--p",(idx-1)/list.length);m.f(".q-next").textContent=idx===list.length?"Voir ma note":"Question suivante";return q;},
+    onAnswer:(q,ok,i)=>{if(!ok)wrong.push({q,i});m.f(".progress-bar i").style.setProperty("--p",idx/list.length);},
+    done:(api)=>{
+      [".q-cat",".q-text",".q-opts",".explain",".ex-foot"].forEach(s=>{api.f(s).hidden=true;});
+      const s=api.f(".summary"),g=api.good,n=list.length;
+      const msg=g>=18?"Excellent, tu es prêt.":g>=14?"Bien. Revois les questions ratées.":g>=10?"Seuil atteint de justesse : il faut encore réviser.":"Sous le seuil de 50 % : reprends la fiche résumé.";
+      s.innerHTML='<p class="big">'+g+' / '+n+'</p><p>'+msg+'</p>'+(wrong.length?'<p class="mini">À revoir</p><ol>'+wrong.map(w=>'<li>'+esc(w.q.q)+'<span>Ta réponse : '+esc(w.q.opts[w.i])+' · Bonne réponse : '+esc(w.q.opts[w.q.a])+'</span></li>').join("")+'</ol>':'')+'<div class="ex-actions"><button type="button" class="btn" id="exRestart">Nouvel examen blanc</button></div>';
+      s.hidden=false;
+      $("#exRestart").onclick=()=>{build();api.f(".progress-bar i").style.setProperty("--p",0);api.reset();};
+    }});
+  build();m.show();
+};
+
+/* --- Nuage de mots --- */
+EX.nuage=()=>{
+  const THEMES={bouche:["Bouche"],oeilnez:["Œil","Nez"],eval:["Évaluation"],tout:["Œil","Nez","Bouche","Évaluation"]};
+  const KC=["var(--k1)","var(--k2)","var(--k3)"];
+  let R=null,active=0,checked=false,totG=0,totN=0,lastKey="";
+  const size=()=>{const r=Math.random();return r<.5?"s1":r<.82?"s2":"s3";};
+  const extra=(others,seen,n)=>shuf(others.flatMap(r=>r.words.map(w=>({w,ans:-1,from:r.name})))).filter(o=>!seen.has(o.w)&&(seen.add(o.w),true)).slice(0,n);
+  function build(){
+    const theme=$("#nTheme").value,k=+$("#nMode").value;let rubs,words=[];
+    if(theme==="aromes"){
+      if(k===1){let t;do{t=pick(AROMES);}while(t.name===lastKey);lastKey=t.name;rubs=[t];
+        shuf(t.words.slice()).slice(0,5).forEach(w=>words.push({w,ans:0}));
+        words=words.concat(extra(AROMES.filter(r=>r!==t),new Set(t.words),7));
+      }else{rubs=AROMES.slice();rubs.forEach((r,i)=>shuf(r.words.slice()).slice(0,5).forEach(w=>words.push({w,ans:i})));}
+    }else{
+      const pool=RUBS.filter(r=>THEMES[theme].includes(r.part));
+      if(k===1){let t;do{t=pick(pool);}while(pool.length>1&&t.name===lastKey);lastKey=t.name;rubs=[t];
+        t.words.forEach(w=>words.push({w,ans:0}));
+        let others=pool.filter(r=>r!==t);if(others.length<3)others=RUBS.filter(r=>r!==t);
+        words=words.concat(extra(others,new Set(t.words),Math.max(5,13-t.words.length)));
+      }else{rubs=[];const seen=new Set();
+        for(const r of shuf(pool.slice())){if(rubs.length===3)break;if(r.words.some(w=>seen.has(w)))continue;rubs.push(r);r.words.forEach(w=>seen.add(w));}
+        rubs.forEach((r,i)=>r.words.forEach(w=>words.push({w,ans:i})));
+        let others=pool.filter(r=>!rubs.includes(r));if(others.length<2)others=RUBS.filter(r=>!rubs.includes(r));
+        words=words.concat(extra(others,seen,3));
+      }
+    }
+    words.forEach(o=>{o.got=-1;o.s=size();});
+    R={rubs,words:shuf(words),k:rubs.length};active=0;checked=false;$("#nFeedback").textContent="";render();
+  }
+  function render(){
+    const k=R.k,r0=R.rubs[0];
+    $("#nPrompt").innerHTML=k===1
+      ?(r0.part==="Arômes"?"Lesquels sont des <b>"+esc(r0.name.toLowerCase())+"</b> ? Touchez-les tous, puis vérifiez.":"Quels mots appartiennent à la rubrique <b>"+esc(r0.name)+"</b> ("+esc(r0.part.toLowerCase())+") ? Touchez-les tous, puis vérifiez.")
+      :"Choisissez une rubrique, puis touchez ses mots dans le nuage."+(R.words.some(o=>o.ans<0)?" Trois mots n'appartiennent à aucune des trois rubriques : laissez-les de côté.":" Chaque mot va dans une seule rubrique.");
+    const rb=$("#nRubs");rb.innerHTML="";
+    R.rubs.forEach((r,i)=>{const b=document.createElement("button");b.type="button";b.className="rub"+(k===1?" solo":"");
+      b.style.setProperty("--kc",KC[i]);b.setAttribute("aria-pressed",i===active?"true":"false");
+      const cnt=R.words.filter(o=>o.got===i).length;
+      b.innerHTML='<span class="n">'+(i+1)+'</span>'+esc(r.name)+(k>1&&r.part!=="Arômes"?' <span class="c">'+esc(r.part)+'</span>':'')+' <span class="c">· '+cnt+'</span>';
+      b.onclick=()=>{if(checked||k===1)return;active=i;render();rb.children[i].focus();};rb.appendChild(b);});
+    const cl=$("#nCloud");cl.innerHTML="";
+    R.words.forEach((o,wi)=>{const b=document.createElement("button");b.type="button";b.className="w "+o.s;
+      if(o.got>=0){b.classList.add("on");b.style.setProperty("--kc",KC[o.got]);b.setAttribute("aria-label",o.w+" : "+R.rubs[o.got].name);}
+      b.setAttribute("aria-pressed",o.got>=0?"true":"false");
+      b.innerHTML=esc(o.w)+(o.got>=0&&k>1?'<span class="b" aria-hidden="true">'+(o.got+1)+'</span>':'');
+      if(checked){b.disabled=true;const ok=o.got===o.ans;b.classList.add(ok?"good":"bad");
+        if(!ok){const fx=document.createElement("span");fx.className="fix";fx.textContent=o.ans>=0?(k===1?"oublié":"→ "+(o.ans+1)+" · "+R.rubs[o.ans].name):"intrus : "+o.from;b.appendChild(fx);}}
+      else b.onclick=()=>{o.got=o.got===active?-1:active;render();const el=cl.children[wi];if(el)el.focus();};
+      cl.appendChild(b);});
+    $("#nCheck").disabled=checked;
+  }
+  $("#nCheck").onclick=()=>{if(checked)return;checked=true;
+    const g=R.words.filter(o=>o.got===o.ans).length,n=R.words.length;totG+=g;totN+=n;
+    $("#nScore").textContent="Total : "+totG+" / "+totN;render();
+    $("#nFeedback").innerHTML=g===n?'<span class="ok">Parfait.</span> Tous les mots sont à la bonne place.':'<span class="ko">'+g+' / '+n+' mots corrects.</span> Les erreurs sont entourées de rouge, avec la bonne réponse.';};
+  $("#nNext").onclick=build;$("#nTheme").onchange=build;$("#nMode").onchange=build;
+  build();
+};
+
+/* --- Relier --- */
+EX.relier=()=>{
+  const sel=$("#rDom");let items=[],order=[],links=[],active=0,checked=false,tg=0,tn=0;
+  function build(){
+    const d=DEF_DOMS[sel.value];const pool=[],seen=new Set();
+    shuf(VOCAB.filter(g=>!d||d.includes(g.step)).flatMap(g=>g.items.map(it=>({t:it[0],d:it[1],g})))).forEach(o=>{if(!seen.has(o.t)){seen.add(o.t);pool.push(o);}});
+    items=pool.slice(0,5);order=shuf(items.map((_,i)=>i));links=items.map(()=>-1);active=0;checked=false;$("#rFb").textContent="";render();
+  }
+  function render(){
+    const T=$("#rTerms"),D=$("#rDefs");T.innerHTML="";D.innerHTML="";
+    items.forEach((it,i)=>{const b=document.createElement("button");b.type="button";b.className="mt"+(links[i]>=0?" linked":"");
+      b.setAttribute("aria-pressed",i===active&&!checked?"true":"false");
+      b.innerHTML='<span class="b">'+(i+1)+'</span><span><b>'+esc(it.t)+'</b><span class="sub">'+esc(it.g.step==="Vinification"?"Vinification":it.g.step==="Organisation"?"Dégustation":it.g.name)+'</span></span>';
+      if(checked){b.disabled=true;b.classList.add(links[i]===i?"good":"bad");}else b.onclick=()=>{active=i;render();T.children[i].focus();};
+      T.appendChild(b);});
+    order.forEach((j,pos)=>{const it=items[j],who=links.indexOf(j);const b=document.createElement("button");b.type="button";b.className="md"+(who>=0?" linked":"");
+      b.innerHTML='<span class="b">'+(who>=0?who+1:"")+'</span><span>'+esc(it.d)+(checked&&who!==j?'<span class="fix">Bonne réponse : '+(j+1)+' · '+esc(it.t)+'</span>':'')+'</span>';
+      if(checked){b.disabled=true;b.classList.add(who===j?"good":"bad");}
+      else b.onclick=()=>{const prev=links.indexOf(j);if(prev>=0)links[prev]=-1;links[active]=j;const nx=links.findIndex(v=>v<0);if(nx>=0)active=nx;render();D.children[pos].focus();};
+      D.appendChild(b);});
+    $("#rCheck").disabled=checked||links.some(v=>v<0);
+  }
+  $("#rCheck").onclick=()=>{checked=true;const g=links.filter((v,i)=>v===i).length;tg+=g;tn+=items.length;$("#rScore").textContent="Total : "+tg+" / "+tn;render();
+    $("#rFb").innerHTML=g===items.length?'<span class="ok">Parfait.</span> Les 5 liaisons sont justes.':'<span class="ko">'+g+' / '+items.length+' justes.</span> La bonne réponse est indiquée sous chaque erreur.';};
+  $("#rNext").onclick=build;sel.onchange=build;build();
+};
+
+/* --- Analyser deux vins --- */
+EX.fiche=()=>{
+  const W=[
+    {name:"Vin A · blanc",c:"#EDD67E",rubs:["Viscosité (les larmes)","Intensité aromatique","Bouquet","Sucrosité","Acidité","Alcool","Corps","Persistance en bouche","Prédominance de l'équilibre"],excl:["Tanins","Teintée"]},
+    {name:"Vin B · rouge",c:"#8E1B30",rubs:["Viscosité (les larmes)","Intensité aromatique","Bouquet","Acidité","Alcool","Tanins","Corps","Persistance en bouche","Prédominance de l'équilibre"],excl:["Sucrosité"]}
+  ];
+  let rows=[],checked=false,tg=0,tn=0;
+  function build(){
+    rows=W.map((w,wi)=>w.rubs.map((rn,ri)=>{const g=VOCAB.find(x=>x.name===rn);const it=pick(g.items.filter(x=>!w.excl.includes(x[0])));return{g,it,val:"",id:"f"+wi+"-"+ri};}));
+    checked=false;$("#fFb").textContent="";render();
+  }
+  function render(){
+    const box=$("#fWines");box.innerHTML="";
+    W.forEach((w,wi)=>{const card=document.createElement("div");card.className="wine";
+      card.innerHTML='<h4><i style="--c:'+w.c+'" aria-hidden="true"></i>'+esc(w.name)+'</h4>';
+      rows[wi].forEach(r=>{const d=document.createElement("div");d.className="frow"+(checked?(r.val===r.it[0]?" good":" bad"):"");
+        d.innerHTML='<label class="lab" for="'+r.id+'">'+esc(PART[r.g.step])+' · '+esc(r.g.name)+'</label><p class="obs">'+esc(r.it[1])+'</p><select id="'+r.id+'"'+(checked?" disabled":"")+'><option value="">— choisir un terme —</option>'+r.g.items.map(x=>'<option'+(x[0]===r.val?" selected":"")+'>'+esc(x[0])+'</option>').join("")+'</select>'+(checked&&r.val!==r.it[0]?'<p class="fix">Réponse : '+esc(r.it[0])+'</p>':'');
+        d.querySelector("select").onchange=e=>{r.val=e.target.value;};
+        card.appendChild(d);});
+      box.appendChild(card);});
+    $("#fCheck").disabled=checked;
+  }
+  $("#fCheck").onclick=()=>{checked=true;const all=rows.flat();const g=all.filter(r=>r.val===r.it[0]).length;tg+=g;tn+=all.length;
+    $("#fScore").textContent="Total : "+tg+" / "+tn;render();
+    $("#fFb").innerHTML=g===all.length?'<span class="ok">Parfait.</span> Les deux fiches sont justes.':'<span class="ko">'+g+' / '+all.length+' termes justes.</span> La réponse est indiquée sous chaque erreur.';};
+  $("#fNext").onclick=build;build();
+};
+
+/* --- Remettre dans l'ordre --- */
+EX.ordre=()=>{
+  const sel=$("#oSet");
+  SEQS.forEach((q,i)=>{const o=document.createElement("option");o.value=i;o.textContent=q.name+(q.scale?" (− → +)":"");sel.appendChild(o);});
+  let S=null,placed=[],pool=[],checked=false,good=0,tried=0,last=-1;
+  function start(){
+    let i;if(sel.value==="rand"){do{i=Math.floor(Math.random()*SEQS.length);}while(i===last);}else i=+sel.value;
+    last=i;S=SEQS[i];placed=[];checked=false;
+    do{pool=shuf(S.items.map((_,k)=>k));}while(pool.every((v,k)=>v===k));
+    $("#oPrompt").innerHTML=S.scale?"Rangez les termes de la rubrique <b>"+esc(S.name)+"</b> du moins (−) au plus (+).":"Remettez <b>"+esc(S.name)+"</b> dans l'ordre.";
+    $("#oFeedback").textContent="";render();
+  }
+  function render(){
+    const sl=$("#oSlots");sl.innerHTML="";
+    S.items.forEach((_,p)=>{const li=document.createElement("li");li.dataset.n=p+1;const v=placed[p];
+      if(v!==undefined){li.classList.add("filled");const b=document.createElement("button");b.type="button";b.className="chip";b.textContent=S.items[v][0];
+        if(checked){b.disabled=true;if(S.items[v][1]){const d=document.createElement("span");d.className="detail";d.textContent=S.items[v][1];b.appendChild(d);}}
+        else b.onclick=()=>{placed.splice(p,1);pool.push(v);render();};
+        li.appendChild(b);}
+      if(checked){const ok=v===p;li.classList.add(ok?"good":"bad");
+        if(!ok){const fx=document.createElement("span");fx.className="fix";fx.textContent="À cette place : "+S.items[p][0]+(S.items[p][1]?" ("+S.items[p][1]+")":"");li.appendChild(fx);}}
+      sl.appendChild(li);});
+    const pl=$("#oPool");pl.innerHTML="";pl.hidden=checked;
+    pool.forEach(v=>{const b=document.createElement("button");b.type="button";b.className="chip";b.textContent=S.items[v][0];
+      b.onclick=()=>{pool.splice(pool.indexOf(v),1);placed.push(v);render();const f=$("#oPool").firstElementChild;if(f)f.focus();};pl.appendChild(b);});
+    $("#oCheck").disabled=checked||placed.length<S.items.length;
+  }
+  $("#oCheck").onclick=()=>{checked=true;tried++;const n=placed.filter((v,p)=>v===p).length,all=n===S.items.length;if(all)good++;
+    $("#oScore").textContent=good+" / "+tried+" séries justes";render();
+    $("#oFeedback").innerHTML=all?'<span class="ok">Parfait.</span> Tout est dans le bon ordre.':'<span class="ko">'+n+' / '+S.items.length+' à la bonne place.</span> La correction est sous chaque ligne rouge.';};
+  $("#oNext").onclick=start;sel.onchange=start;start();
+};
+
+/* ===== Compteurs du menu et démarrage ===== */
+(function(){
+  const nVocab=VOCAB.reduce((s,g)=>s+g.items.length,0),nCl=CLASSER.reduce((s,c)=>s+c.items.length,0);
+  const C={examen:"20 questions",qcm:QCM.length+" questions",vf:VF.length+" affirmations",chiffres:CHIFFRES.length+" questions",classer:CLASSER.length+" séries · "+nCl+" éléments",intrus:"tiré au hasard",def:nVocab+" termes · 2 sens",ordre:SEQS.length+" séries"};
+  document.querySelectorAll("[data-count]").forEach(el=>{el.textContent=C[el.dataset.count]||"";});
+  openEx("nuage");
+  route();
+})();
+
+</script>
+
+</body></html>
