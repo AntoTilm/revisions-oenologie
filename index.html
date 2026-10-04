@@ -265,8 +265,10 @@ details p+p{margin-top:.5rem}
 .wrow.over{background:color-mix(in srgb,var(--kc) 10%,var(--paper))}
 .wrow .rub{justify-self:start}
 .wdrop{display:flex;flex-wrap:wrap;align-items:center;gap:.4rem .5rem;min-height:2.6rem;padding:.2rem .3rem}
-.wdrop:empty::before{content:"Glissez ou touchez des mots ici";color:var(--muted);font-size:.86rem}
+.wdrop:empty::before{content:"Glissez des mots ici";color:var(--muted);font-size:.86rem}
 .wdrop .w{background:var(--surface);border-color:var(--kc);font-size:1rem;font-weight:400;font-family:inherit}
+.wrow .ord{font:500 .74rem/1 var(--f-mono);color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:.2rem .5rem}
+.wrow .hd{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem}
 .wrow .ref{font:500 .78rem/1.35 var(--f-mono);color:var(--muted);margin:0}
 .w.drag-src{opacity:.35}
 .w.drag-ghost{position:fixed;z-index:1000;pointer-events:none;margin:0;background:var(--surface);border-color:var(--wine);box-shadow:0 8px 18px -8px rgba(0,0,0,.45);transform:rotate(-2deg)}
@@ -2723,6 +2725,15 @@ EX.examen=()=>{
 EX.nuage=()=>{
   const THEMES={bouche:["Bouche"],oeilnez:["Œil","Nez"],eval:["Évaluation"],tout:["Œil","Nez","Bouche","Évaluation"]};
   const KC=["var(--k1)","var(--k2)","var(--k3)"];
+  /* Rubriques qui sont une échelle : l'ordre des mots dans la ligne est vérifié */
+  const ORD=new Set(["Intensité de la robe","Intensité aromatique","Sucrosité","Acidité","Alcool","Tanins","Corps","Persistance en bouche","Stade d'évolution","Potentiel de garde","Typicité"]);
+  const isOrd=r=>ORD.has(r.name)&&r.part!=="Arômes";
+  /* Pour chaque ligne ordonnée : les mots bien rangés doivent suivre l'ordre de la fiche */
+  function grade(){R.words.forEach(o=>{o.ordPos=0;});
+    R.rubs.forEach((r,i)=>{if(!isOrd(r))return;const inRow=R.order[i].filter(wi=>R.words[wi].ans===i);
+      const exp=r.words.filter(w=>inRow.some(wi=>R.words[wi].w===w));
+      inRow.forEach((wi,p)=>{const o=R.words[wi];if(exp[p]!==o.w)o.ordPos=exp.indexOf(o.w)+1;});});}
+  const ok=o=>o.got===o.ans&&!o.ordPos;
   let R=null,active=0,checked=false,totG=0,totN=0,lastKey="";
   const size=()=>{const r=Math.random();return r<.5?"s1":r<.82?"s2":"s3";};
   const extra=(others,seen,n)=>shuf(others.flatMap(r=>r.words.map(w=>({w,ans:-1,from:r.name})))).filter(o=>!seen.has(o.w)&&(seen.add(o.w),true)).slice(0,n);
@@ -2751,8 +2762,6 @@ EX.nuage=()=>{
   }
   let dragJustEnded=false;
   const focusW=wi=>{const el=document.querySelector('#x-nuage .w[data-i="'+wi+'"]');if(el)el.focus();};
-  function place(wi,to,at){const o=R.words[wi];if(o.got>=0){const a=R.order[o.got];a.splice(a.indexOf(wi),1);}
-    o.got=to;if(to>=0){const a=R.order[to];a.splice(at==null?a.length:at,0,wi);}render();focusW(wi);}
   /* Glisser-déposer (souris et tactile) : déplace le mot en direct, le modèle est relu au lâcher */
   function startDrag(e,b,wi){
     if(e.button>0)return;const sx=e.clientX,sy=e.clientY;let ghost=null,dx=0,dy=0,over=null;
@@ -2779,42 +2788,40 @@ EX.nuage=()=>{
       /* relire l'ordre des lignes depuis le DOM */
       box.querySelectorAll(".wrow").forEach(row=>{const i=+row.dataset.r;R.order[i]=[...row.querySelectorAll(".wdrop .w")].map(x=>+x.dataset.i);R.order[i].forEach(j=>{R.words[j].got=i;});});
       if(b.closest("#nCloud"))o.got=-1;
-      if(o.got>=0&&R.k>1)active=o.got;
       render();focusW(wi);};
     document.addEventListener("pointermove",move,{passive:false});document.addEventListener("pointerup",up);document.addEventListener("pointercancel",up);
   }
   function render(){
     const k=R.k,r0=R.rubs[0];
     $("#nPrompt").innerHTML=k===1
-      ?(r0.part==="Arômes"?"Lesquels sont des <b>"+esc(r0.name.toLowerCase())+"</b> ? Glissez-les dans la ligne (ou touchez-les), puis vérifiez.":"Quels mots appartiennent à la rubrique <b>"+esc(r0.name)+"</b> ("+esc(r0.part.toLowerCase())+") ? Glissez-les dans la ligne (ou touchez-les), puis vérifiez.")
-      :"Glissez chaque mot dans la ligne de sa rubrique, et remettez-les dans l'ordre si vous voulez. Vous pouvez aussi choisir une rubrique puis toucher ses mots."+(R.words.some(o=>o.ans<0)?" Trois mots n'appartiennent à aucune des trois rubriques : laissez-les de côté.":" Chaque mot va dans une seule rubrique.");
+      ?(r0.part==="Arômes"?"Lesquels sont des <b>"+esc(r0.name.toLowerCase())+"</b> ? Glissez-les dans la ligne, puis vérifiez.":"Quels mots appartiennent à la rubrique <b>"+esc(r0.name)+"</b> ("+esc(r0.part.toLowerCase())+") ? Glissez-les dans la ligne"+(isOrd(r0)?", rangés de gauche à droite dans l'ordre de l'échelle":"")+", puis vérifiez.")
+      :"Glissez chaque mot dans la ligne de sa rubrique. Quand la ligne indique « ordre vérifié », rangez les mots de gauche à droite dans l'ordre de l'échelle (ex. extra sec → liquoreux)."+(R.words.some(o=>o.ans<0)?" Trois mots n'appartiennent à aucune des trois rubriques : laissez-les de côté.":" Chaque mot va dans une seule rubrique.");
     const cl=$("#nCloud"),rb=$("#nRubs");cl.innerHTML="";rb.innerHTML="";
     const mkW=(wi,inRow)=>{const o=R.words[wi],b=document.createElement("button");b.type="button";b.className="w "+(inRow?"":o.s);b.dataset.i=wi;
       if(o.got>=0){b.style.setProperty("--kc",KC[o.got]);b.setAttribute("aria-label",o.w+" : "+R.rubs[o.got].name);}
       b.textContent=o.w;
-      if(checked){b.disabled=true;const ok=o.got===o.ans;b.classList.add(ok?"good":"bad");
-        if(!ok){const fx=document.createElement("span");fx.className="fix";fx.textContent=o.ans>=0?(k===1?"oublié":"→ "+(o.ans+1)+" · "+R.rubs[o.ans].name):"intrus : "+o.from;b.appendChild(fx);}}
-      else{b.onclick=()=>{if(dragJustEnded)return;place(wi,o.got>=0?-1:active);};
-        b.onkeydown=e=>{if(o.got<0||!e.key.startsWith("Arrow")||e.key==="ArrowUp"||e.key==="ArrowDown")return;const row=R.order[o.got],p=row.indexOf(wi),q=p+(e.key==="ArrowLeft"?-1:1);
+      if(checked){b.disabled=true;const good=ok(o);b.classList.add(good?"good":"bad");
+        if(!good){const fx=document.createElement("span");fx.className="fix";fx.textContent=o.got===o.ans?"ordre : "+o.ordPos+"ᵉ place":o.ans>=0?(k===1?"oublié":"→ "+(o.ans+1)+" · "+R.rubs[o.ans].name):"intrus : "+o.from;b.appendChild(fx);}}
+      else{b.onkeydown=e=>{if(o.got<0||!e.key.startsWith("Arrow")||e.key==="ArrowUp"||e.key==="ArrowDown")return;const row=R.order[o.got],p=row.indexOf(wi),q=p+(e.key==="ArrowLeft"?-1:1);
           if(q<0||q>=row.length)return;e.preventDefault();row.splice(p,1);row.splice(q,0,wi);render();focusW(wi);};
         b.addEventListener("pointerdown",e=>startDrag(e,b,wi));}
       return b;};
     R.words.forEach((o,wi)=>{if(o.got<0)cl.appendChild(mkW(wi,false));});
-    R.rubs.forEach((r,i)=>{const row=document.createElement("div");row.className="wrow"+(i===active&&k>1&&!checked?" cur":"");row.style.setProperty("--kc",KC[i]);row.dataset.r=i;
-      const b=document.createElement("button");b.type="button";b.className="rub"+(k===1?" solo":"");
-      b.setAttribute("aria-pressed",i===active?"true":"false");
+    R.rubs.forEach((r,i)=>{const row=document.createElement("div");row.className="wrow";row.style.setProperty("--kc",KC[i]);row.dataset.r=i;
+      const b=document.createElement("span");b.className="rub solo";
       b.innerHTML='<span class="n">'+(i+1)+'</span>'+esc(r.name)+(k>1&&r.part!=="Arômes"?' <span class="c">'+esc(r.part)+'</span>':'')+' <span class="c">· '+R.order[i].length+'</span>';
-      b.onclick=()=>{if(checked||k===1)return;active=i;render();rb.querySelectorAll(".rub")[i].focus();};
       const d=document.createElement("div");d.className="wdrop";R.order[i].forEach(wi=>d.appendChild(mkW(wi,true)));
-      row.append(b,d);
-      if(checked&&r.part!=="Arômes"){const ref=document.createElement("p");ref.className="ref";ref.textContent="Ordre de la fiche : "+r.words.join(" · ");row.appendChild(ref);}
+      const hd=document.createElement("div");hd.className="hd";hd.appendChild(b);
+      if(isOrd(r)){const t=document.createElement("span");t.className="ord";t.textContent="ordre vérifié →";t.title="Rangez du premier au dernier terme de l'échelle";hd.appendChild(t);}
+      row.append(hd,d);
+      if(checked&&isOrd(r)){const ref=document.createElement("p");ref.className="ref";ref.textContent="Ordre de la fiche : "+r.words.join(" · ");row.appendChild(ref);}
       rb.appendChild(row);});
     $("#nCheck").disabled=checked;
   }
-  $("#nCheck").onclick=()=>{if(checked)return;checked=true;
-    const g=R.words.filter(o=>o.got===o.ans).length,n=R.words.length;totG+=g;totN+=n;
+  $("#nCheck").onclick=()=>{if(checked)return;checked=true;grade();
+    const g=R.words.filter(ok).length,n=R.words.length;totG+=g;totN+=n;
     $("#nScore").textContent="Total : "+totG+" / "+totN;render();
-    $("#nFeedback").innerHTML=g===n?'<span class="ok">Parfait.</span> Tous les mots sont à la bonne place.':'<span class="ko">'+g+' / '+n+' mots corrects.</span> Les erreurs sont marquées ✗ (contour pointillé), avec la bonne réponse ; les mots justes sont marqués ✓.';};
+    $("#nFeedback").innerHTML=g===n?'<span class="ok">Parfait.</span> Tous les mots sont à la bonne place.':'<span class="ko">'+g+' / '+n+' mots corrects.</span> Les erreurs sont marquées ✗ (contour pointillé), avec la bonne rubrique ou la bonne place dans l’échelle ; les mots justes sont marqués ✓.';};
   $("#nNext").onclick=build;$("#nTheme").onchange=build;$("#nMode").onchange=build;
   build();
 };
