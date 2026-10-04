@@ -52,7 +52,7 @@ mark{background:var(--postit);color:var(--postit-ink);padding:0 .2em;border-radi
 /* En-tête et parties */
 .site-head{display:grid;gap:.55rem;padding-block:2.6rem 1.6rem}
 .site-head .lede{font-size:1.12rem;color:var(--muted);max-width:62ch}
-.parts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:1rem;margin-top:1.1rem}
+.parts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:1rem;margin-top:1.1rem}
 .parts a{display:grid;grid-template-columns:auto minmax(0,1fr);gap:.15rem .9rem;align-content:start;padding:1rem 1.15rem 1.1rem;border:1px solid var(--line);border-radius:var(--radius);background:var(--surface);color:var(--ink);text-decoration:none;transition:transform .15s,border-color .15s}
 .parts a:hover{border-color:var(--wine);transform:translateY(-2px)}
 .parts .num{grid-row:span 2;font-family:var(--f-display);font-size:2.7rem;line-height:1;color:var(--wine)}
@@ -386,19 +386,21 @@ footer{border-top:1px solid var(--line);margin-top:3rem;padding-top:1.5rem;color
 <header class="site-head">
   <p class="kicker">CEFOR Namur · Initiation à l'étude des vins · 2026</p>
   <h1>Révisions d'œnologie</h1>
-  <p class="lede">Trois parties séparées : le cours complet, la théorie à étudier pour l'examen, et les exercices.</p>
+  <p class="lede">Quatre parties séparées : le cours complet, les dégustations, la théorie à étudier pour l'examen, et les exercices.</p>
   <nav class="parts" aria-label="Parties du site">
-    <a href="#cours" data-part="cours"><span class="num">1</span><span class="pt">Le cours</span><span class="pd">La présentation du cours, le résumé complet des cours 1 à 5 et les vins dégustés.</span></a>
-    <a href="#etudier" data-part="etudier" class="is-postit"><span class="num">2</span><span class="pt">À étudier</span><span class="pd">La fiche résumé globale, les 38 slides post-it expliquées, l'analyse du vin et ce qui sera évalué.</span></a>
-    <a href="#exercices" data-part="exercices"><span class="num">3</span><span class="pt">Exercices</span><span class="pd">11 exercices et des centaines de questions, dont le nuage de mots de l'examen.</span></a>
+    <a href="#cours" data-part="cours"><span class="num">1</span><span class="pt">Le cours</span><span class="pd">La présentation du cours et le résumé complet des cours 1 à 5.</span></a>
+    <a href="#degustations-part" data-part="degustations-part"><span class="num">2</span><span class="pt">Dégustations</span><span class="pd">Les vins goûtés à chaque cours : mes fiches, la correction du prof et la vérification en ligne.</span></a>
+    <a href="#etudier" data-part="etudier" class="is-postit"><span class="num">3</span><span class="pt">À étudier</span><span class="pd">La fiche résumé globale, les 38 slides post-it expliquées, l'analyse du vin et ce qui sera évalué.</span></a>
+    <a href="#exercices" data-part="exercices"><span class="num">4</span><span class="pt">Exercices</span><span class="pd">11 exercices et des centaines de questions, dont le nuage de mots de l'examen.</span></a>
   </nav>
 </header>
 
 <div class="bar">
   <nav class="bar-parts" aria-label="Changer de partie">
     <a href="#cours" data-part="cours"><span class="n">1</span>Le cours</a>
-    <a href="#etudier" data-part="etudier"><span class="n">2</span>À étudier</a>
-    <a href="#exercices" data-part="exercices"><span class="n">3</span>Exercices</a>
+    <a href="#degustations-part" data-part="degustations-part"><span class="n">2</span>Dégustations</a>
+    <a href="#etudier" data-part="etudier"><span class="n">3</span>À étudier</a>
+    <a href="#exercices" data-part="exercices"><span class="n">4</span>Exercices</a>
   </nav>
   <ul class="subnav" data-for="cours" aria-label="Dans le cours">
     <li><a href="#presentation">Présentation</a></li>
@@ -407,7 +409,12 @@ footer{border-top:1px solid var(--line);margin-top:3rem;padding-top:1.5rem;color
     <li><a href="#cours3">Cours 3 · Blanc, vins doux</a></li>
     <li><a href="#cours4">Cours 4 · Rouge, rosé, soins</a></li>
     <li><a href="#cours5">Cours 5 · Cave, effervescents</a></li>
-    <li><a href="#degustations">Dégustations</a></li>
+  </ul>
+  <ul class="subnav" data-for="degustations-part" aria-label="Dans Dégustations" hidden>
+    <li><a href="#d-c1">Cours 1 · Premiers vins</a></li>
+    <li><a href="#d-c2">Cours 2 · Bouche</a></li>
+    <li><a href="#d-c3">Cours 3 · Nez</a></li>
+    <li><a href="#d-c4">Cours 4 · Œil</a></li>
   </ul>
   <ul class="subnav" data-for="etudier" aria-label="Dans À étudier" hidden>
     <li><a href="#resume">Fiche résumé</a></li>
@@ -512,7 +519,7 @@ footer{border-top:1px solid var(--line);margin-top:3rem;padding-top:1.5rem;color
   </div>
   <div class="retenir">
     <p class="label">Évaluation</p>
-    <p>Les compétences évaluées, le format des épreuves et la liste de révision sont dans la partie 2 : <a href="#examen">ce qui sera évalué</a>.</p>
+    <p>Les compétences évaluées, le format des épreuves et la liste de révision sont dans la partie 3 : <a href="#examen">ce qui sera évalué</a>.</p>
   </div>
 </section>
 
@@ -967,11 +974,21 @@ footer{border-top:1px solid var(--line);margin-top:3rem;padding-top:1.5rem;color
   </div>
 </section>
 
+</div>
+
+<!-- ================= PARTIE 2 : DÉGUSTATIONS ================= -->
+<div class="part" id="degustations-part" hidden>
+<header class="part-head">
+  <p class="kicker">Partie 2</p>
+  <h2>Dégustations</h2>
+  <p class="lede">Tous les vins goûtés en classe, séance par séance : mon analyse, la correction du prof et la vérification en ligne.</p>
+</header>
+
 <section id="degustations">
   <header class="sec-head">
-    <p class="kicker">Dégustations</p>
+    <p class="kicker">Fiches et corrections</p>
     <h2>Les vins dégustés, cours par cours</h2>
-    <p class="sub">Mes fiches de dégustation recopiées, avec la correction du prof, puis vérifiées en ligne (fiche du domaine ou d'un caviste). Chaque cours ajoute une étape à la fiche : la bouche au cours 2, le nez au cours 3, l'œil au cours 4. Tous les vins viennent de chez Toby.</p>
+    <p class="sub">Mes fiches de dégustation recopiées, avec la correction du prof, puis vérifiées en ligne (fiche du domaine ou d'un caviste). Chaque cours ajoute une étape à la fiche : notes libres au cours 1, la bouche au cours 2, le nez au cours 3, l'œil au cours 4. Tous les vins viennent de chez Toby.</p>
   </header>
 
   <div class="block" id="d-c1">
@@ -1159,10 +1176,10 @@ footer{border-top:1px solid var(--line);margin-top:3rem;padding-top:1.5rem;color
 
 </div>
 
-<!-- ================= PARTIE 2 : À ÉTUDIER ================= -->
+<!-- ================= PARTIE 3 : À ÉTUDIER ================= -->
 <div class="part" id="etudier" hidden>
 <header class="part-head">
-  <p class="kicker">Partie 2</p>
+  <p class="kicker">Partie 3</p>
   <h2>À étudier</h2>
   <p class="lede">Toute la théorie de l'examen : la fiche résumé pour tout revoir d'un coup d'œil, les 38 slides marquées du post-it avec leur explication, l'analyse du vin, et ce qui sera évalué.</p>
 </header>
@@ -1655,10 +1672,10 @@ footer{border-top:1px solid var(--line);margin-top:3rem;padding-top:1.5rem;color
 </section>
 </div>
 
-<!-- ================= PARTIE 3 : EXERCICES ================= -->
+<!-- ================= PARTIE 4 : EXERCICES ================= -->
 <div class="part" id="exercices" hidden>
 <header class="part-head">
-  <p class="kicker">Partie 3</p>
+  <p class="kicker">Partie 4</p>
   <h2>Exercices</h2>
   <p class="lede">Onze exercices, tirés au hasard à chaque essai. Les trois premiers reprennent les formats annoncés pour l'examen. L'examen blanc mélange tout sur 20 questions.</p>
 </header>
@@ -2250,7 +2267,7 @@ const DEF_DOMS={all:null,vinif:["Vinification"],degust:["Visuel","Olfactif","Gus
 const catOf=g=>g.step==="Vinification"?"Vinification et soins":g.step==="Organisation"?"Types de dégustation":g.step+" · "+g.name;
 
 /* ===== Parties et navigation ===== */
-const PARTS=["cours","etudier","exercices"];
+const PARTS=["cours","degustations-part","etudier","exercices"];
 function showPart(id){
   PARTS.forEach(p=>{document.getElementById(p).hidden=p!==id;});
   document.querySelectorAll("[data-part]").forEach(a=>a.setAttribute("aria-current",a.dataset.part===id?"true":"false"));
