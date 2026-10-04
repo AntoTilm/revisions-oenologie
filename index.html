@@ -252,9 +252,25 @@ details p+p{margin-top:.5rem}
 .w.on{border-color:var(--kc);background:var(--surface);box-shadow:inset 0 -.35em 0 color-mix(in srgb,var(--kc) 22%,transparent)}
 .w .b{font:500 .72rem/1 var(--f-mono);background:var(--kc);color:var(--on-k);border-radius:50%;width:1.3rem;height:1.3rem;display:inline-grid;place-items:center}
 .w.good{border-color:var(--ok);outline:1.5px solid var(--ok)}
-.w.bad{border-color:var(--bad);outline:1.5px solid var(--bad)}
+.w.bad{border-color:var(--bad);outline:2px dashed var(--bad);outline-offset:1px}
+.w.good::before,.w.bad::before{font:700 .85em/1 var(--f-mono);display:inline-grid;place-items:center;width:1.25em;height:1.25em;border-radius:50%;color:var(--paper)}
+.w.good::before{content:"✓";background:var(--ok)}
+.w.bad::before{content:"✗";background:var(--bad)}
 .w .fix{flex-basis:100%;font:500 .74rem/1.2 var(--f-mono);color:var(--bad)}
 .w[disabled]{cursor:default}
+.cloud:empty::before{content:"Nuage vide : tous les mots sont rangés.";color:var(--muted);font-size:.92rem}
+.wrows{display:grid;gap:.6rem;margin-top:.8rem}
+.wrow{display:grid;gap:.35rem;padding:.5rem;border:1.5px dashed color-mix(in srgb,var(--kc) 55%,var(--line));border-radius:var(--radius);background:var(--paper)}
+.wrow.cur{border-style:solid;border-color:var(--kc)}
+.wrow.over{background:color-mix(in srgb,var(--kc) 10%,var(--paper))}
+.wrow .rub{justify-self:start}
+.wdrop{display:flex;flex-wrap:wrap;align-items:center;gap:.4rem .5rem;min-height:2.6rem;padding:.2rem .3rem}
+.wdrop:empty::before{content:"Glissez ou touchez des mots ici";color:var(--muted);font-size:.86rem}
+.wdrop .w{background:var(--surface);border-color:var(--kc);font-size:1rem;font-weight:400;font-family:inherit}
+.wrow .ref{font:500 .78rem/1.35 var(--f-mono);color:var(--muted);margin:0}
+.w.drag-src{opacity:.35}
+.w.drag-ghost{position:fixed;z-index:1000;pointer-events:none;margin:0;background:var(--surface);border-color:var(--wine);box-shadow:0 8px 18px -8px rgba(0,0,0,.45);transform:rotate(-2deg)}
+#nCloud .w,.wdrop .w{touch-action:none;user-select:none;-webkit-user-select:none}
 
 /* Remettre dans l'ordre */
 .slots{list-style:none;padding:0;display:grid;gap:.4rem}
@@ -1768,8 +1784,8 @@ footer{border-top:1px solid var(--line);margin-top:3rem;padding-top:1.5rem;color
       <span class="score" id="nScore">0 / 0</span>
     </div>
     <p class="ex-prompt" id="nPrompt"></p>
-    <div class="rubs" id="nRubs"></div>
     <div class="cloud" id="nCloud"></div>
+    <div class="wrows" id="nRubs"></div>
     <div class="ex-foot">
       <p id="nFeedback" aria-live="polite"></p>
       <div class="ex-actions"><button type="button" class="btn ghost" id="nCheck">Vérifier</button><button type="button" class="btn" id="nNext">Nouveau nuage</button></div>
@@ -2731,34 +2747,74 @@ EX.nuage=()=>{
       }
     }
     words.forEach(o=>{o.got=-1;o.s=size();});
-    R={rubs,words:shuf(words),k:rubs.length};active=0;checked=false;$("#nFeedback").textContent="";render();
+    R={rubs,words:shuf(words),k:rubs.length,order:rubs.map(()=>[])};active=0;checked=false;$("#nFeedback").textContent="";render();
+  }
+  let dragJustEnded=false;
+  const focusW=wi=>{const el=document.querySelector('#x-nuage .w[data-i="'+wi+'"]');if(el)el.focus();};
+  function place(wi,to,at){const o=R.words[wi];if(o.got>=0){const a=R.order[o.got];a.splice(a.indexOf(wi),1);}
+    o.got=to;if(to>=0){const a=R.order[to];a.splice(at==null?a.length:at,0,wi);}render();focusW(wi);}
+  /* Glisser-déposer (souris et tactile) : déplace le mot en direct, le modèle est relu au lâcher */
+  function startDrag(e,b,wi){
+    if(e.button>0)return;const sx=e.clientX,sy=e.clientY;let ghost=null,dx=0,dy=0,over=null;
+    const box=$("#x-nuage");
+    const target=(x,y)=>{const el=document.elementFromPoint(x,y);if(!el)return null;
+      const row=el.closest("#x-nuage .wrow");if(row)return row.querySelector(".wdrop");return el.closest("#nCloud");};
+    const move=ev=>{
+      if(!ghost){if(Math.hypot(ev.clientX-sx,ev.clientY-sy)<6)return;
+        const rc=b.getBoundingClientRect();dx=sx-rc.left;dy=sy-rc.top;
+        ghost=b.cloneNode(true);ghost.classList.add("drag-ghost");ghost.style.width=rc.width+"px";document.body.appendChild(ghost);b.classList.add("drag-src");}
+      ev.preventDefault();ghost.style.left=(ev.clientX-dx)+"px";ghost.style.top=(ev.clientY-dy)+"px";
+      const t=target(ev.clientX,ev.clientY);
+      box.querySelectorAll(".wrow.over").forEach(r=>r.classList.remove("over"));
+      if(t&&t.classList.contains("wdrop"))t.parentNode.classList.add("over");
+      if(!t)return;over=t;
+      const sib=[...t.children].filter(c=>c!==b&&c.classList.contains("w"));
+      let before=null;for(const c of sib){const r=c.getBoundingClientRect();
+        if(ev.clientY<r.top||(ev.clientY<=r.bottom&&ev.clientX<r.left+r.width/2)){before=c;break;}}
+      if(b.parentNode!==t||b.nextSibling!==before)t.insertBefore(b,before);};
+    const up=()=>{document.removeEventListener("pointermove",move);document.removeEventListener("pointerup",up);document.removeEventListener("pointercancel",up);
+      if(!ghost)return;ghost.remove();b.classList.remove("drag-src");
+      dragJustEnded=true;setTimeout(()=>{dragJustEnded=false;},0);
+      const o=R.words[wi];
+      /* relire l'ordre des lignes depuis le DOM */
+      box.querySelectorAll(".wrow").forEach(row=>{const i=+row.dataset.r;R.order[i]=[...row.querySelectorAll(".wdrop .w")].map(x=>+x.dataset.i);R.order[i].forEach(j=>{R.words[j].got=i;});});
+      if(b.closest("#nCloud"))o.got=-1;
+      if(o.got>=0&&R.k>1)active=o.got;
+      render();focusW(wi);};
+    document.addEventListener("pointermove",move,{passive:false});document.addEventListener("pointerup",up);document.addEventListener("pointercancel",up);
   }
   function render(){
     const k=R.k,r0=R.rubs[0];
     $("#nPrompt").innerHTML=k===1
-      ?(r0.part==="Arômes"?"Lesquels sont des <b>"+esc(r0.name.toLowerCase())+"</b> ? Touchez-les tous, puis vérifiez.":"Quels mots appartiennent à la rubrique <b>"+esc(r0.name)+"</b> ("+esc(r0.part.toLowerCase())+") ? Touchez-les tous, puis vérifiez.")
-      :"Choisissez une rubrique, puis touchez ses mots dans le nuage."+(R.words.some(o=>o.ans<0)?" Trois mots n'appartiennent à aucune des trois rubriques : laissez-les de côté.":" Chaque mot va dans une seule rubrique.");
-    const rb=$("#nRubs");rb.innerHTML="";
-    R.rubs.forEach((r,i)=>{const b=document.createElement("button");b.type="button";b.className="rub"+(k===1?" solo":"");
-      b.style.setProperty("--kc",KC[i]);b.setAttribute("aria-pressed",i===active?"true":"false");
-      const cnt=R.words.filter(o=>o.got===i).length;
-      b.innerHTML='<span class="n">'+(i+1)+'</span>'+esc(r.name)+(k>1&&r.part!=="Arômes"?' <span class="c">'+esc(r.part)+'</span>':'')+' <span class="c">· '+cnt+'</span>';
-      b.onclick=()=>{if(checked||k===1)return;active=i;render();rb.children[i].focus();};rb.appendChild(b);});
-    const cl=$("#nCloud");cl.innerHTML="";
-    R.words.forEach((o,wi)=>{const b=document.createElement("button");b.type="button";b.className="w "+o.s;
-      if(o.got>=0){b.classList.add("on");b.style.setProperty("--kc",KC[o.got]);b.setAttribute("aria-label",o.w+" : "+R.rubs[o.got].name);}
-      b.setAttribute("aria-pressed",o.got>=0?"true":"false");
-      b.innerHTML=esc(o.w)+(o.got>=0&&k>1?'<span class="b" aria-hidden="true">'+(o.got+1)+'</span>':'');
+      ?(r0.part==="Arômes"?"Lesquels sont des <b>"+esc(r0.name.toLowerCase())+"</b> ? Glissez-les dans la ligne (ou touchez-les), puis vérifiez.":"Quels mots appartiennent à la rubrique <b>"+esc(r0.name)+"</b> ("+esc(r0.part.toLowerCase())+") ? Glissez-les dans la ligne (ou touchez-les), puis vérifiez.")
+      :"Glissez chaque mot dans la ligne de sa rubrique, et remettez-les dans l'ordre si vous voulez. Vous pouvez aussi choisir une rubrique puis toucher ses mots."+(R.words.some(o=>o.ans<0)?" Trois mots n'appartiennent à aucune des trois rubriques : laissez-les de côté.":" Chaque mot va dans une seule rubrique.");
+    const cl=$("#nCloud"),rb=$("#nRubs");cl.innerHTML="";rb.innerHTML="";
+    const mkW=(wi,inRow)=>{const o=R.words[wi],b=document.createElement("button");b.type="button";b.className="w "+(inRow?"":o.s);b.dataset.i=wi;
+      if(o.got>=0){b.style.setProperty("--kc",KC[o.got]);b.setAttribute("aria-label",o.w+" : "+R.rubs[o.got].name);}
+      b.textContent=o.w;
       if(checked){b.disabled=true;const ok=o.got===o.ans;b.classList.add(ok?"good":"bad");
         if(!ok){const fx=document.createElement("span");fx.className="fix";fx.textContent=o.ans>=0?(k===1?"oublié":"→ "+(o.ans+1)+" · "+R.rubs[o.ans].name):"intrus : "+o.from;b.appendChild(fx);}}
-      else b.onclick=()=>{o.got=o.got===active?-1:active;render();const el=cl.children[wi];if(el)el.focus();};
-      cl.appendChild(b);});
+      else{b.onclick=()=>{if(dragJustEnded)return;place(wi,o.got>=0?-1:active);};
+        b.onkeydown=e=>{if(o.got<0||!e.key.startsWith("Arrow")||e.key==="ArrowUp"||e.key==="ArrowDown")return;const row=R.order[o.got],p=row.indexOf(wi),q=p+(e.key==="ArrowLeft"?-1:1);
+          if(q<0||q>=row.length)return;e.preventDefault();row.splice(p,1);row.splice(q,0,wi);render();focusW(wi);};
+        b.addEventListener("pointerdown",e=>startDrag(e,b,wi));}
+      return b;};
+    R.words.forEach((o,wi)=>{if(o.got<0)cl.appendChild(mkW(wi,false));});
+    R.rubs.forEach((r,i)=>{const row=document.createElement("div");row.className="wrow"+(i===active&&k>1&&!checked?" cur":"");row.style.setProperty("--kc",KC[i]);row.dataset.r=i;
+      const b=document.createElement("button");b.type="button";b.className="rub"+(k===1?" solo":"");
+      b.setAttribute("aria-pressed",i===active?"true":"false");
+      b.innerHTML='<span class="n">'+(i+1)+'</span>'+esc(r.name)+(k>1&&r.part!=="Arômes"?' <span class="c">'+esc(r.part)+'</span>':'')+' <span class="c">· '+R.order[i].length+'</span>';
+      b.onclick=()=>{if(checked||k===1)return;active=i;render();rb.querySelectorAll(".rub")[i].focus();};
+      const d=document.createElement("div");d.className="wdrop";R.order[i].forEach(wi=>d.appendChild(mkW(wi,true)));
+      row.append(b,d);
+      if(checked&&r.part!=="Arômes"){const ref=document.createElement("p");ref.className="ref";ref.textContent="Ordre de la fiche : "+r.words.join(" · ");row.appendChild(ref);}
+      rb.appendChild(row);});
     $("#nCheck").disabled=checked;
   }
   $("#nCheck").onclick=()=>{if(checked)return;checked=true;
     const g=R.words.filter(o=>o.got===o.ans).length,n=R.words.length;totG+=g;totN+=n;
     $("#nScore").textContent="Total : "+totG+" / "+totN;render();
-    $("#nFeedback").innerHTML=g===n?'<span class="ok">Parfait.</span> Tous les mots sont à la bonne place.':'<span class="ko">'+g+' / '+n+' mots corrects.</span> Les erreurs sont entourées de rouge, avec la bonne réponse.';};
+    $("#nFeedback").innerHTML=g===n?'<span class="ok">Parfait.</span> Tous les mots sont à la bonne place.':'<span class="ko">'+g+' / '+n+' mots corrects.</span> Les erreurs sont marquées ✗ (contour pointillé), avec la bonne réponse ; les mots justes sont marqués ✓.';};
   $("#nNext").onclick=build;$("#nTheme").onchange=build;$("#nMode").onchange=build;
   build();
 };
