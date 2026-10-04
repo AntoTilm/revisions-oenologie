@@ -373,6 +373,14 @@ footer{border-top:1px solid var(--line);margin-top:3rem;padding-top:1.5rem;color
 .lb-text{color:var(--on-scrim);display:grid;gap:.45rem;max-width:78ch;font-size:.98rem}
 .lb-text .r{background:var(--postit);color:var(--postit-ink);padding:.45rem .7rem;font-weight:700;border-radius:2px;justify-self:start}
 .lb-text a{color:var(--on-scrim)}
+.dg{gap:.55rem;padding-bottom:1rem;background:var(--surface)}
+.dg h4{margin-bottom:0}
+.dg-meta{font-size:.9rem;color:var(--muted);line-height:1.45}
+.dg .kv{font-size:.95rem;line-height:1.45;gap:.35rem .75rem}
+.dg .kv dt{font-size:.74rem;letter-spacing:.06em;text-transform:uppercase;padding-top:.15rem}
+.dg-check{border-top:1px dashed var(--line);padding-top:.6rem;font-size:.92rem;line-height:1.5}
+.dg-check .ok{color:var(--ok)}
+.dg-check .warn{color:var(--k3)}
 </style>
 <div class="page">
 <header class="site-head">
@@ -380,7 +388,7 @@ footer{border-top:1px solid var(--line);margin-top:3rem;padding-top:1.5rem;color
   <h1>Révisions d'œnologie</h1>
   <p class="lede">Trois parties séparées : le cours complet, la théorie à étudier pour l'examen, et les exercices.</p>
   <nav class="parts" aria-label="Parties du site">
-    <a href="#cours" data-part="cours"><span class="num">1</span><span class="pt">Le cours</span><span class="pd">La présentation du cours et le résumé complet des cours 1 à 5.</span></a>
+    <a href="#cours" data-part="cours"><span class="num">1</span><span class="pt">Le cours</span><span class="pd">La présentation du cours, le résumé complet des cours 1 à 5 et les vins dégustés.</span></a>
     <a href="#etudier" data-part="etudier" class="is-postit"><span class="num">2</span><span class="pt">À étudier</span><span class="pd">La fiche résumé globale, les 38 slides post-it expliquées, l'analyse du vin et ce qui sera évalué.</span></a>
     <a href="#exercices" data-part="exercices"><span class="num">3</span><span class="pt">Exercices</span><span class="pd">11 exercices et des centaines de questions, dont le nuage de mots de l'examen.</span></a>
   </nav>
@@ -399,6 +407,7 @@ footer{border-top:1px solid var(--line);margin-top:3rem;padding-top:1.5rem;color
     <li><a href="#cours3">Cours 3 · Blanc, vins doux</a></li>
     <li><a href="#cours4">Cours 4 · Rouge, rosé, soins</a></li>
     <li><a href="#cours5">Cours 5 · Cave, effervescents</a></li>
+    <li><a href="#degustations">Dégustations</a></li>
   </ul>
   <ul class="subnav" data-for="etudier" aria-label="Dans À étudier" hidden>
     <li><a href="#resume">Fiche résumé</a></li>
@@ -955,6 +964,160 @@ footer{border-top:1px solid var(--line);margin-top:3rem;padding-top:1.5rem;color
   <div class="block">
     <h3>Évaluer un vin</h3>
     <p class="prose">Stade d'évolution, potentiel de garde, typicité et style : voir la <a href="#f-evaluation">fiche de dégustation</a>.</p>
+  </div>
+</section>
+
+<section id="degustations">
+  <header class="sec-head">
+    <p class="kicker">Dégustations</p>
+    <h2>Les vins dégustés, cours par cours</h2>
+    <p class="sub">Mes fiches de dégustation recopiées, avec la correction du prof, puis vérifiées en ligne (fiche du domaine ou d'un caviste). Chaque cours ajoute une étape à la fiche : la bouche au cours 2, le nez au cours 3, l'œil au cours 4. Tous les vins viennent de chez Toby.</p>
+  </header>
+
+  <div class="block" id="d-c2">
+    <h3>Cours 2 · 14/09 · L'analyse gustative <span class="tag">bouche seule</span></h3>
+    <div class="wines">
+      <article class="wine dg" style="--c:#F2EAA2">
+        <h4><i aria-hidden="true"></i>1 · L'Ombre Fraîche 2024</h4>
+        <p class="dg-meta">Blanc · AOC Gaillac (Sud-Ouest) · Famille Balaran (Domaine d'Escausses) · Muscadelle, Sauvignon, Loin de l'œil · 11,5&nbsp;% · 9&nbsp;€</p>
+        <dl class="kv">
+          <dt>Bouche</dt><dd>Sec · frais · léger à modéré · mince à rond · persistance moyenne · harmonieux</dd>
+          <dt>Prof</dt><dd>Vin léger = corps mince.</dd>
+        </dl>
+        <p class="dg-check"><b class="ok">Confirmé.</b> Muscadelle 65&nbsp;%, Sauvignon 20&nbsp;%, Loin de l'œil 15&nbsp;%, élevé en cuve sur lies. Le domaine décrit « une attaque vive, un bon équilibre acide-alcool, une finale acidulée » : ça correspond à frais et harmonieux. <a href="https://famillebalaran.com/produit/lombre-fraiche/" target="_blank" rel="noopener">Famille Balaran</a></p>
+      </article>
+      <article class="wine dg" style="--c:#EDD67E">
+        <h4><i aria-hidden="true"></i>2 · Roulepierre blanc 2024</h4>
+        <p class="dg-meta">Blanc · AOC Côtes du Rhône · Pierre Amadieu · Grenache blanc, Clairette · 13,5&nbsp;% · 11&nbsp;€</p>
+        <dl class="kv">
+          <dt>Bouche</dt><dd>Sec · souple à frais · généreux · rond · persistance moyenne · harmonieux, avec l'alcool qui ressort</dd>
+          <dt>Prof</dt><dd>Un vin blanc n'est ni ferme, ni volumineux, ni musclé.</dd>
+        </dl>
+        <p class="dg-check"><b class="ok">Cuvée confirmée.</b> Le Roulepierre blanc existe bien chez Pierre Amadieu, mais je n'ai pas trouvé de fiche technique. Les 13,5&nbsp;% expliquent « généreux » : plus chaud que le Gaillac à 11,5&nbsp;%. <a href="https://www.cellars.com.au/?p=45339" target="_blank" rel="noopener">Cellars</a></p>
+      </article>
+      <article class="wine dg" style="--c:#971A2F">
+        <h4><i aria-hidden="true"></i>3 · Domaine de Pellehaut 2024</h4>
+        <p class="dg-meta">Rouge · IGP Côtes de Gascogne · 7 cépages : Merlot, Cabernet-Sauvignon, Tannat, Syrah, Malbec, Pinot noir, Manseng noir · 10,5&nbsp;% · 9&nbsp;€</p>
+        <dl class="kv">
+          <dt>Bouche</dt><dd>Frais · léger · tanins fondus à savoureux · mince · persistance courte à moyenne · harmonieux</dd>
+          <dt>Prof</dt><dd>Vin volontairement vinifié pour être léger en alcool, avec un effet millésime. Côté végétal (le cabernet), léger assèchement. Léger donc mince. Harmonieux dans son style.</dd>
+        </dl>
+        <p class="dg-check"><b class="ok">Probablement la cuvée Harmonie de Gascogne.</b> Mes 7 cépages correspondent exactement. Le caviste annonce 11,5&nbsp;% (pour un autre millésime), « fruits rouges acidulés, tanins souples » : cohérent avec frais et fondu. <a href="https://www.bienmanger.com/2A47388_Harmonie_Gascogne_Red_Wine_Igp_Cotes_Gascogne.html" target="_blank" rel="noopener">Bienmanger</a></p>
+      </article>
+      <article class="wine dg" style="--c:#6A1224">
+        <h4><i aria-hidden="true"></i>4 · Terre de Bussière 2022</h4>
+        <p class="dg-meta">Rouge · IGP Principauté d'Orange (Rhône) · Domaine de la Janasse · Merlot, Syrah, Cabernet, Grenache · 15&nbsp;% · 15&nbsp;€</p>
+        <dl class="kv">
+          <dt>Bouche</dt><dd>Frais · généreux · tanins présents · ferme · persistance moyenne + · les tanins dominent l'équilibre</dd>
+        </dl>
+        <p class="dg-check"><b class="ok">Confirmé.</b> Merlot 55&nbsp;%, Syrah 25&nbsp;%, Cabernet-Sauvignon 10&nbsp;%, Grenache 10&nbsp;%, 15&nbsp;%. Élevé 12 mois en fût (30&nbsp;% de neuf) : c'est ce qui explique les tanins présents et le corps ferme. <a href="https://www.enotria.com/products/domaine-de-la-janasse-terre-de-bussiere-igp-principaute-d-orange-2022" target="_blank" rel="noopener">Enotria&amp;Coe</a></p>
+      </article>
+    </div>
+  </div>
+
+  <div class="block" id="d-c3">
+    <h3>Cours 3 · 21/09 · L'analyse olfactive <span class="tag">nez + bouche</span></h3>
+    <div class="wines">
+      <article class="wine dg" style="--c:#E3E89A">
+        <h4><i aria-hidden="true"></i>1 · Château Haut-Grelot 2024</h4>
+        <p class="dg-meta">Blanc · Blaye Côtes de Bordeaux · ~90&nbsp;% Sauvignon, Sémillon · 13&nbsp;% · 8,50&nbsp;€</p>
+        <dl class="kv">
+          <dt>Nez</dt><dd>Moyennement aromatique · ouvert · fruité, floral, végétal, minéral · arômes primaires, un peu d'élevage</dd>
+          <dt>Mes arômes</dt><dd>Végétal, pamplemousse</dd>
+          <dt>Correction</dt><dd>2 fruits dominent : pamplemousse, pêche blanche. Floral : fleur de sureau. Une pointe de végétal (buis). Minéral (un peu de pierre à fusil, côté sauvignon).</dd>
+          <dt>Bouche</dt><dd>Sec · frais · modéré · rond · persistance moyenne · harmonieux</dd>
+        </dl>
+        <p class="dg-check"><b class="ok">Confirmé.</b> Le caviste donne 90&nbsp;% Sauvignon, 5&nbsp;% Sémillon, 5&nbsp;% Muscadelle et 12,5&nbsp;% ; arômes de pamplemousse, groseille, herbes sauvages, belle rondeur. <a href="https://www.npwines.com/products/chateau-haut-grelot-sauvignon-blanc" target="_blank" rel="noopener">NP Wines</a></p>
+      </article>
+      <article class="wine dg" style="--c:#DDB03A">
+        <h4><i aria-hidden="true"></i>2 · Château Haut-Grelot 2023 (élevé en fût)</h4>
+        <p class="dg-meta">Blanc · Blaye Côtes de Bordeaux · 100&nbsp;% Sauvignon · 13,5&nbsp;% · 11&nbsp;€</p>
+        <dl class="kv">
+          <dt>Nez</dt><dd>Moyennement aromatique · marqué par l'élevage · arômes tertiaires · empyreumatique, boisé, épicé, alimentaire</dd>
+          <dt>Mes arômes</dt><dd>Bois neuf, épicé, poivre, vanille</dd>
+          <dt>Correction</dt><dd>Empyreumatique : noix grillée, toasté. Boisé : bois neuf, chêne. Épicé : clou de girofle, vanille. Alimentaire : beurre, caramel. Une note de vernis, de la pêche, un peu de floral (miel léger). Le fruit et le végétal du sauvignon restent, mais l'élevage prend le pas.</dd>
+          <dt>Bouche</dt><dd>Sec · frais · modéré · rond · persistance moyenne + · harmonieux</dd>
+        </dl>
+        <p class="dg-check"><b class="ok">Probablement la cuvée La Belle de Blaye.</b> Le Guide Hachette la décrit comme « pur sauvignon élevé 9 mois en fût », avec du pamplemousse, du citron confit, des notes beurrées et biscuitées : ce sont les arômes de la correction. <a href="https://www.hachette-vins.com/guide-vins/producteurs/2624/earl-joel-bonneau" target="_blank" rel="noopener">Hachette</a></p>
+      </article>
+      <article class="wine dg" style="--c:#DDB03A">
+        <h4><i aria-hidden="true"></i>3 · Domaine de Mihoudy 2025</h4>
+        <p class="dg-meta">Blanc moelleux · Coteaux du Layon (Loire, Anjou) · Chenin · 12&nbsp;% · 13,37&nbsp;€</p>
+        <dl class="kv">
+          <dt>Nez</dt><dd>Moyennement à très aromatique · ouvert · fruité, floral · arômes primaires</dd>
+          <dt>Mes arômes</dt><dd>Levure, térébenthine</dd>
+          <dt>Correction</dt><dd>Fruits : coing, ananas, mangue (fruits exotiques). Floral : miel, acacia, fleur d'oranger. Des notes balsamiques et alimentaires (brioche). <b>Coing + miel = chenin.</b></dd>
+          <dt>Bouche</dt><dd>Moelleux · frais · modéré · rond · persistance moyenne + · la sucrosité domine, mais harmonieux</dd>
+        </dl>
+        <p class="dg-check"><b class="ok">Domaine confirmé</b> (vigneron des Coteaux du Layon, référencé par les Vins de Loire), pas de fiche pour ce millésime. Le sucre vient du raisin surmûri, sans mutage : c'est la différence avec le VDN qui suit. <a href="https://www.vinsdeloire.fr/en/domaine-mihoudy" target="_blank" rel="noopener">Vins de Loire</a></p>
+      </article>
+      <article class="wine dg" style="--c:#BF7A1C">
+        <h4><i aria-hidden="true"></i>4 · Muscat de Beaumes de Venise</h4>
+        <p class="dg-meta">VDN (vin doux naturel, muté) · AOC Muscat de Beaumes de Venise (Rhône) · Domaine de Fenouillet · Muscat · 15&nbsp;%</p>
+        <dl class="kv">
+          <dt>Nez</dt><dd>Très aromatique · ouvert · fruité, floral, balsamique · arômes primaires</dd>
+          <dt>Mes arômes</dt><dd>Litchi, rose, bonbon, poire, miel</dd>
+          <dt>Correction</dt><dd>Floral : rose, fleur de sureau, fleur d'oranger, miel. Fruits : raisin, abricot, litchi, poire, melon (fruits exotiques). Balsamique : une note d'alcool (acétone).</dd>
+          <dt>Bouche</dt><dd>Liquoreux · souple · corsé · volumineux · longue · sucrosité et alcool dominent</dd>
+          <dt>Prof</dt><dd>Quand on sent fort l'alcool, on dit « corsé ».</dd>
+        </dl>
+        <p class="dg-check"><b class="ok">Confirmé.</b> Domaine bio des frères Soard, vendangé à la main en plusieurs passages. Le caviste cite chèvrefeuille, nectarine, écorce d'orange, miel, et une belle longueur : ça colle avec le floral, le fruité et « longue ». <a href="https://astorwines.com/item/21334" target="_blank" rel="noopener">Astor Wines</a></p>
+      </article>
+    </div>
+  </div>
+
+  <div class="block" id="d-c4">
+    <h3>Cours 4 · 28/09 · L'analyse visuelle <span class="tag">œil + nez + bouche</span></h3>
+    <div class="wines">
+      <article class="wine dg" style="--c:#EED8CD">
+        <h4><i aria-hidden="true"></i>1 · Château des Platanes 2025</h4>
+        <p class="dg-meta">Rosé · AOP Côtes de Provence · Flayosc (Var) · Grenache, Syrah, Cinsault · 13&nbsp;% · 13,26&nbsp;€</p>
+        <dl class="kv">
+          <dt>Œil</dt><dd>Très pâle · gris · fluide</dd>
+          <dt>Nez</dt><dd>Moyennement aromatique · ouvert · primaires · fruité, végétal, minéral</dd>
+          <dt>Mes arômes</dt><dd>Menthe, pamplemousse</dd>
+          <dt>Correction</dt><dd>Agrumes, pommes vertes, groseille, herbacé</dd>
+          <dt>Bouche</dt><dd>Sec · frais · modéré · rond · persistance moyenne · harmonieux</dd>
+        </dl>
+        <p class="dg-check"><b class="warn">Domaine confirmé, fiche introuvable.</b> Le château existe bien à Flayosc (adresse identique à la contre-étiquette), mais son site ne répondait pas. Robe gris très pâle : le style typique d'un rosé de Provence par pressurage direct. <a href="https://www.vivino.com/en/chateau-des-platanes-cotes-de-provence/w/9086051" target="_blank" rel="noopener">Vivino</a></p>
+      </article>
+      <article class="wine dg" style="--c:#E48B57">
+        <h4><i aria-hidden="true"></i>2 · Domaine de la Janasse 2023</h4>
+        <p class="dg-meta">Rosé · AOC Côtes du Rhône · 50&nbsp;% Grenache, 30&nbsp;% Cinsault, 10&nbsp;% Syrah, 10&nbsp;% Counoise · 14&nbsp;% · 13,95&nbsp;€</p>
+        <dl class="kv">
+          <dt>Œil</dt><dd>Moyennement pâle · orangé (cerise hésité) · grasse</dd>
+          <dt>Nez</dt><dd>Moyennement aromatique · ouvert · primaires · fruité, floral, boisé, alimentaire</dd>
+          <dt>Mes arômes</dt><dd>Cerise, laurier, bois de cèdre</dd>
+          <dt>Correction</dt><dd>Beurré, vanille, laurier, cerise, fraise, poivre, jasmin</dd>
+          <dt>Bouche</dt><dd>Sec · souple à frais · modéré à généreux · rond · persistance moyenne · harmonieux</dd>
+        </dl>
+        <p class="dg-check"><b class="ok">Confirmé.</b> L'assemblage est exactement celui du domaine. Il décrit « des fruits frais (cerise, fraise), une pointe d'épices, une belle acidité ». Les 14&nbsp;% expliquent la robe grasse et l'alcool entre modéré et généreux ; 3 ans d'âge expliquent les reflets orangés. <a href="https://wine.com/product/Domaine-de-la-Janasse-Cotes-du-Rhone-Rose-2021/1013365" target="_blank" rel="noopener">Wine.com</a></p>
+      </article>
+      <article class="wine dg" style="--c:#971A2F">
+        <h4><i aria-hidden="true"></i>3 · Cattin Sauvage Pinot noir 2025</h4>
+        <p class="dg-meta">Rouge · AOC Alsace · Joseph Cattin (Voegtlinshoffen) · 100&nbsp;% Pinot noir · bio, vegan · 12,5&nbsp;% · 14&nbsp;€</p>
+        <dl class="kv">
+          <dt>Œil</dt><dd>Profonde · rubis · fluide</dd>
+          <dt>Nez</dt><dd>Moyennement aromatique · ouvert · primaires · fruité, végétal, empyreumatique, boisé, alimentaire</dd>
+          <dt>Mes arômes</dt><dd>Cassis, mûre, chêne</dd>
+          <dt>Correction</dt><dd>Fraise, cerise, prune, lacté, fumé</dd>
+          <dt>Bouche</dt><dd>Sec · souple à frais · modéré · tanins fondus à présents · rond · persistance moyenne · harmonieux</dd>
+        </dl>
+        <p class="dg-check"><b class="ok">Confirmé.</b> Le caviste décrit des petits fruits rouges croquants, de la fraise des bois, une touche florale, des tanins soyeux et une acidité vive (millésime 2023). La fraise de la correction et les tanins fondus collent. Mes fruits noirs (cassis, mûre) étaient à côté : le pinot noir donne plutôt des fruits rouges. <a href="https://winedispensary.com/products/joseph-cattin-cattin-sauvage-pinot-noir-alsace-france" target="_blank" rel="noopener">Wine Dispensary</a></p>
+      </article>
+      <article class="wine dg" style="--c:#4F1242">
+        <h4><i aria-hidden="true"></i>4 · Martin Clerc Syrah 2024</h4>
+        <p class="dg-meta">Rouge · IGP Collines Rhodaniennes (Rhône nord) · 100&nbsp;% Syrah · 12,5&nbsp;% · 17&nbsp;€</p>
+        <dl class="kv">
+          <dt>Œil</dt><dd>Foncée · reflet violacé (grenat hésité) · fluide, teintée</dd>
+          <dt>Nez</dt><dd>Faiblement à moyennement aromatique · ouvert · tertiaires · fruité, empyreumatique, boisé, animal</dd>
+          <dt>Mes arômes</dt><dd>Mûre, cuir, violette</dd>
+          <dt>Correction</dt><dd>Cassis, mûre, violette, poivre, goudron, fumé, jus de viande</dd>
+          <dt>Bouche</dt><dd>Frais · modéré · tanins savoureux à présents · rond à ferme · persistance moyenne à longue · harmonieux</dd>
+        </dl>
+        <p class="dg-check"><b class="ok">Confirmé.</b> Vignes à Tupin-et-Semons, au sud de la Côte-Rôtie, élevage en fût et en cuve, 12,5&nbsp;%. Le caviste cite : rubis profond aux reflets grenat et magenta, cassis, prune, olive noire, laurier, viande séchée, poivre, finale sur la violette. C'est le profil de la syrah du Rhône nord, et ça correspond à la correction. <a href="https://sommselect.com/products/somm2002-mc18crsyr-750" target="_blank" rel="noopener">SommSelect</a></p>
+      </article>
+    </div>
   </div>
 </section>
 
