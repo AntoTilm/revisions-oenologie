@@ -451,13 +451,14 @@ footer{border-top:1px solid var(--line);margin-top:3rem;padding-top:1.5rem;color
 <header class="site-head">
   <p class="kicker">CEFOR Namur · Initiation à l'étude des vins · 2026</p>
   <h1>Révisions d'œnologie</h1>
-  <p class="lede">Cinq parties séparées : le cours complet, les dégustations, la théorie à étudier pour l'examen, les exercices et la carte des vignobles.</p>
+  <p class="lede">Six parties séparées : le cours complet, les dégustations, la théorie à étudier pour l'examen, le labo d'analyse, les exercices et la carte des vignobles.</p>
   <nav class="parts" aria-label="Parties du site">
     <a href="#cours" data-part="cours"><span class="num">1</span><span class="pt">Le cours</span><span class="pd">La présentation du cours et le résumé complet des cours 1 à 5.</span></a>
     <a href="#degustations-part" data-part="degustations-part"><span class="num">2</span><span class="pt">Dégustations</span><span class="pd">Les vins goûtés à chaque cours : mes fiches, la correction du prof et la vérification en ligne.</span></a>
-    <a href="#etudier" data-part="etudier" class="is-postit"><span class="num">3</span><span class="pt">À étudier</span><span class="pd">La fiche résumé globale, les 38 slides post-it expliquées, l'analyse du vin et ce qui sera évalué.</span></a>
-    <a href="#exercices" data-part="exercices"><span class="num">4</span><span class="pt">Exercices</span><span class="pd">11 exercices et des centaines de questions, dont le nuage de mots de l'examen.</span></a>
-    <a href="#vignobles" data-part="vignobles"><span class="num">5</span><span class="pt">Vignobles</span><span class="pd">La carte interactive des régions viticoles de France : cépages, appellations, et un quiz pour les placer.</span></a>
+    <a href="#etudier" data-part="etudier" class="is-postit"><span class="num">3</span><span class="pt">À étudier</span><span class="pd">La fiche résumé globale, les 38 slides post-it expliquées et ce qui sera évalué.</span></a>
+    <a href="#labo" data-part="labo"><span class="num">4</span><span class="pt">Labo d'analyse</span><span class="pd">Le manuel de la fiche de dégustation : robes, arômes, saveurs, évaluation et effervescents.</span></a>
+    <a href="#exercices" data-part="exercices"><span class="num">5</span><span class="pt">Exercices</span><span class="pd">11 exercices et des centaines de questions, dont le nuage de mots de l'examen.</span></a>
+    <a href="#vignobles" data-part="vignobles"><span class="num">6</span><span class="pt">Vignobles</span><span class="pd">La carte interactive des régions viticoles de France : cépages, appellations, et un quiz pour les placer.</span></a>
   </nav>
 </header>
 
@@ -466,8 +467,9 @@ footer{border-top:1px solid var(--line);margin-top:3rem;padding-top:1.5rem;color
     <a href="#cours" data-part="cours"><span class="n">1</span>Le cours</a>
     <a href="#degustations-part" data-part="degustations-part"><span class="n">2</span>Dégustations</a>
     <a href="#etudier" data-part="etudier"><span class="n">3</span>À étudier</a>
-    <a href="#exercices" data-part="exercices"><span class="n">4</span>Exercices</a>
-    <a href="#vignobles" data-part="vignobles"><span class="n">5</span>Vignobles</a>
+    <a href="#labo" data-part="labo"><span class="n">4</span>Labo</a>
+    <a href="#exercices" data-part="exercices"><span class="n">5</span>Exercices</a>
+    <a href="#vignobles" data-part="vignobles"><span class="n">6</span>Vignobles</a>
   </nav>
   <ul class="subnav" data-for="cours" aria-label="Dans le cours">
     <li><a href="#presentation">Présentation</a></li>
@@ -487,11 +489,15 @@ footer{border-top:1px solid var(--line);margin-top:3rem;padding-top:1.5rem;color
   <ul class="subnav" data-for="etudier" aria-label="Dans À étudier" hidden>
     <li><a href="#resume">Fiche résumé</a></li>
     <li><a href="#postit">Slides post-it</a></li>
+    <li><a href="#examen">L'examen</a></li>
+  </ul>
+  <ul class="subnav" data-for="labo" aria-label="Dans le Labo" hidden>
+    <li><a href="#labo-methode">Méthode</a></li>
     <li><a href="#f-visuel">L'œil</a></li>
     <li><a href="#f-olfactif">Le nez</a></li>
     <li><a href="#f-gustatif">La bouche</a></li>
     <li><a href="#f-evaluation">Évaluer</a></li>
-    <li><a href="#examen">L'examen</a></li>
+    <li><a href="#f-effervescents">Les bulles</a></li>
   </ul>
   <ul class="subnav" data-for="exercices" aria-label="Exercices" hidden>
     <li><a href="#x-nuage">Nuage de mots</a></li>
@@ -1324,7 +1330,7 @@ footer{border-top:1px solid var(--line);margin-top:3rem;padding-top:1.5rem;color
 <header class="part-head">
   <p class="kicker">Partie 3</p>
   <h2>À étudier</h2>
-  <p class="lede">Toute la théorie de l'examen : la fiche résumé pour tout revoir d'un coup d'œil, les 38 slides marquées du post-it avec leur explication, l'analyse du vin, et ce qui sera évalué.</p>
+  <p class="lede">Toute la théorie de l'examen : la fiche résumé pour tout revoir d'un coup d'œil, les 38 slides marquées du post-it avec leur explication, et ce qui sera évalué. L'analyse du vin est dans le <a href="#labo">Labo</a>.</p>
 </header>
 
 <section id="resume">
@@ -1596,118 +1602,6 @@ footer{border-top:1px solid var(--line);margin-top:3rem;padding-top:1.5rem;color
   <div id="pgroups"></div>
 </section>
 
-<section id="fiche">
-  <header class="sec-head">
-    <p class="kicker">Fiche de dégustation</p>
-    <h2>Le vocabulaire, étape par étape</h2>
-    <p class="sub">L'ordre d'analyse : l'œil, le nez, la bouche, puis l'évaluation. À l'examen pratique, il faut associer chaque terme à sa définition et choisir les bons termes pour décrire deux vins. Les barres vont du moins (−) au plus (+), comme sur les slides.</p>
-  </header>
-
-  <div class="sub-block" id="f-visuel">
-    <h3><span class="kicker">1 · L'œil</span> Analyse visuelle</h3>
-    <div class="cols">
-      <div class="panel">
-        <h4>Intensité de la robe</h4>
-        <p>La profondeur de la teinte. Elle vient du cépage, du temps de macération, des rendements et de l'âge. Un rouge <b>perd</b> sa couleur en vieillissant ; un blanc <b>se fonce</b>.</p>
-      </div>
-      <div class="panel">
-        <h4>Couleur de la robe</h4>
-        <p>Le cépage d'abord (les cabernets donnent des robes plus intenses que le pinot noir), mais surtout la vinification : la couleur du rouge vient de la pellicule, donc de la macération. La maturité compte aussi. L'oxydation brunit.</p>
-      </div>
-      <div class="panel">
-        <h4>Limpidité et gaz</h4>
-        <p><b>Limpide</b> ou <b>trouble / voilé / laiteux</b>. Un trouble peut signaler une dégradation bactérienne ou un élevage médiocre, mais pas forcément : beaucoup de vins sont « non filtrés ».</p>
-        <p>Quelques fines bulles en surface (<b>perlant</b>) : le CO₂ naturel, signe de jeunesse.</p>
-      </div>
-    </div>
-    <div class="robes" aria-label="Nuances de robe">
-      <div class="robe-row"><h4>Blancs</h4><ol>
-        <li><i style="--c:#E3E89A"></i>Jaune vert</li><li><i style="--c:#F2EAA2"></i>Jaune pâle</li><li><i style="--c:#DCE6BE"></i>Vert d'eau</li><li><i style="--c:#EDD67E"></i>Paille</li><li><i style="--c:#DDB03A"></i>Or / doré</li><li><i style="--c:#BF7A1C"></i>Ambré</li>
-      </ol><p class="robe-axis"><span>jeune</span><span>évolué, liquoreux</span></p></div>
-      <div class="robe-row"><h4>Rouges</h4><ol>
-        <li><i style="--c:#4F1242"></i>Reflet violacé</li><li><i style="--c:#6A1224"></i>Grenat</li><li><i style="--c:#971A2F"></i>Rubis</li><li><i style="--c:#B3302A"></i>Vermillon</li><li><i style="--c:#A95A2A"></i>Orange</li><li><i style="--c:#8E4630"></i>Brique</li>
-      </ol><p class="robe-axis"><span>jeune</span><span>évolué (tuilé)</span></p></div>
-      <div class="robe-row"><h4>Rosés</h4><ol>
-        <li><i style="--c:#EED8CD"></i>Gris</li><li><i style="--c:#F1B3BC"></i>Rose</li><li><i style="--c:#D5506A"></i>Framboise</li><li><i style="--c:#BE2A40"></i>Cerise</li><li><i style="--c:#EFA088"></i>Saumoné</li><li><i style="--c:#E48B57"></i>Orangé</li>
-      </ol></div>
-    </div>
-    <div class="ladders" data-ladders="Visuel"></div>
-  </div>
-
-  <div class="sub-block" id="f-olfactif">
-    <h3><span class="kicker">2 · Le nez</span> Analyse olfactive</h3>
-    <div class="cols">
-      <div class="panel">
-        <h4>Deux voies</h4>
-        <p><b>Directe</b> : on hume (on parle d'« odeur »).</p>
-        <p><b>Rétronasale</b> : par le passage entre le palais et les fosses nasales, vin en bouche (on parle d'« arôme »).</p>
-      </div>
-      <div class="panel">
-        <h4>Deux nez</h4>
-        <p><b>Premier nez</b>, sans remuer : on repère un défaut éventuel (sinon le vin est « net ») et les premières familles d'arômes.</p>
-        <p><b>Second nez</b>, après avoir fait tourner le vin : on l'oxygène et on précise les arômes.</p>
-      </div>
-      <div class="panel">
-        <h4>Chiffres</h4>
-        <p>Environ <span class="num">600</span> arômes identifiés dans les vins. Un vin contient en moyenne <span class="num">300</span> composés aromatiques, dont <span class="num">7</span> décelables par un nez exercé, pour moins de <span class="num">1 g</span> par litre.</p>
-        <p>Goût de bouchon : le 2-4-6 trichloroanisole (TCA), détectable à 90 milliardièmes de gramme par litre.</p>
-      </div>
-    </div>
-    <div class="retenir">
-      <p class="label">L'ordre d'apparition des arômes</p>
-      <p><b>Primaires</b> (du raisin, du cépage) → <b>secondaires</b> (des fermentations) → <b>tertiaires</b> (de l'élevage en fût et du vieillissement en bouteille, liés à l'oxygène).</p>
-    </div>
-    <div class="ladders" data-ladders="Olfactif"></div>
-    <div class="tbl wide">
-      <table>
-        <thead><tr><th>Famille</th><th>Catégorie</th><th>Exemples</th></tr></thead>
-        <tbody>
-          <tr><th>Fruits</th><td class="cat">Primaire</td><td>Citron, orange, pamplemousse, pomme, abricot, pêche, poire, coing, fraise, cerise, prune, figue, groseille, cassis, sureau, mûre, banane, melon, ananas, litchi, mangue, noisette, amande</td></tr>
-          <tr><th>Végétal</th><td class="cat">Primaire</td><td>Bourgeon de cassis, buis, herbacé, fenouil, fougère, menthe, poivron vert</td></tr>
-          <tr><th>Floral</th><td class="cat">Primaire</td><td>Rose, aubépine, tilleul, fleur d'oranger, géranium, pivoine, acacia, violette, miel</td></tr>
-          <tr><th>Alimentaire</th><td class="cat">Secondaire</td><td>Pain frais, biscuit, beurre, levure, bière, caramel, bonbons, lacté / yaourt, chocolat</td></tr>
-          <tr><th>Balsamique</th><td class="cat">Secondaire</td><td>Résine, térébenthine, soufre, vernis, acétone, colle à bois</td></tr>
-          <tr><th>Minéral</th><td class="cat">Secondaire</td><td>Iode, craie, argile, pierre à fusil / silex, galet mouillé, terre humide, terreau</td></tr>
-          <tr><th>Empyreumatique</th><td class="cat">Tertiaire</td><td>Fumée, goudron, pétrole, toasté, notes grillées, caoutchouc, suie, brûlé</td></tr>
-          <tr><th>Épices / aromates</th><td class="cat">Tertiaire</td><td>Poivre, muscade, cannelle, laurier, thym, clou de girofle, vanille, safran, réglisse</td></tr>
-          <tr><th>Animal</th><td class="cat">Tertiaire</td><td>Cuir, fourrure, gibier, venaison, jus de viande, chien mouillé, étable</td></tr>
-          <tr><th>Boisé</th><td class="cat">Tertiaire</td><td>Bois neuf, cèdre, pin, chêne</td></tr>
-          <tr><th>Végétal tertiaire</th><td class="cat">Tertiaire</td><td>Foin, feuilles mortes, tabac, humus, truffe, champignons, sous-bois, thé</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-
-  <div class="sub-block" id="f-gustatif">
-    <h3><span class="kicker">3 · La bouche</span> Analyse gustative</h3>
-    <p class="prose">Une substance n'a de goût que si elle est soluble dans la salive. La <b>salivation</b> est une réaction très importante : les acides font saliver davantage que les autres saveurs.</p>
-    <div class="tbl wide">
-      <table>
-        <thead><tr><th>Saveur</th><th>Salivation</th><th>Où et quand</th><th>Interprétation</th></tr></thead>
-        <tbody>
-          <tr><th>Sucré</th><td>Salive épaisse et visqueuse</td><td>Bout de la langue. Immédiat, maximum après 2 s, disparaît après 10 s</td><td>Souplesse, gras, moelleux. Amplifié par l'alcool et par la température. Fixe les arômes : les liquoreux ont un nez moins explosif</td></tr>
-          <tr><th>Acide</th><td>Salive fluide et abondante</td><td>Côtés et dessous. Rapide, persiste comme le salé</td><td>Fraîcheur. Acides malique, tartrique, citrique. Lié à la salinité</td></tr>
-          <tr><th>Salé</th><td>Pas de modification</td><td>Bords avant, centre (minéralité). Rapide, persiste plus que le sucré</td><td>Fraîcheur, relève la sapidité. Souvent masqué par les autres saveurs</td></tr>
-          <tr><th>Amer</th><td>Diminue, bouche sèche</td><td>Partie postérieure. Lent, augmente et dure longtemps</td><td>Souvent associé à l'astringence des tanins</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <p class="muted prose">Au cours 1, la slide des 4 saveurs montre la « carte de la langue » tamponnée <b>FAUX</b> : les zones ne sont que des repères. Retenez surtout la vitesse et la durée de chaque saveur.</p>
-    <ol class="steps">
-      <li data-n="1"><span><span class="t">L'attaque</span> <span class="num">2–3 s</span><span class="d">Petite gorgée, on aspire un filet d'air. Le sucré se sent en premier.</span></span></li>
-      <li data-n="2"><span><span class="t">Le milieu de bouche</span> <span class="num">≈ 10 s</span><span class="d">On remue le vin : température, viscosité, gaz carbonique, astringence. On juge l'harmonie et le volume.</span></span></li>
-      <li data-n="3"><span><span class="t">La fin de bouche (finale)</span><span class="d">Dominée par les tanins pour un rouge, elle dit tout sur la structure. La persistance (longueur) établit la hiérarchie des vins.</span></span></li>
-    </ol>
-    <div class="ladders" data-ladders="Gustatif"></div>
-  </div>
-
-  <div class="sub-block" id="f-evaluation">
-    <h3><span class="kicker">4 · Le jugement</span> Évaluation du vin</h3>
-    <p class="prose">Elle ne se complète que lorsqu'on connaît l'identité du vin. Objectif : estimer le stade d'évolution et le potentiel de garde, qualifier la typicité et le caractère global.</p>
-    <div class="ladders" data-ladders="Évaluation"></div>
-  </div>
-</section>
-
 <section id="examen">
   <header class="sec-head">
     <p class="kicker">Examen</p>
@@ -1826,10 +1720,191 @@ footer{border-top:1px solid var(--line);margin-top:3rem;padding-top:1.5rem;color
 </section>
 </div>
 
-<!-- ================= PARTIE 4 : EXERCICES ================= -->
-<div class="part" id="exercices" hidden>
+<!-- ================= PARTIE 4 : LABO ================= -->
+<div class="part" id="labo" hidden>
 <header class="part-head">
   <p class="kicker">Partie 4</p>
+  <h2>Labo d'analyse</h2>
+  <p class="lede">Le manuel de la fiche de dégustation : tout ce qu'il faut savoir pour l'œil, le nez, la bouche, l'évaluation et les effervescents, au même endroit.</p>
+</header>
+
+<section id="labo-methode">
+  <header class="sec-head">
+    <p class="kicker">Avant de commencer</p>
+    <h2>La méthode</h2>
+    <p class="sub">On remplit la fiche dans l'ordre, sans revenir en arrière.</p>
+  </header>
+  <ol class="steps">
+    <li data-n="1"><span><span class="t">L'œil</span><span class="d">Intensité, couleur, viscosité, limpidité, gaz carbonique. <a href="#f-visuel">Détail</a></span></span></li>
+    <li data-n="2"><span><span class="t">Le nez</span><span class="d">Premier nez sans remuer, second nez après aération. Intensité, catégorie, bouquet, familles, arômes. <a href="#f-olfactif">Détail</a></span></span></li>
+    <li data-n="3"><span><span class="t">La bouche</span><span class="d">Attaque, milieu, finale. Sucrosité, acidité, alcool, tanins, corps, persistance, équilibre. <a href="#f-gustatif">Détail</a></span></span></li>
+    <li data-n="4"><span><span class="t">L'évaluation</span><span class="d">Une fois le vin connu : stade d'évolution et potentiel de garde. <a href="#f-evaluation">Détail</a></span></span></li>
+  </ol>
+  <p class="prose">Conditions : verre INAO, 5 à 6 cl, lumière du jour, pas d'odeurs ; ordre blanc, rosé, rouge, moelleux. <a href="#c1-degustation">Revoir</a> · Cohérence entre rubriques : <a href="#f-coherence">les règles du prof</a> · Mes fiches : <a href="#degustations">dégustations</a>.</p>
+</section>
+
+<section id="fiche">
+  <header class="sec-head">
+    <p class="kicker">Le manuel</p>
+    <h2>Le vocabulaire, étape par étape</h2>
+    <p class="sub">L'ordre d'analyse : l'œil, le nez, la bouche, puis l'évaluation. À l'examen pratique, il faut associer chaque terme à sa définition et choisir les bons termes pour décrire deux vins. Les barres vont du moins (−) au plus (+), comme sur les slides.</p>
+  </header>
+
+  <div class="sub-block" id="f-visuel">
+    <h3><span class="kicker">1 · L'œil</span> Analyse visuelle</h3>
+    <div class="cols">
+      <div class="panel">
+        <h4>Intensité de la robe</h4>
+        <p>La profondeur de la teinte. Elle vient du cépage, du temps de macération, des rendements et de l'âge. Un rouge <b>perd</b> sa couleur en vieillissant ; un blanc <b>se fonce</b>.</p>
+      </div>
+      <div class="panel">
+        <h4>Couleur de la robe</h4>
+        <p>Le cépage d'abord (les cabernets donnent des robes plus intenses que le pinot noir), mais surtout la vinification : la couleur du rouge vient de la pellicule, donc de la macération. La maturité compte aussi. L'oxydation brunit.</p>
+      </div>
+      <div class="panel">
+        <h4>Limpidité et gaz</h4>
+        <p><b>Limpide</b> ou <b>trouble / voilé / laiteux</b>. Un trouble peut signaler une dégradation bactérienne ou un élevage médiocre, mais pas forcément : beaucoup de vins sont « non filtrés ».</p>
+        <p>Quelques fines bulles en surface (<b>perlant</b>) : le CO₂ naturel, signe de jeunesse.</p>
+      </div>
+    </div>
+    <div class="robes" aria-label="Nuances de robe">
+      <div class="robe-row"><h4>Blancs</h4><ol>
+        <li><i style="--c:#E3E89A"></i>Jaune vert</li><li><i style="--c:#F2EAA2"></i>Jaune pâle</li><li><i style="--c:#DCE6BE"></i>Vert d'eau</li><li><i style="--c:#EDD67E"></i>Paille</li><li><i style="--c:#DDB03A"></i>Or / doré</li><li><i style="--c:#BF7A1C"></i>Ambré</li>
+      </ol><p class="robe-axis"><span>jeune</span><span>évolué, liquoreux</span></p></div>
+      <div class="robe-row"><h4>Rouges</h4><ol>
+        <li><i style="--c:#4F1242"></i>Reflet violacé</li><li><i style="--c:#6A1224"></i>Grenat</li><li><i style="--c:#971A2F"></i>Rubis</li><li><i style="--c:#B3302A"></i>Vermillon</li><li><i style="--c:#A95A2A"></i>Orange</li><li><i style="--c:#8E4630"></i>Brique</li>
+      </ol><p class="robe-axis"><span>jeune</span><span>évolué (tuilé)</span></p></div>
+      <div class="robe-row"><h4>Rosés</h4><ol>
+        <li><i style="--c:#EED8CD"></i>Gris</li><li><i style="--c:#F1B3BC"></i>Rose</li><li><i style="--c:#D5506A"></i>Framboise</li><li><i style="--c:#BE2A40"></i>Cerise</li><li><i style="--c:#EFA088"></i>Saumoné</li><li><i style="--c:#E48B57"></i>Orangé</li>
+      </ol></div>
+    </div>
+    <div class="ladders" data-ladders="Visuel"></div>
+  </div>
+
+  <div class="sub-block" id="f-olfactif">
+    <h3><span class="kicker">2 · Le nez</span> Analyse olfactive</h3>
+    <div class="cols">
+      <div class="panel">
+        <h4>Deux voies</h4>
+        <p><b>Directe</b> : on hume (on parle d'« odeur »).</p>
+        <p><b>Rétronasale</b> : par le passage entre le palais et les fosses nasales, vin en bouche (on parle d'« arôme »).</p>
+      </div>
+      <div class="panel">
+        <h4>Deux nez</h4>
+        <p><b>Premier nez</b>, sans remuer : on repère un défaut éventuel (sinon le vin est « net ») et les premières familles d'arômes.</p>
+        <p><b>Second nez</b>, après avoir fait tourner le vin : on l'oxygène et on précise les arômes.</p>
+      </div>
+      <div class="panel">
+        <h4>Chiffres</h4>
+        <p>Environ <span class="num">600</span> arômes identifiés dans les vins. Un vin contient en moyenne <span class="num">300</span> composés aromatiques, dont <span class="num">7</span> décelables par un nez exercé, pour moins de <span class="num">1 g</span> par litre.</p>
+        <p>Goût de bouchon : le 2-4-6 trichloroanisole (TCA), détectable à 90 milliardièmes de gramme par litre.</p>
+      </div>
+    </div>
+    <div class="retenir">
+      <p class="label">L'ordre d'apparition des arômes</p>
+      <p><b>Primaires</b> (du raisin, du cépage) → <b>secondaires</b> (des fermentations) → <b>tertiaires</b> (de l'élevage en fût et du vieillissement en bouteille, liés à l'oxygène).</p>
+    </div>
+    <div class="ladders" data-ladders="Olfactif"></div>
+    <div class="tbl wide">
+      <table>
+        <thead><tr><th>Famille</th><th>Catégorie</th><th>Exemples</th></tr></thead>
+        <tbody>
+          <tr><th>Fruits</th><td class="cat">Primaire</td><td>Citron, orange, pamplemousse, pomme, abricot, pêche, poire, coing, fraise, cerise, prune, figue, groseille, cassis, sureau, mûre, banane, melon, ananas, litchi, mangue, noisette, amande</td></tr>
+          <tr><th>Végétal</th><td class="cat">Primaire</td><td>Bourgeon de cassis, buis, herbacé, fenouil, fougère, menthe, poivron vert</td></tr>
+          <tr><th>Floral</th><td class="cat">Primaire</td><td>Rose, aubépine, tilleul, fleur d'oranger, géranium, pivoine, acacia, violette, miel</td></tr>
+          <tr><th>Alimentaire</th><td class="cat">Secondaire</td><td>Pain frais, biscuit, beurre, levure, bière, caramel, bonbons, lacté / yaourt, chocolat</td></tr>
+          <tr><th>Balsamique</th><td class="cat">Secondaire</td><td>Résine, térébenthine, soufre, vernis, acétone, colle à bois</td></tr>
+          <tr><th>Minéral</th><td class="cat">Secondaire</td><td>Iode, craie, argile, pierre à fusil / silex, galet mouillé, terre humide, terreau</td></tr>
+          <tr><th>Empyreumatique</th><td class="cat">Tertiaire</td><td>Fumée, goudron, pétrole, toasté, notes grillées, caoutchouc, suie, brûlé</td></tr>
+          <tr><th>Épices / aromates</th><td class="cat">Tertiaire</td><td>Poivre, muscade, cannelle, laurier, thym, clou de girofle, vanille, safran, réglisse</td></tr>
+          <tr><th>Animal</th><td class="cat">Tertiaire</td><td>Cuir, fourrure, gibier, venaison, jus de viande, chien mouillé, étable</td></tr>
+          <tr><th>Boisé</th><td class="cat">Tertiaire</td><td>Bois neuf, cèdre, pin, chêne</td></tr>
+          <tr><th>Végétal tertiaire</th><td class="cat">Tertiaire</td><td>Foin, feuilles mortes, tabac, humus, truffe, champignons, sous-bois, thé</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="sub-block" id="f-gustatif">
+    <h3><span class="kicker">3 · La bouche</span> Analyse gustative</h3>
+    <p class="prose">Une substance n'a de goût que si elle est soluble dans la salive. La <b>salivation</b> est une réaction très importante : les acides font saliver davantage que les autres saveurs.</p>
+    <div class="tbl wide">
+      <table>
+        <thead><tr><th>Saveur</th><th>Salivation</th><th>Où et quand</th><th>Interprétation</th></tr></thead>
+        <tbody>
+          <tr><th>Sucré</th><td>Salive épaisse et visqueuse</td><td>Bout de la langue. Immédiat, maximum après 2 s, disparaît après 10 s</td><td>Souplesse, gras, moelleux. Amplifié par l'alcool et par la température. Fixe les arômes : les liquoreux ont un nez moins explosif</td></tr>
+          <tr><th>Acide</th><td>Salive fluide et abondante</td><td>Côtés et dessous. Rapide, persiste comme le salé</td><td>Fraîcheur. Acides malique, tartrique, citrique. Lié à la salinité</td></tr>
+          <tr><th>Salé</th><td>Pas de modification</td><td>Bords avant, centre (minéralité). Rapide, persiste plus que le sucré</td><td>Fraîcheur, relève la sapidité. Souvent masqué par les autres saveurs</td></tr>
+          <tr><th>Amer</th><td>Diminue, bouche sèche</td><td>Partie postérieure. Lent, augmente et dure longtemps</td><td>Souvent associé à l'astringence des tanins</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="muted prose">Au cours 1, la slide des 4 saveurs montre la « carte de la langue » tamponnée <b>FAUX</b> : les zones ne sont que des repères. Retenez surtout la vitesse et la durée de chaque saveur.</p>
+    <ol class="steps">
+      <li data-n="1"><span><span class="t">L'attaque</span> <span class="num">2–3 s</span><span class="d">Petite gorgée, on aspire un filet d'air. Le sucré se sent en premier.</span></span></li>
+      <li data-n="2"><span><span class="t">Le milieu de bouche</span> <span class="num">≈ 10 s</span><span class="d">On remue le vin : température, viscosité, gaz carbonique, astringence. On juge l'harmonie et le volume.</span></span></li>
+      <li data-n="3"><span><span class="t">La fin de bouche (finale)</span><span class="d">Dominée par les tanins pour un rouge, elle dit tout sur la structure. La persistance (longueur) établit la hiérarchie des vins.</span></span></li>
+    </ol>
+    <div class="ladders" data-ladders="Gustatif"></div>
+    <div class="retenir">
+      <p class="label">Interpréter ce qu'on goûte <span class="tag">cours 2</span></p>
+      <p><b>Acidité élevée</b> : vin jeune ou climat froid. <b>Alcool élevé</b> : climat chaud (et l'alcool amplifie la sensation sucrée). <b>Tanins élevés</b> : vin jeune, macération longue et/ou élevage en fût. Pour rester cohérent d'une rubrique à l'autre, voir les <a href="#f-coherence">règles de cohérence</a>.</p>
+    </div>
+  </div>
+
+  <div class="sub-block" id="f-evaluation">
+    <h3><span class="kicker">4 · Le jugement</span> Évaluation du vin</h3>
+    <p class="prose">Elle ne se complète que lorsqu'on connaît l'identité du vin. Objectif : estimer le stade d'évolution et le potentiel de garde, qualifier la typicité et le caractère global.</p>
+    <div class="ladders" data-ladders="Évaluation"></div>
+    <div class="cols two">
+      <div class="panel">
+        <h4>Stade d'évolution <span class="tag">prof, cours 5</span></h4>
+        <ul class="plain">
+          <li><b>Passé</b> : a perdu ses qualités, notes de madère.</li>
+          <li><b>Fragile</b> : signes de faiblesse, corps flou, manque d'acidité.</li>
+          <li><b>À maturité / épanoui</b> : bel équilibre, au sommet.</li>
+          <li><b>S'ouvre</b> : prêt à boire mais peut encore évoluer. Le plus fréquent.</li>
+          <li><b>Fermé</b> : dur, peu expressif. Si le nez est discret et le corps mince, mettre « fermé ».</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <h4>Potentiel de garde <span class="tag">prof, cours 5</span></h4>
+        <ul class="plain">
+          <li>Lié au stade : un vin passé n'a plus de garde.</li>
+          <li><b>À boire rapidement</b>, dans l'année.</li>
+          <li><b>2–3 ans</b> : le cas le plus courant en cours.</li>
+          <li><b>4–5 ans et plus</b> : ex. un sauternes 2022, des décennies.</li>
+          <li>Typicité et style : moins utilisés, on se concentre sur stade et garde.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="sub-block" id="f-effervescents">
+    <h3><span class="kicker">5 · Les bulles</span> Analyser un effervescent</h3>
+    <div class="cols">
+      <div class="panel">
+        <h4>À l'œil</h4>
+        <p>Noter la <b>présence de gaz carbonique</b> : perlant, légère ou prononcée effervescence. Des bulles <b>fines et persistantes</b> signalent une prise de mousse en bouteille (méthode traditionnelle) ; des bulles grosses qui disparaissent vite, un vin gazéifié.</p>
+      </div>
+      <div class="panel">
+        <h4>Au nez</h4>
+        <p><b>Méthode traditionnelle</b> : arômes de lies (beurré, brioche, toasté, levure) en plus du fruit. <b>Charmat</b> : arômes primaires (pomme, pêche, agrumes), léger. Voir les <a href="#d-c5">deux vins du cours 5</a>.</p>
+      </div>
+      <div class="panel">
+        <h4>En bouche : le dosage</h4>
+        <p>Il vient de la liqueur de dosage. Du plus sec au plus sucré : <b>brut nature</b> (sans ajout) · extra brut · <b>brut</b> · <b>extra dry</b> · sec · demi-sec · doux. Piège : <b>extra dry est plus sucré que brut</b>.</p>
+      </div>
+    </div>
+    <p class="prose">Champagne : ne pas le boire dans les 6 mois après le dégorgement, il est au mieux 2–3 ans après. Les méthodes : <a href="#c5-effervescents">cours 5</a>.</p>
+  </div>
+</section>
+</div>
+
+<!-- ================= PARTIE 5 : EXERCICES ================= -->
+<div class="part" id="exercices" hidden>
+<header class="part-head">
+  <p class="kicker">Partie 5</p>
   <h2>Exercices</h2>
   <p class="lede">Onze exercices, tirés au hasard à chaque essai. Les trois premiers reprennent les formats annoncés pour l'examen. L'examen blanc mélange tout sur 20 questions.</p>
 </header>
@@ -1959,10 +2034,10 @@ footer{border-top:1px solid var(--line);margin-top:3rem;padding-top:1.5rem;color
 </section>
 </div>
 
-<!-- ================= PARTIE 5 : VIGNOBLES ================= -->
+<!-- ================= PARTIE 6 : VIGNOBLES ================= -->
 <div class="part" id="vignobles" hidden>
 <header class="part-head">
-  <p class="kicker">Partie 5</p>
+  <p class="kicker">Partie 6</p>
   <h2>Vignobles de France</h2>
   <p class="lede">La carte des grandes régions viticoles : où elles sont, leurs cépages, leurs appellations phares et les vins goûtés en cours qui en viennent. Puis un quiz pour les placer de mémoire.</p>
 </header>
@@ -2617,7 +2692,7 @@ const DEF_DOMS={all:null,vinif:["Vinification"],degust:["Visuel","Olfactif","Gus
 const catOf=g=>g.step==="Vinification"?"Vinification et soins":g.step==="Organisation"?"Types de dégustation":g.step+" · "+g.name;
 
 /* ===== Parties et navigation ===== */
-const PARTS=["cours","degustations-part","etudier","exercices","vignobles"];
+const PARTS=["cours","degustations-part","etudier","labo","exercices","vignobles"];
 function showPart(id){
   PARTS.forEach(p=>{document.getElementById(p).hidden=p!==id;});
   document.querySelectorAll("[data-part]").forEach(a=>a.setAttribute("aria-current",a.dataset.part===id?"true":"false"));
