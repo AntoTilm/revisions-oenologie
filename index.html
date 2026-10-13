@@ -596,6 +596,7 @@ a.yr-card:hover{border-color:var(--wine);transform:translateY(-1px)}
     <li><a href="#cepages">Cépages</a></li>
     <li><a href="#accords">Accords mets-vins</a></li>
     <li><a href="#degustations">Vins dégustés</a></li>
+    <li><a href="#favoris">Mes préférés</a></li>
   </ul>
   <ul class="subnav" data-for="exercices" aria-label="Exercices" hidden>
     <li><a href="#x-nuage">Nuage de mots</a></li>
@@ -2018,6 +2019,45 @@ a.yr-card:hover{border-color:var(--wine);transform:translateY(-1px)}
     </div>
   </div>
 </section>
+
+<section id="favoris">
+  <header class="sec-head">
+    <p class="kicker">Mes coups de cœur</p>
+    <h2>Mes vins préférés</h2>
+    <p class="sub">Les vins que j'ai vraiment aimés, au cours ou ailleurs, et des pistes pour en trouver d'autres dans le même style.</p>
+  </header>
+
+  <div class="block" id="fav-vins">
+    <h3>Vins aimés <span class="tag">2 vins</span></h3>
+    <div class="wines">
+      <article class="wine dg" style="--c:#5A0F22">
+        <h4><i aria-hidden="true"></i>Vino Nobile di Montepulciano Riserva 2020</h4>
+        <p class="dg-meta">Rouge · DOCG (Toscane, Italie) · Sangiovese (Prugnolo Gentile) majoritaire</p>
+        <dl class="kv">
+          <dt>Où</dt><dd>Le Volpi e l'Uva, Florence · octobre 2026</dd>
+          <dt>Accord</dt><dd>Planche fromage-charcuterie, crostoni</dd>
+          <dt>Pourquoi</dt><dd>Exactement le rouge que j'aime : <b>tannique, structuré</b>, pas trop cher.</dd>
+        </dl>
+      </article>
+      <article class="wine dg" style="--c:#E2BD4F">
+        <h4><i aria-hidden="true"></i>La Poule aux Œufs d'Or</h4>
+        <p class="dg-meta">Blanc moelleux · Vin de France (Sud-Ouest) · Château d'Aydie · 80&nbsp;% Petit Manseng, 20&nbsp;% Gros Manseng</p>
+        <dl class="kv">
+          <dt>Où</dt><dd>Cours 1 · 07/09 · <a href="#d-c1">voir ma fiche</a></dd>
+          <dt>Pourquoi</dt><dd>Pêche, mangue, papaye ; <b>sucré mais pas trop</b>, l'acidité l'équilibre.</dd>
+        </dl>
+      </article>
+    </div>
+  </div>
+
+  <div class="block" id="fav-pistes">
+    <h3>Pistes à goûter <span class="tag">même style</span></h3>
+    <dl class="kv">
+      <dt>Comme le Vino Nobile</dt><dd>Rosso di Montepulciano (moins cher), Chianti Classico Riserva, Rosso di Montalcino, Morellino di Scansano · Madiran, Cahors (Sud-Ouest), Saint-Joseph rouge (Rhône nord)</dd>
+      <dt>Comme La Poule aux Œufs d'Or</dt><dd>Pacherenc du Vic-Bilh moelleux, Jurançon moelleux (mêmes cépages) · Coteaux du Layon, Vouvray demi-sec (Chenin, Loire)</dd>
+    </dl>
+  </div>
+</section>
 </div>
 
 <!-- ================= S'ENTRAÎNER ================= -->
@@ -3291,7 +3331,7 @@ function route(){
   if(!part){let s=null;try{s=localStorage.getItem("oeno-part");}catch(e){}part=document.getElementById(PARTS.includes(s)?s:"cours");el=null;}
   showPart(part.id);
   if(el&&el.dataset.ex)openEx(el.dataset.ex);
-  if(el&&el!==part){openTo(el);const target=el;requestAnimationFrame(()=>{target.scrollIntoView({block:"start"});target.classList.remove("flash");void target.offsetWidth;if(!/^(annee|synthese|initiation|resume|cours\d|postit|carte|degustations|fiche-france|cepages|accords|m\d)$/.test(target.id)&&!target.classList.contains("yc"))target.classList.add("flash");});}
+  if(el&&el!==part){openTo(el);const target=el;requestAnimationFrame(()=>{target.scrollIntoView({block:"start"});target.classList.remove("flash");void target.offsetWidth;if(!/^(annee|synthese|initiation|resume|cours\d|postit|carte|degustations|favoris|fiche-france|cepages|accords|m\d)$/.test(target.id)&&!target.classList.contains("yc"))target.classList.add("flash");});}
   else if(el===part)window.scrollTo(0,0);
 }
 window.addEventListener("hashchange",route);
