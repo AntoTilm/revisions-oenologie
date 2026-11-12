@@ -441,8 +441,9 @@ const DEF_DOMS={all:null,vinif:["Vinification"],degust:["Visuel","Olfactif","Gus
 const catOf=g=>g.step==="Vinification"?"Vinification et soins":g.step==="Organisation"?"Types de dégustation":g.step+" · "+g.name;
 
 /* ===== Parties et navigation ===== */
-const PARTS=["cours","degustation","vignobles","exercices"];
-const PART_ALIAS={"degustations-part":"degustation","labo":"degustation","etudier":"cours"};
+const PARTS=["accueil","regions","degustation","exercices","archive"];
+/* anciennes adresses : Cours et Vignobles sont devenus Régions */
+const PART_ALIAS={"degustations-part":"degustation","labo":"degustation","etudier":"regions","cours":"regions","vignobles":"regions"};
 function showPart(id){
   PARTS.forEach(p=>{document.getElementById(p).hidden=p!==id;});
   document.querySelectorAll("[data-part]").forEach(a=>a.setAttribute("aria-current",a.dataset.part===id?"true":"false"));
@@ -455,10 +456,10 @@ function route(){
   if(PART_ALIAS[h])h=PART_ALIAS[h];
   let el=h?document.getElementById(h):null;
   let part=el?(PARTS.includes(el.id)?el:el.closest(".part")):null;
-  if(!part){let s=null;try{s=localStorage.getItem("oeno-part");}catch(e){}part=document.getElementById(PARTS.includes(s)?s:"cours");el=null;}
+  if(!part){part=document.getElementById("accueil");el=null;}
   showPart(part.id);
   if(el&&el.dataset.ex)openEx(el.dataset.ex);
-  if(el&&el!==part){openTo(el);const target=el;requestAnimationFrame(()=>{target.scrollIntoView({block:"start"});target.classList.remove("flash");void target.offsetWidth;if(!/^(annee|synthese|initiation|resume|cours\d|postit|carte|degustations|favoris|fiche-france|cepages|accords|m\d)$/.test(target.id)&&!target.classList.contains("yc"))target.classList.add("flash");});}
+  if(el&&el!==part){openTo(el);const target=el;requestAnimationFrame(()=>{target.scrollIntoView({block:"start"});target.classList.remove("flash");void target.offsetWidth;if(!/^(annee|synthese|initiation|resume|cours\d|postit|carte|degustations|favoris|fiche-france|fiche-express|cles-etiquette|cepages|accords|m\d|ac-[a-z]+|xg-[a-z]+|rp-.+)$/.test(target.id)&&!target.matches(".yc,.rp,.rc"))target.classList.add("flash");});}
   else if(el===part)window.scrollTo(0,0);
 }
 window.addEventListener("hashchange",route);
@@ -856,52 +857,7 @@ document.querySelectorAll(".essentiel[data-course]").forEach(box=>{
     list.map(s=>'<li><button type="button" class="pi" data-slide="'+s[0]+'" aria-label="Voir la slide '+s[2]+'">post-it</button><span class="ess-t">'+esc(s[3])+'</span><span class="ess-d">'+esc(s[4])+'</span></li>').join("")+'</ul>';
 });
 
-/* ===== L'année : programme, synthèse, fiches de cours ===== */
-(function(){
-  const Y=window.YEAR;if(!Y)return;
-  const byId={};Y.courses.forEach(c=>byId[c.id]=c);
-  const ready=c=>!!(c&&c.ess);
-  const mod=id=>Y.modules.find(m=>m.id===id);
-  /* programme */
-  let h='<div class="yr-mod"><div class="yr-mod-head"><h3>Les références de l\'année</h3><span class="yr-exam">à garder sous la main</span></div><div class="yr-grid">'+
-    Y.refs.map(r=>'<a class="yr-card is-ready" href="'+r.h+'"><span class="yr-n">Dégustation</span><span class="yr-t">'+esc(r.n)+'</span></a>').join("")+
-    '<a class="yr-card is-ready" href="#synthese"><span class="yr-n">Cours</span><span class="yr-t">Toute l\'année en une page</span></a></div></div>';
-  Y.modules.forEach((m,mi)=>{
-    const list=Y.courses.filter(c=>c.m===mi+1);
-    h+='<div class="yr-mod" id="'+m.id+'"><div class="yr-mod-head"><h3>'+esc(m.t)+' · '+esc(m.st)+'</h3><span class="yr-exam">'+esc(m.exam)+'</span></div><div class="yr-grid">'+
-      list.map((c,i)=>ready(c)
-        ?'<a class="yr-card is-ready" href="#f-'+c.id+'"><span class="yr-n">'+esc(c.n)+'</span><span class="yr-t">'+esc(c.t)+'</span></a>'
-        :'<div class="yr-card is-soon" title="Support pas encore dans le projet"><span class="yr-n">'+esc(c.n)+'</span><span class="yr-t">À venir · support à ajouter</span></div>').join("")+
-      '</div><details class="more"><summary>Préparer l\'examen du '+esc(m.t)+'</summary><div class="yr-exam-box">'+
-      '<div class="cols two"><div class="panel"><h4>Pour réussir (50 %)</h4><ul class="plain"><li>'+esc(m.fiches)+', remplies, au format original, sur papier, avec ton nom et agrafées.</li><li>Réussir tous les QCM sur les régions vues.</li></ul></div>'+
-      '<div class="panel"><h4>Le degré de maîtrise</h4><ul class="plain"><li>Étiquettes /100, dégustation /100, accords mets-vins /100, ramenés sur 100.</li><li>Une partie sous 50 compte pour 50 si les acquis sont atteints.</li><li>3 h en tout (1 h 30 pour le théorique seul).</li></ul></div></div>'+
-      '<div class="cols"><div class="panel"><h4>Les étiquettes</h4><ul class="plain"><li>Région /3, sous-région (ou département), appellation.</li><li>Niveau hiérarchique /4 : AOP régionale, sous-régionale, communale, 1er cru, grand cru, IGP, Vin de France.</li><li>Vinification(s) /4 : pressurage direct, rouge classique, saignée, méthode traditionnelle, ancestrale, VDN, vin naturellement doux, macération carbonique.</li><li>4 cépages autorisés /4.</li><li>Une question /5 : '+esc(m.q5)+'.</li><li>Attention : certaines infos de l\'étiquette peuvent être cachées. Les étiquettes sont dans les PowerPoint.</li></ul></div>'+
-      '<div class="panel"><h4>La dégustation à l\'aveugle</h4><ul class="plain"><li>5 vins de 5 régions, déjà goûtés en classe.</li><li>Région /5 et cépage prédominant /5.</li><li>/2 chacun : intensité de la robe (pâle, moyenne, profonde), intensité du nez (faible, moyen, très aromatique), douceur (blanc) ou tanin (rouge), acidité, corps.</li><li>Tes fiches et notes servent ici : voir les <a href="#cepages">cépages</a>.</li></ul></div>'+
-      '<div class="panel"><h4>Les accords mets-vins</h4><p>Un plat pertinent par vin, choisi dans une liste donnée à l\'examen.</p><p><a href="#accords">Voir la liste et chercher un accord</a></p></div></div></div></details></div>';
-  });
-  h+='<p class="yr-legend">Il manque encore les supports <b>Loire 1</b> et <b>Jura</b> dans le projet : leurs fiches se rempliront dès qu\'ils seront ajoutés.</p>';
-  document.getElementById("year").innerHTML=h;
-
-  /* synthèse */
-  const syn='<section id="synthese"><header class="sec-head"><p class="kicker">Tout revoir</p><h2>Toute l\'année en une page</h2><p class="sub">Région par région, ce qu\'il faut avoir en tête. Chaque carte mène à la fiche du cours.</p></header><div class="sheet">'+
-    Y.syn.map(s=>'<div class="scard"><h4>'+esc(s[0])+'</h4><p>'+esc(s[2])+'</p>'+(ready(byId[s[1]])?'<a href="#f-'+s[1]+'">Le cours →</a>':'')+'</div>').join("")+'</div></section>';
-  document.getElementById("annee").insertAdjacentHTML("afterend",syn);
-
-  /* fiches de cours */
-  const ready_list=Y.courses.filter(ready);
-  document.getElementById("year-courses").innerHTML=ready_list.map((c,i)=>{
-    const m=mod("m"+c.m),prev=ready_list[i-1],next=ready_list[i+1];
-    return '<section id="f-'+c.id+'" class="yc" hidden><header class="sec-head"><p class="kicker"><a href="#annee">'+esc(m.t)+'</a> · '+esc(c.n)+'</p><h2>'+esc(c.t)+'</h2>'+
-      '<p class="sub">Support : « '+esc(c.src)+' ». <a href="#carte" data-vm="'+c.r+'">Voir la région sur la carte</a></p></header>'+
-      '<div class="essentiel"><p class="mini">L\'essentiel de '+esc(c.n)+'</p><ul>'+c.ess.map((t,k)=>'<li><span class="ess-t num">'+(k+1)+'</span><span>'+t+'</span></li>').join("")+'</ul></div>'+
-      '<p class="more-hint">Le détail du cours :</p>'+
-      (c.det||[]).map((d,k)=>'<details class="block" id="f-'+c.id+'-'+(k+1)+'"><summary><h3>'+esc(d[0])+'</h3></summary><div class="prose">'+d[1]+'</div></details>').join("")+
-      (c.acc&&c.acc.length?'<details class="block" id="f-'+c.id+'-acc"><summary><h3>Accords mets-vins <span class="tag">'+c.acc.length+' vins</span></h3></summary><div class="tbl"><table><thead><tr><th>Appellation</th><th>Cépage</th><th>Profil</th><th>Plat</th></tr></thead><tbody>'+
-        c.acc.map(a=>'<tr><td><b>'+esc(a[0])+'</b></td><td>'+esc(a[1])+'</td><td>'+esc(a[2])+'</td><td>'+esc(a[3])+'</td></tr>').join("")+'</tbody></table></div></details>':'')+
-      '<details class="block" id="f-'+c.id+'-notes"><summary><h3>Mes notes et vins dégustés <span class="tag">après le cours</span></h3></summary><p class="muted">Rien pour l\'instant : après le cours, envoie tes notes et tes fiches de dégustation, elles s\'ajouteront ici et dans <a href="#degustations">Vins dégustés</a>.</p></details>'+
-      '<nav class="yc-nav">'+(prev?'<a href="#f-'+prev.id+'">← '+esc(prev.n)+'</a>':'<span></span>')+'<a href="#annee">Programme</a>'+(next?'<a href="#f-'+next.id+'">'+esc(next.n)+' →</a>':'<span></span>')+'</nav></section>';
-  }).join("");
-})();
+/* ===== L'année : la liste des régions et les pages régions sont rendues par js/regions.js ===== */
 
 /* ===== Dégustation : fiche de l'année, cépages, accords ===== */
 (function(){
@@ -991,12 +947,12 @@ document.querySelectorAll(".essentiel[data-course]").forEach(box=>{
 
   /* accords */
   const Y=window.YEAR,rows=[];Y.courses.forEach(c=>(c.acc||[]).forEach(a=>rows.push([c.id,c.n].concat(a))));
-  document.getElementById("accords").innerHTML='<header class="sec-head"><p class="kicker">Examen : un plat par vin</p><h2>Les accords mets-vins</h2><p class="sub">Les tableaux d\'accords de tous les cours réunis. Tape un plat ou un vin pour trouver l\'accord ; la liste de plats de chaque examen est juste en dessous.</p></header>'+
-    '<div class="cep-tools"><input type="search" id="acc-q" placeholder="Un plat (agneau, huîtres…) ou un vin (Chablis…)" aria-label="Chercher un accord"><span class="muted" id="acc-n"></span></div>'+
-    '<div class="tbl"><table><thead><tr><th>Vin</th><th>Cépage</th><th>Profil</th><th>Plat</th></tr></thead><tbody id="acc-body">'+
-    rows.map(r=>'<tr><td><b>'+esc(r[2])+'</b><br><a class="muted" href="#f-'+r[0]+'">'+esc(r[1])+'</a></td><td>'+esc(r[3])+'</td><td>'+esc(r[4])+'</td><td>'+esc(r[5])+'</td></tr>').join("")+'</tbody></table></div>'+
-    Y.modules.map(m=>'<details class="block"><summary><h3>Liste de plats · examen '+esc(m.t)+' <span class="tag">'+m.mets.length+' plats</span></h3></summary><div class="acc-list">'+m.mets.map(x=>'<span>'+esc(x)+'</span>').join("")+'</div></details>').join("");
-  function facc(){const q=nz(document.getElementById("acc-q").value.trim());let n=0;document.querySelectorAll("#acc-body tr").forEach(tr=>{const ok=!q||nz(tr.textContent).includes(q);tr.hidden=!ok;if(ok)n++;});document.getElementById("acc-n").textContent=n+" accord"+(n>1?"s":"");}
+  document.getElementById("accords").innerHTML='<header class="sec-head"><p class="kicker">Examen : un plat par vin</p><h2>Les accords mets-vins</h2><p class="sub">À l\'examen, un plat par vin, choisi dans la liste du module : les deux listes sont ici. Les accords de chaque région sont sur sa page ; tape un plat ou un vin pour chercher dans tous les cours.</p></header>'+
+    Y.modules.map(m=>'<details class="block"><summary><h3>Liste de plats · examen '+esc(m.t)+' <span class="tag">'+m.mets.length+' plats</span></h3></summary><div class="acc-list">'+m.mets.map(x=>'<span>'+esc(x)+'</span>').join("")+'</div></details>').join("")+
+    '<div class="cep-tools acc-tools"><input type="search" id="acc-q" placeholder="Un plat (agneau, huîtres…) ou un vin (Chablis…)" aria-label="Chercher un accord"><span class="muted" id="acc-n"></span></div>'+
+    '<details class="block" id="acc-all"><summary><h3>Tous les accords des cours <span class="tag">'+rows.length+' vins</span></h3></summary><div class="tbl"><table><thead><tr><th>Vin</th><th>Cépage</th><th>Profil</th><th>Plat</th></tr></thead><tbody id="acc-body">'+
+    rows.map(r=>'<tr><td><b>'+esc(r[2])+'</b><br><a class="muted" href="#f-'+r[0]+'">'+esc(r[1])+'</a></td><td>'+esc(r[3])+'</td><td>'+esc(r[4])+'</td><td>'+esc(r[5])+'</td></tr>').join("")+'</tbody></table></div></details>';
+  function facc(){const q=nz(document.getElementById("acc-q").value.trim());let n=0;document.querySelectorAll("#acc-body tr").forEach(tr=>{const ok=!q||nz(tr.textContent).includes(q);tr.hidden=!ok;if(ok)n++;});document.getElementById("acc-n").textContent=q?n+" accord"+(n>1?"s":"")+" trouvé"+(n>1?"s":""):"";if(q)document.getElementById("acc-all").open=true;}
   document.getElementById("acc-q").addEventListener("input",facc);facc();
 })();
 
@@ -1013,12 +969,15 @@ document.querySelectorAll("article.wine").forEach((a,i)=>{
   h.insertAdjacentElement("afterend",p);
 });
 
-/* ===== Navigation dans l'année + liens vers la carte ===== */
+/* ===== Pages régions + liens vers la carte =====
+   Une page région (.rp) ne s'affiche que si l'adresse vise elle-même ou un de ses éléments ;
+   la partie Régions masque alors sa liste, la carte et le tableau (classe rp-open). */
 document.addEventListener("click",e=>{const a=e.target.closest("a[data-vm]");if(a&&window.vmOpen){setTimeout(()=>window.vmOpen(a.dataset.vm),0);}});
 const _route=route;
 route=function(){
-  const h=decodeURIComponent(location.hash.slice(1)),el=h?document.getElementById(h):null,yc=el&&el.closest(".yc");
-  document.querySelectorAll(".yc").forEach(s=>{s.hidden=s!==yc;});
+  const h=decodeURIComponent(location.hash.slice(1)),el=h?document.getElementById(h):null,rp=el&&el.closest(".rp");
+  document.querySelectorAll(".rp").forEach(s=>{s.hidden=s!==rp;});
+  const reg=document.getElementById("regions");if(reg)reg.classList.toggle("rp-open",!!rp);
   _route();
 };
 window.removeEventListener("hashchange",_route);window.addEventListener("hashchange",route);
@@ -1027,7 +986,7 @@ window.removeEventListener("hashchange",_route);window.addEventListener("hashcha
 (function(){
   const input=document.getElementById("q"),out=document.getElementById("q-res");if(!input)return;
   const nz=s=>(s||"").normalize("NFD").replace(/[̀-ͯ]/g,"").toLowerCase();
-  const PL={cours:"Cours",degustation:"Dégustation",vignobles:"Vignobles",exercices:"S'entraîner"};
+  const PL={accueil:"Accueil",regions:"Régions",degustation:"Dégustation",exercices:"S'entraîner",archive:"Initiation"};
   let IDX=null;
   function build(){
     IDX=[];
@@ -1036,15 +995,16 @@ window.removeEventListener("hashchange",_route);window.addEventListener("hashcha
     document.querySelectorAll(".part section[id], .part details[id], .part .sub-block[id], .part article[id], .part .module-head[id]").forEach(el=>{
       if(el.closest("#exercices")&&!el.matches("section"))return;
       if(/-notes$/.test(el.id))return;
+      if(el.closest("#vm-info"))return;
       const part=el.closest(".part"),hd=el.querySelector("summary h3, h2, h3, h4");if(!hd)return;
-      const hc=hd.cloneNode(true);hc.querySelectorAll(".pi,.pis,.tag,.kicker").forEach(x=>x.remove());
+      const hc=hd.cloneNode(true);hc.querySelectorAll(".pi,.pis,.tag,.kicker,.rp-sous").forEach(x=>x.remove());
       let t=hc.textContent.replace(/\s+/g," ").trim();
-      const yc=el.closest(".yc");if(yc&&el!==yc)t=yc.querySelector("h2").textContent+" · "+t;
-      if(el.matches(".yc"))t=el.querySelector(".kicker").textContent.split("·").pop().trim()+" · "+t;
-      add(t,PL[part.id]||"",textOf(el),"#"+el.id,el.matches(".yc,section")?2:0);
+      /* dans une page région : « Alsace 1 · titre » pour un cours, « Alsace · titre » pour le reste */
+      const rc=el.closest(".rc"),rp=el.closest(".rp");
+      if(rc)t=rc.dataset.n+" · "+t;
+      else if(rp&&el!==rp)t=rp.dataset.n+" · "+t;
+      add(t,PL[part.id]||"",textOf(el),"#"+el.id,el.matches(".rp,.rc,section")?2:0);
     });
-    const VMX=window.VMX||{};
-    Object.keys(VMX).forEach(r=>VMX[r].forEach((s,i)=>add(s.t+" ("+(window.VM_NAMES&&window.VM_NAMES[r]||r)+")","Vignobles",s.s+" "+s.ap+" "+s.c+" "+s.x,{r,i})));
   }
   function snippet(txt,q){const n=nz(txt),i=n.indexOf(q);if(i<0)return esc(txt.slice(0,110))+(txt.length>110?"…":"");const s=Math.max(0,i-45),e=Math.min(txt.length,i+q.length+65);return(s?"…":"")+esc(txt.slice(s,i))+"<b>"+esc(txt.slice(i,i+q.length))+"</b>"+esc(txt.slice(i+q.length,e))+(e<txt.length?"…":"");}
   let res=[],cur=-1;
@@ -1052,7 +1012,7 @@ window.removeEventListener("hashchange",_route);window.addEventListener("hashcha
     if(!IDX)build();
     const q=nz(input.value.trim());if(q.length<2){out.hidden=true;return;}
     const words=q.split(/\s+/);
-    res=IDX.map(x=>{let sc=words.length>1?(x.nt.includes(q)?8:x.nx.includes(q)?3:0):0;for(const w of words){if(x.nt.includes(w))sc+=x.nt.startsWith(w)?6:4;else if(x.nx.includes(w))sc+=1;else return null;}return[sc+(sc>=4*words.length?x.bo:0)-(x.nx.length/20000),x];}).filter(Boolean).sort((a,b)=>b[0]-a[0]).slice(0,12).map(a=>a[1]);
+    res=IDX.map(x=>{let sc=(x.nt===q?12:0)+(words.length>1?(x.nt.includes(q)?8:x.nx.includes(q)?3:0):0);for(const w of words){if(x.nt.includes(w))sc+=x.nt.startsWith(w)?6:4;else if(x.nx.includes(w))sc+=1;else return null;}return[sc+(sc>=4*words.length?x.bo:0)-(x.nx.length/20000),x];}).filter(Boolean).sort((a,b)=>b[0]-a[0]).slice(0,12).map(a=>a[1]);
     cur=-1;
     out.innerHTML=res.length?res.map((x,i)=>'<li><a href="'+(typeof x.go==="string"?x.go:"#carte")+'" data-i="'+i+'"><span class="qp">'+esc(x.p)+'</span><span class="qt">'+esc(x.t)+'</span><span class="qs">'+snippet(x.txt,words[0])+'</span></a></li>').join(""):'<li class="qnone">Rien trouvé pour « '+esc(input.value)+' ».</li>';
     out.hidden=false;
@@ -1254,12 +1214,12 @@ EX.aletiq=()=>{
   show();
 };
 
-/* ===== Compteurs du menu et démarrage ===== */
+/* ===== Compteurs du menu ; l'exercice ouvert par défaut est le QCM de la région en cours.
+   Le premier affichage (route) se fait dans js/demarrage.js, une fois l'accueil et les régions construits. ===== */
 (function(){
   const nVocab=VOCAB.reduce((s,g)=>s+g.items.length,0),nCl=CLASSER.reduce((s,c)=>s+c.items.length,0);
   const C={examen:"20 questions",qcm:QCM.length+" questions",vf:VF.length+" affirmations",chiffres:CHIFFRES.length+" questions",classer:CLASSER.length+" séries · "+nCl+" éléments",intrus:"tiré au hasard",def:nVocab+" termes · 2 sens",ordre:SEQS.length+" séries",aletiq:AL_LBL.length+" étiquettes",alqcm:AL_QCM.length+" questions",alcep:(AL_CEP.length+AL_QUAL.length)+" questions",alacc:AL_ACC.length+" vins"};
   document.querySelectorAll("[data-count]").forEach(el=>{el.textContent=C[el.dataset.count]||"";});
-  openEx("nuage");
-  route();
+  openEx("alqcm");
 })();
 

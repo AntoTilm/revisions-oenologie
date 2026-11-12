@@ -94,6 +94,7 @@ sudouest:{n:"Sud-Ouest",w:"Sud-Ouest, de Bergerac aux Pyrénées",
  t:[["Château d'Aydie, Madiran (cours 1)","#d-c1"],["La Poule aux Œufs d'Or, moelleux de manseng (cours 1)","#d-c1"],["L'Ombre Fraîche, Gaillac (cours 2)","#d-c2"],["Domaine de Pellehaut, Côtes de Gascogne (cours 2)","#d-c2"]],l:[],
  top:"Cahors, Madiran, Jurançon, Gaillac, Bergerac, Monbazillac",q:["Madiran (tannat)","Cahors (malbec)","Jurançon","Gaillac","Monbazillac","Fronton (négrette)"]}
 };
+window.VM=VM; /* aussi lu par js/regions.js pour les pages régions */
 const ORDER=["champagne","alsace","loire","bourgogne","beaujolais","jura","savoie","rhone","provence","corse","languedoc","sudouest","bordeaux"];
 const root=document.getElementById("vm");if(!root)return;
 const E=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
@@ -108,7 +109,9 @@ function mark(r){
 function show(r){
   cur=r;mark(r);const d=VM[r];
   const g=(lab,arr,cls)=>'<p><b>'+lab+'</b>'+arr.map(x=>'<span class="vm-g'+cls+'">'+E(x)+'</span>').join("")+'</p>';
+  const rp=(window.REGION_OF||{})[r],page=rp&&document.getElementById("r-"+rp);
   info.innerHTML='<p class="kicker">'+E(d.w)+'</p><h3>'+E(d.n)+'</h3><p>'+E(d.b)+'</p>'
+   +(page?'<p class="vm-go"><a class="btn" href="#r-'+rp+'">Ouvrir la page '+E(page.dataset.n)+'</a></p>':'')
    +'<div class="vm-grapes">'+g("Rouges",d.r," r")+g("Blancs",d.bl,"")+'</div>'
    +subsHtml(r,d)
    +'<div class="retenir"><p class="mini">À retenir</p><p>'+E(d.k)+'</p></div>'
