@@ -349,6 +349,19 @@ footer{border-top:1px solid var(--line);margin-top:3rem;padding-top:1.5rem;color
 .ex-title h3{font-size:1.45rem;font-family:var(--f-display);font-weight:400}
 .mc{display:grid;gap:1.1rem;grid-template-columns:minmax(0,1fr)}
 .q-opts.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+/* Étiquettes d'exercice (Alsace) : carte d'étiquette, champs effacés en pointillé */
+.lbl{justify-self:center;width:min(100%,340px);display:grid;gap:.3rem;text-align:center;background:var(--paper);border:1px solid var(--line);border-radius:4px;padding:1.5rem 1.2rem 1.2rem;outline:1px solid var(--line);outline-offset:-7px}
+.lbl-l{display:block}
+.lbl-app{font-family:var(--f-display);font-size:1.3rem;line-height:1.15}
+.lbl-cru{font-family:var(--f-display);font-size:1.75rem;line-height:1.1;color:var(--wine)}
+.lbl-den{font-family:var(--f-display);font-size:1.35rem;line-height:1.15;color:var(--wine)}
+.lbl-cep{font-weight:700;letter-spacing:.05em;text-transform:uppercase;font-size:.95rem}
+.lbl-men{font-style:italic}
+.lbl-mil{font-family:var(--f-mono)}
+.lbl-foot{font-family:var(--f-mono);font-size:.68rem;color:var(--muted);letter-spacing:.06em;margin-top:.4rem}
+.lbl-m{display:inline-block;min-width:10ch;border:1.5px dashed var(--muted);border-radius:3px;padding:0 .5rem;color:var(--muted);font:500 .72rem/1.9 var(--f-mono);text-transform:uppercase;letter-spacing:.08em}
+.al-step{display:grid;gap:.5rem;padding-top:.9rem;border-top:1px solid var(--line)}
+.al-fb:empty{display:none}
 .progress-bar{height:.4rem;background:var(--line);border-radius:2px;overflow:hidden}
 .progress-bar i{display:block;height:100%;background:var(--wine);width:calc(var(--p,0) * 100%);transition:width .2s}
 .summary{display:grid;gap:.9rem}
@@ -610,6 +623,10 @@ a.yr-card:hover{border-color:var(--wine);transform:translateY(-1px)}
     <li><a href="#x-intrus">L'intrus</a></li>
     <li><a href="#x-def">Définitions</a></li>
     <li><a href="#x-ordre">Dans l'ordre</a></li>
+    <li><a href="#x-aletiq">Alsace : étiquettes</a></li>
+    <li><a href="#x-alqcm">Alsace : QCM</a></li>
+    <li><a href="#x-alcep">Alsace : dégustation</a></li>
+    <li><a href="#x-alacc">Alsace : accords</a></li>
   </ul>
   <ul class="subnav" data-for="vignobles" aria-label="Dans Vignobles" hidden>
     <li><a href="#carte">Carte et fiches</a></li>
@@ -2164,7 +2181,7 @@ a.yr-card:hover{border-color:var(--wine);transform:translateY(-1px)}
 <div class="part" id="exercices" hidden>
 <header class="part-head">
   <h2>S'entraîner</h2>
-  <p class="lede">Des exercices tirés au hasard à chaque essai. Pour l'instant sur la matière de l'initiation (vocabulaire de la fiche, vinification, chiffres clés) ; le quiz des régions est dans <a href="#vm-quiz">Vignobles</a>.</p>
+  <p class="lede">Des exercices tirés au hasard à chaque essai : la matière de l'initiation (vocabulaire de la fiche, vinification, chiffres clés), puis, région par région, le format de l'évaluation France 1 (pour l'instant l'Alsace) ; le quiz des régions est dans <a href="#vm-quiz">Vignobles</a>.</p>
 </header>
 
 <section id="x-menu">
@@ -2180,6 +2197,10 @@ a.yr-card:hover{border-color:var(--wine);transform:translateY(-1px)}
     <a href="#x-intrus"><span class="meta" data-count="intrus"></span><span class="t">Trouver l'intrus</span><span class="d">Un mot n'est pas de la même rubrique.</span></a>
     <a href="#x-def"><span class="meta" data-count="def"></span><span class="t">Définition ↔ terme</span><span class="d">Dans les deux sens.</span></a>
     <a href="#x-ordre"><span class="meta" data-count="ordre"></span><span class="t">Remettre dans l'ordre</span><span class="d">Échelles, vinifications, méthodes, dates.</span></a>
+    <a href="#x-aletiq"><span class="meta"><span class="exam-tag">examen Alsace</span><span data-count="aletiq"></span></span><span class="t">Alsace : étiquettes</span><span class="d">Champs effacés : appellation, niveau, vinification, cépages, question ouverte.</span></a>
+    <a href="#x-alqcm"><span class="meta"><span class="exam-tag">QCM du 16/11</span><span data-count="alqcm"></span></span><span class="t">Alsace : QCM</span><span class="d">AOP, mentions, grands crus, VT et SGN.</span></a>
+    <a href="#x-alcep"><span class="meta"><span class="exam-tag">examen Alsace</span><span data-count="alcep"></span></span><span class="t">Alsace : dégustation</span><span class="d">Reconnaître le cépage, cocher les bons qualificatifs.</span></a>
+    <a href="#x-alacc"><span class="meta"><span class="exam-tag">examen Alsace</span><span data-count="alacc"></span></span><span class="t">Alsace : accords</span><span class="d">Choisir le plat dans la liste officielle de l'examen.</span></a>
   </nav>
 
   <div class="ex" id="x-nuage" data-ex="nuage">
@@ -2288,6 +2309,24 @@ a.yr-card:hover{border-color:var(--wine);transform:translateY(-1px)}
       <p id="oFeedback" aria-live="polite"></p>
       <div class="ex-actions"><button type="button" class="btn ghost" id="oCheck">Vérifier</button><button type="button" class="btn" id="oNext">Série suivante</button></div>
     </div>
+  </div>
+  <div class="ex" id="x-aletiq" data-ex="aletiq" hidden>
+    <div class="ex-title"><h3>Alsace : étiquettes</h3><span class="exam-tag">format examen</span></div>
+    <p class="ex-prompt">Comme à l'évaluation : certaines mentions sont effacées. Retrouvez l'appellation, son niveau, la vinification et les cépages, puis rédigez la question ouverte. Rappel : <a href="#f-alsace1">Alsace 1</a> · <a href="#f-alsace2">Alsace 2</a>.</p>
+  </div>
+
+  <div class="ex" id="x-alqcm" data-ex="alqcm" hidden>
+    <div class="ex-title"><h3>Alsace : QCM</h3><span class="exam-tag">QCM du 16/11</span></div>
+  </div>
+
+  <div class="ex" id="x-alcep" data-ex="alcep" hidden>
+    <div class="ex-title"><h3>Alsace : dégustation</h3><span class="exam-tag">format examen</span></div>
+    <p class="ex-prompt">À l'aveugle, il faut donner la région, le cépage dominant et les qualificatifs (robe, nez, douceur ou tanins, acidité, corps). Ici, les indices viennent des descriptions du cours.</p>
+  </div>
+
+  <div class="ex" id="x-alacc" data-ex="alacc" hidden>
+    <div class="ex-title"><h3>Alsace : accords</h3><span class="exam-tag">format examen</span></div>
+    <p class="ex-prompt">À l'examen, vous choisissez un plat dans la liste fournie. Les propositions viennent de cette liste.</p>
   </div>
 </section>
 </div>
@@ -4043,10 +4082,194 @@ window.removeEventListener("hashchange",_route);window.addEventListener("hashcha
   document.addEventListener("click",e=>{if(!e.target.closest(".search"))out.hidden=true;});
 })();
 
+/* ===== Alsace : exercices au format de l'évaluation France 1 (étiquettes, QCM, dégustation, accords) ===== */
+const AL_QCM=[
+ ["Combien d'AOP compte l'Alsace ?",["53","51","3","13"],"AOP Alsace, AOP Crémant d'Alsace et 51 AOP Alsace Grand Cru."],
+ ["Combien de grands crus en Alsace ?",["51","33","53","17"],"51 grands crus de 3 à 80 ha, environ 700 ha au total."],
+ ["Quelle part des vins d'Alsace les grands crus représentent-ils ?",["4 %","21 %","74 %","40 %"],"AOP Alsace 74 %, Crémant 21 %, grands crus 4 %."],
+ ["Quelle part de la production représente le Crémant d'Alsace ?",["21 %","4 %","74 %","50 %"],"Le crémant fait 21 % de la production."],
+ ["Dans quels départements se trouve le vignoble ?",["Bas-Rhin et Haut-Rhin","Moselle et Bas-Rhin","Haut-Rhin et Vosges","Doubs et Haut-Rhin"],"Une bande de 100 km sur 2 à 4 km entre les Vosges et le Rhin."],
+ ["Quel est le climat de l'Alsace ?",["Semi-continental, sec et ensoleillé","Océanique et humide","Méditerranéen","Montagnard très pluvieux"],"Les Vosges arrêtent la pluie : pluviométrie faible."],
+ ["Quel rôle jouent les Vosges ?",["Elles arrêtent les pluies venues de l'ouest","Elles apportent l'humidité du Rhin","Elles fournissent les sols volcaniques de tout le vignoble","Elles protègent du mistral"],"Micro-climat sec et ensoleillé, protégé par le massif vosgien."],
+ ["Que signifie la mention « Gentil » ?",["Un assemblage avec au moins 50 % de riesling, pinot gris, muscat ou gewurztraminer","Un assemblage simple, sans règle de proportion","Un vin doux issu de raisins surmûris","Un vin d'un seul cépage noble"],"Gentil = assemblage plus exigeant que l'Edelzwicker."],
+ ["Que désigne « Edelzwicker » ?",["Un assemblage de cépages","Un vin de grains nobles","Un grand cru","Un crémant rosé"],"L'Edelzwicker est l'assemblage simple ; le Gentil est l'assemblage plus rigoureux."],
+ ["Le nom du cépage sur une étiquette d'AOP Alsace…",["n'est pas le nom de l'AOP et n'est pas obligatoire","est le nom de l'AOP","est obligatoire","est interdit"],"Attention, piège du cours : « Alsace Riesling » = AOP Alsace + mention du cépage."],
+ ["Quel est le seul cépage rouge d'Alsace ?",["Pinot noir","Gamay","Meunier","Syrah"],"Il fait environ 10 % de l'encépagement."],
+ ["Quel cépage est le plus planté en Alsace ?",["Riesling (22 %)","Sylvaner (8 %)","Pinot noir (10 %)","Muscat"],"Riesling 22 %, pinot blanc 21 %, gewurztraminer 19 %, pinot gris 15 %, pinot noir 10 %, sylvaner 8 %."],
+ ["Quelle bouteille est obligatoire pour les vins d'Alsace ?",["La flûte d'Alsace (sauf pour le crémant)","La bourguignonne","La bordelaise","Le clavelin"],"La flûte, dite aussi « vin du Rhin »."],
+ ["Quels cépages sont admis en grand cru (sauf exceptions) ?",["Riesling, gewurztraminer, pinot gris, muscat","Tous les cépages d'Alsace","Riesling et sylvaner","Pinot blanc, auxerrois, chardonnay, pinot noir"],"Ce sont les 4 cépages nobles."],
+ ["Quel est le seul grand cru qui autorise le sylvaner ?",["Zotzenberg","Rangen","Schoenenbourg","Brand"],"Zotzenberg, à Mittelbergheim (Bas-Rhin)."],
+ ["Lequel de ces grands crus autorise le pinot noir ?",["Hengst","Zotzenberg","Rangen","Schoenenbourg"],"Kirchberg de Barr, Hengst (2022) et Vorbourg (2024) autorisent le pinot noir."],
+ ["Quel grand cru est le dernier reconnu (2007) et autorise les assemblages ?",["Kaefferkopf","Altenberg de Bergheim","Rangen","Steinklotz"],"Le Kaefferkopf, à Ammerschwihr."],
+ ["Qu'est-ce que le complantage ?",["Planter plusieurs variétés sur le même terrain","Planter les vignes sur deux départements","Greffer deux cépages sur un même pied","Vendanger deux fois la même parcelle"],"L'Altenberg de Bergheim autorise des raisins pressés ensemble, sans mention de cépage."],
+ ["Quelles mentions sont obligatoires sur l'étiquette d'un grand cru ?",["Le millésime et le nom du grand cru","Le cépage et la commune","Le degré de sucre et le cépage","Le nom du domaine et la mention Gentil"],"Le cépage est « généralement » indiqué, mais il n'est pas obligatoire."],
+ ["Avec quelle méthode élabore-t-on le Crémant d'Alsace ?",["Méthode traditionnelle","Méthode ancestrale","Cuve close","Gazéification"],"Deuxième fermentation en bouteille."],
+ ["Quel est le cépage principal du Crémant d'Alsace ?",["Pinot blanc","Riesling","Gewurztraminer","Sylvaner"],"Aussi pinot gris, pinot noir, riesling, chardonnay."],
+ ["Que sont les Vendanges tardives (VT) ?",["Des raisins récoltés en surmaturité, qui donnent des vins moelleux","Des tries de grains botrytisés, qui donnent des liquoreux","Des raisins gelés sur pied","Des vins vinifiés avec les peaux"],"Récolte plusieurs semaines après le début officiel des vendanges."],
+ ["Que sont les Sélections de grains nobles (SGN) ?",["Des tries successives de grains atteints de Botrytis cinerea","Des raisins récoltés une semaine plus tôt","Les meilleurs raisins d'un grand cru, vinifiés secs","Un assemblage des 4 cépages nobles"],"Vins liquoreux : le cépage s'efface derrière la concentration."],
+ ["Quels cépages peuvent faire des VT et des SGN ?",["Riesling, pinot gris, muscat, gewurztraminer","Tous les cépages d'Alsace","Pinot noir et pinot gris","Sylvaner et pinot blanc"],"Uniquement les 4 cépages nobles."],
+ ["Quelle richesse en sucre pour une Vendange tardive (selon le cours) ?",["235 à 257 g/L","276 à 306 g/L","17 g/L","45 à 60 g/L"],"276 à 306 g/L, c'est la SGN."],
+ ["Le Rangen se distingue par…",["sa roche volcanique et sa position la plus au sud","ses marnes gypseuses à Riquewihr","son autorisation du sylvaner","ses assemblages sans cépage"],"Thann et Vieux-Thann, 22 ha, longue garde."],
+ ["Le Schoenenbourg se distingue par…",["ses marnes gypseuses et sa minéralité « pierre à fusil »","sa roche volcanique","son pinot noir","son complantage"],"Riquewihr et Zellenberg, 53 ha, vins amples de longue garde."],
+ ["La dénomination « Klevener de Heiligenstein » est réservée au…",["savagnin rose","gewurztraminer","pinot noir","chasselas"],"Une des dénominations géographiques de l'AOP Alsace."],
+ ["Quel arôme le riesling développe-t-il en vieillissant ?",["Hydrocarbures (pétrole)","Litchi","Cuir","Noix"],"Jeune : citron, fleurs blanches, minéral."],
+ ["Quels arômes typiques du gewurztraminer ?",["Litchi, rose, épices","Pomme verte, herbe coupée","Cassis, poivron","Beurre, noisette"],"Robe jaune doré intense, bouche ample et suave."],
+ ["Qu'est-ce qu'un vin orange ?",["Un blanc vinifié avec macération des peaux, comme un rouge","Un rosé de saignée","Un vin aromatisé à l'orange","Un liquoreux botrytisé"],"La macération apporte couleur, tanins et structure."],
+ ["À l'apéritif, on évite…",["les vins avec du sucre résiduel","le crémant","le sylvaner","le muscat sec"],"Le cours conseille crémant, pinot blanc, sylvaner ou muscat sec."]
+];
+const AL_LBL=[
+ {l:[["Riesling","cep"],["Alsace Grand Cru","app",1],["Schoenenbourg","cru"],["2019","mil"]],app:"Alsace Grand Cru",niv:"AOP Grand Cru",sub:"Haut-Rhin",vin:"Pressurage direct",
+  cep:["Riesling","Gewurztraminer","Pinot gris","Muscat"],all:["Riesling","Gewurztraminer","Pinot gris","Muscat"],
+  xniv:"Le nom d'un des 51 crus (Schoenenbourg, à Riquewihr) suffit à reconnaître un grand cru, même si la mention est effacée.",
+  oq:"Présentez le niveau hiérarchique de cette appellation",
+  oa:"<b>AOP Alsace Grand Cru</b> : le sommet de la hiérarchie alsacienne. 51 grands crus de 3 à 80 ha (700 ha), seulement 4 % des vins d'Alsace. Millésime et nom du cru obligatoires. Cépages admis : riesling, gewurztraminer, pinot gris, muscat, sauf exceptions (Zotzenberg, Hengst…). Le <b>Schoenenbourg</b> (Riquewihr, Zellenberg, 53 ha) : marnes gypseuses et grès, minéralité « pierre à fusil », longue garde."},
+ {l:[["Alsace","app"],["Gentil","men"],["2023","mil"]],app:"Alsace",niv:"AOP Régionale",sub:"Toute l'Alsace (AOP régionale)",vin:"Pressurage direct",
+  cep:["Riesling","Pinot gris","Muscat","Gewurztraminer"],all:["Riesling","Pinot gris","Muscat","Gewurztraminer","Sylvaner","Pinot blanc","Auxerrois","Chasselas"],
+  xniv:"Gentil est une mention de l'AOP Alsace : on reste au niveau régional.",
+  oq:"Expliquez la mention « Gentil »",
+  oa:"Le <b>Gentil</b> est un assemblage plus exigeant que l'Edelzwicker : <b>au moins 50 %</b> du vin doit venir des cépages nobles (<b>riesling, pinot gris, muscat, gewurztraminer</b>), le reste pouvant être du sylvaner, du pinot blanc ou du chasselas. Il s'agit de l'AOP Alsace (régionale) suivie de la mention Gentil."},
+ {l:[["Crémant d'Alsace","app"],["Brut","men"]],app:"Crémant d'Alsace",niv:"AOP Régionale",sub:"Toute l'Alsace (AOP régionale)",vin:"Méthode traditionnelle",
+  cep:["Pinot blanc","Pinot gris","Riesling","Chardonnay"],all:["Pinot blanc","Pinot gris","Riesling","Chardonnay","Pinot noir","Auxerrois"],
+  xniv:"Le Crémant d'Alsace est l'une des 3 AOP couvrant toute l'Alsace (avec l'AOP Alsace et l'AOP Alsace Grand Cru).",
+  oq:"Expliquez l'élaboration de ce vin",
+  oa:"<b>Méthode traditionnelle</b> : un vin de base tranquille reçoit une liqueur de tirage (sucre et levures), puis fait sa <b>deuxième fermentation en bouteille</b> ; vieillissement sur lies (notes toastées, briochées), remuage, dégorgement, puis liqueur d'expédition qui fixe le dosage (ici <b>brut</b>). Surtout du <b>pinot blanc</b>, aussi pinot gris, pinot noir, riesling, chardonnay. 21 % de la production ; c'est le seul vin d'Alsace qui n'est pas obligé d'être en flûte."},
+ {l:[["Alsace","app",1],["Pinot noir","cep"],["2022","mil"]],app:"Alsace",niv:"AOP Régionale",sub:"Toute l'Alsace (AOP régionale)",vin:"Rouge classique",
+  cep:["Pinot noir"],all:["Pinot noir"],
+  xniv:"Sans nom de grand cru, un pinot noir d'Alsace est en AOP Alsace (régionale).",
+  oq:"Présentez le cépage de ce vin",
+  oa:"Le <b>pinot noir</b> est le <b>seul cépage rouge</b> d'Alsace (environ 10 % de l'encépagement). Vinification en rouge classique (macération, fermentation, écoulage). Robe pâle à moyenne, petits fruits rouges (fraise, cerise), tanins fins. Du plus léger au plus structuré ; certains grands crus l'autorisent désormais (Kirchberg de Barr, Hengst, Vorbourg)."},
+ {l:[["Gewurztraminer","cep"],["Vendanges tardives","men"],["Alsace","app",1],["2018","mil"]],app:"Alsace",niv:"AOP Régionale",sub:"Toute l'Alsace (AOP régionale)",vin:"Vin naturellement doux",
+  cep:["Gewurztraminer","Riesling","Pinot gris","Muscat"],all:["Riesling","Gewurztraminer","Pinot gris","Muscat"],
+  xniv:"VT est une mention : sans nom de cru, c'est l'AOP Alsace. Une VT peut aussi exister en grand cru.",
+  oq:"Expliquez la mention « Vendanges tardives »",
+  oa:"Raisins récoltés en <b>surmaturité</b>, plusieurs semaines après le début officiel des vendanges. Uniquement pour les 4 cépages nobles : <b>riesling, pinot gris, muscat, gewurztraminer</b>. Richesse en sucre de 235 à 257 g/L selon le cours ; vins <b>moelleux</b>, qui allient richesse et fraîcheur. Accords : munster, dessert aux fruits exotiques, foie gras."},
+ {l:[["Alsace Grand Cru","app",1],["Rangen","cru"],["Pinot gris","cep"],["Sélection de grains nobles","men"]],app:"Alsace Grand Cru",niv:"AOP Grand Cru",sub:"Haut-Rhin",vin:"Vin naturellement doux",
+  cep:["Pinot gris","Riesling","Gewurztraminer","Muscat"],all:["Riesling","Gewurztraminer","Pinot gris","Muscat"],
+  xniv:"Rangen est l'un des 51 grands crus (Thann et Vieux-Thann, le plus au sud).",
+  oq:"Expliquez la mention « Sélection de grains nobles »",
+  oa:"<b>Tries successives</b> de grains atteints par la pourriture noble (<i>Botrytis cinerea</i>). Mêmes 4 cépages que les VT. Richesse de 276 à 306 g/L selon le cours ; vins <b>liquoreux</b>, très concentrés : le cépage s'efface derrière la concentration. Le <b>Rangen</b> : roche volcanique, grand cru le plus méridional, finesse, puissance et très longue garde."},
+ {l:[["Alsace Grand Cru","app",1],["Zotzenberg","cru"],["Sylvaner","cep"],["2021","mil"]],app:"Alsace Grand Cru",niv:"AOP Grand Cru",sub:"Bas-Rhin",vin:"Pressurage direct",
+  cep:["Sylvaner","Riesling","Gewurztraminer","Pinot gris"],all:["Sylvaner","Riesling","Gewurztraminer","Pinot gris","Muscat"],
+  xniv:"Zotzenberg (Mittelbergheim) est un des 51 grands crus.",
+  oq:"Ce vin a une identité particulière : expliquez-la",
+  oa:"Le sylvaner n'est normalement pas admis en grand cru. Le <b>Zotzenberg</b> (Mittelbergheim, Bas-Rhin) est <b>le seul grand cru qui autorise le sylvaner</b>, en plus des 4 cépages nobles. Les autres exceptions : pinot noir au Kirchberg de Barr, au Hengst et au Vorbourg ; assemblages à l'Altenberg de Bergheim et au Kaefferkopf."},
+ {l:[["Hengst","cru"],["Alsace Grand Cru","app",1],["Pinot noir","cep"],["2022","mil"]],app:"Alsace Grand Cru",niv:"AOP Grand Cru",sub:"Haut-Rhin",vin:"Rouge classique",
+  cep:["Pinot noir","Riesling","Gewurztraminer","Pinot gris"],all:["Pinot noir","Riesling","Gewurztraminer","Pinot gris","Muscat"],
+  xniv:"Hengst (Wintzenheim, près de Colmar) est un des 51 grands crus.",
+  oq:"Expliquez ce qui rend ce grand cru particulier",
+  oa:"Les grands crus sont en principe réservés aux 4 cépages blancs nobles. Le <b>Hengst</b> (Wintzenheim) autorise le <b>pinot noir depuis 2022</b>, comme le Kirchberg de Barr et le Vorbourg (2024). Vinification en rouge classique ; vu au cours Alsace 2 (pinot noir du Hengst élevé sur lies en fûts bourguignons)."},
+ {l:[["Alsace","app"],["Edelzwicker","men"]],app:"Alsace",niv:"AOP Régionale",sub:"Toute l'Alsace (AOP régionale)",vin:"Pressurage direct",
+  cep:["Sylvaner","Pinot blanc","Chasselas","Riesling"],all:["Sylvaner","Pinot blanc","Chasselas","Riesling","Auxerrois","Pinot gris","Muscat","Gewurztraminer"],
+  xniv:"Edelzwicker est une mention de l'AOP Alsace.",
+  oq:"Quelle différence entre Edelzwicker et Gentil ?",
+  oa:"Les deux sont des <b>assemblages</b> en AOP Alsace. L'<b>Edelzwicker</b> est l'assemblage simple, sans proportion imposée. Le <b>Gentil</b> est plus rigoureux : au moins 50 % de riesling, pinot gris, muscat ou gewurztraminer."},
+ {l:[["Alsace","app",1],["Klevener de Heiligenstein","den"],["2023","mil"]],app:"Alsace",niv:"AOP Régionale",sub:"Bas-Rhin",vin:"Pressurage direct",
+  cep:["Savagnin rose"],all:["Savagnin rose"],
+  xniv:"Klevener de Heiligenstein est une dénomination géographique de l'AOP Alsace : l'appellation reste l'AOP Alsace.",
+  oq:"Présentez le niveau hiérarchique de cette appellation",
+  oa:"<b>AOP Alsace + dénomination géographique</b>. L'Alsace a 3 AOP (Alsace, Crémant d'Alsace, Alsace Grand Cru) ; l'AOP Alsace (74 % de la production) peut être suivie d'un cépage, d'une dénomination géographique, d'un lieu-dit, de Gentil ou d'Edelzwicker. Le <b>Klevener de Heiligenstein</b> (Bas-Rhin) est réservé au <b>savagnin rose</b>. Autres dénominations : Côte de Rouffach, Côtes de Barr, Ottrot, Bergheim, Vallée Noble…"},
+ {l:[["Alsace Grand Cru","app"],["Altenberg de Bergheim","cru"],["2017","mil"]],app:"Alsace Grand Cru",niv:"AOP Grand Cru",sub:"Haut-Rhin",vin:"Pressurage direct",
+  cep:["Riesling","Pinot gris","Gewurztraminer","Chasselas"],all:["Riesling","Pinot gris","Gewurztraminer","Chasselas","Pinot noir","Pinot blanc","Muscat"],
+  xniv:"Le nom du cru et la mention Alsace Grand Cru sont visibles.",
+  oq:"Pourquoi aucun cépage n'est-il indiqué ?",
+  oa:"L'<b>Altenberg de Bergheim</b> pratique le <b>complantage</b> : plusieurs variétés plantées sur le même terrain, pressées ensemble. Le grand cru autorise ces assemblages (riesling, pinot gris, gewurztraminer, plus chasselas, pinot noir, pinot blanc, muscat) <b>sans mention de cépage</b>. Le Kaefferkopf autorise aussi l'assemblage. Rappel : en grand cru, seuls le millésime et le nom du cru sont obligatoires."}
+];
+const AL_CEP=[
+ {c:"Riesling",k:["Robe pâle à reflets verts","Citron, fleurs blanches","Minéral","Hydrocarbures avec l'âge","Acidité vive, corps longiligne","Accord du cours : saumon au beurre blanc"]},
+ {c:"Pinot gris",k:["Robe paille à dorée","Orange confite, miel","Épices, sous-bois","Bouche volumineuse","Souvent un peu de sucre résiduel","Accord du cours : foie gras poêlé"]},
+ {c:"Gewurztraminer",k:["Robe jaune doré intense","Litchi","Rose","Épices","Bouche ample et suave","Accord du cours : tajine, nems au curry"]},
+ {c:"Sylvaner",k:["Robe claire à reflets verts","Nez discret","Agrumes, herbe coupée","Bouche franche et fraîche","Léger, désaltérant","Accord du cours : tartare de truite"]},
+ {c:"Muscat",k:["Nez très aromatique de raisin frais","Floral","Sec en Alsace malgré son nez","Croquant","Accord du cours : asperges sauce maltaise"]},
+ {c:"Pinot blanc",k:["Souple et rond","Nez discret","Cépage principal du crémant","Accord du cours : terrine de lapereau"]},
+ {c:"Pinot noir",k:["Seul cépage rouge d'Alsace","Robe pâle à moyenne","Petits fruits rouges, fraise","Tanins fins, soyeux"]}
+];
+const AL_QUAL=[
+ ["Riesling typique · acidité","Nerveux",["Souple","Vert"],"Acidité vive : nerveux. « Vert » désigne une acidité de raisin pas mûr."],
+ ["Riesling jeune · intensité de la robe","Pâle",["Profonde"],"Robe pâle à reflets verts."],
+ ["Gewurztraminer · intensité du nez","Très aromatique",["Faible","Moyen"],"Litchi, rose, épices : un des cépages les plus aromatiques."],
+ ["Gewurztraminer · acidité","Souple",["Nerveux","Vert"],"Bouche ample et suave, acidité basse."],
+ ["Gewurztraminer · corps","Volumineux",["Mince"],"Ample, souvent avec du sucre résiduel."],
+ ["Pinot gris · corps","Volumineux",["Mince"],"Volumineux, souvent un peu de sucre résiduel."],
+ ["Sylvaner · intensité du nez","Faible",["Très aromatique"],"Nez discret : agrumes, fleurs blanches, herbe coupée."],
+ ["Sylvaner · corps","Mince",["Volumineux"],"Léger, vif, désaltérant."],
+ ["Muscat d'Alsace · intensité du nez","Très aromatique",["Faible"],"Nez explosif de raisin frais."],
+ ["Muscat d'Alsace · douceur","Sec",["Moelleux","Liquoreux"],"En Alsace, le muscat est en général vinifié sec."],
+ ["Pinot blanc · acidité","Souple",["Nerveux","Vert"],"Souple, rond, discret."],
+ ["Pinot noir d'Alsace · tanins","Fondu",["Astringent"],"Tanins fins et soyeux."],
+ ["Pinot noir d'Alsace · intensité de la robe","Pâle",["Profonde"],"Robe pâle à moyenne : le pinot noir a peu de matière colorante."],
+ ["Vendanges tardives · douceur","Moelleux",["Sec","Liquoreux"],"VT = moelleux ; SGN = liquoreux."],
+ ["Sélection de grains nobles · douceur","Liquoreux",["Sec","Demi-sec","Moelleux"],"Tries de grains botrytisés, très concentrés."],
+ ["Crémant d'Alsace brut · douceur","Sec",["Moelleux","Liquoreux"],"Brut : peu de sucre ajouté au dosage."]
+];
+const AL_PLATS={sau:"Dos de saumon mi-cuit au beurre blanc citronnelle",hui:"Huîtres ou moules marinières de l'étang de Thau",dau:"Tartare de daurade au citron vert",boe:"Côte de bœuf maturée grillée",dob:"Daube provençale",mag:"Magret de canard aux fruits rouges",nav:"Navarin d'agneau",gar:"Gardianne de taureau",taj:"Tajine",nem:"Nems au curry",gig:"Gigot d'agneau de 7h aux épices orientales",dor:"Dorade en croûte de sel",foi:"Foie gras poêlé, chutney d'orange",vob:"Volaille de Bresse aux champignons",asp:"Asperges blanches sauce maltaise",mel:"Carpaccio de melon et langoustines à la coriandre",jou:"Joues de porc braisées",tru:"Tartare de truite, citron et aneth",can:"Canard rôti aux cerises noires",lap:"Terrine de lapereau",vol:"Vol-au-vent",pig:"Pigeonneau rosé à la française",mig:"Mignon de veau rosé, jus réduit",cro:"Croquettes au fromage",bro:"Brochettes de bœuf marinées",stj:"Saint-Jacques snackées, crumble au parmesan"};
+const AL_ACC=[
+ ["Alsace Riesling","sec, tendu, minéral",["sau","hui","dau"],["boe","dob","mag","nav","gar"],"L'acidité vive et la minéralité du riesling vont avec poissons et fruits de mer ; le cours l'associe au saumon au beurre blanc."],
+ ["Alsace Grand Cru Riesling","sec, très minéral, intense, long",["sau","stj"],["dob","boe","mag","gar"],"Le cours associe le riesling grand cru au dos de saumon mi-cuit, beurre blanc citronnelle."],
+ ["Alsace Gewurztraminer","riche, épicé, floral, parfois demi-sec",["taj","nem","gig"],["hui","dau","boe","dor"],"Ses arômes épicés et son ampleur répondent aux cuisines épicées : le cours cite tajine et nems au curry."],
+ ["Alsace Pinot gris","gourmand, structuré, demi-sec possible",["foi","vob"],["hui","dau","boe","gar"],"Volumineux, parfois demi-sec : foie gras poêlé (cité au cours) ou volaille."],
+ ["Alsace Muscat","sec, aromatique, croquant",["asp","mel"],["jou","boe","dob","mag"],"Le cours cite les asperges sauce maltaise, et le carpaccio de melon et langoustines pour le muscat grand cru."],
+ ["Alsace Sylvaner","léger, vif, désaltérant",["tru"],["foi","dob","gig","can"],"Léger et vif : un plat frais et acidulé. Le cours cite le tartare de truite pour le sylvaner grand cru."],
+ ["Alsace Pinot blanc","souple, rond, discret",["lap","vol"],["boe","dob","can","gig"],"Un vin discret pour un plat simple : le cours cite la terrine de lapereau."],
+ ["Alsace Pinot noir","fruité, léger, tanins fins",["pig","mig"],["hui","asp","mel","dau"],"Un rouge léger va avec une viande rosée ou blanche, pas avec les fruits de mer ni les asperges."],
+ ["Crémant d'Alsace brut","vif, bulles fines, sans sucre résiduel",["cro"],["dob","gig","can","jou"],"À l'apéritif, un vin sans sucre résiduel : le crémant avec des croquettes au fromage."],
+ ["Alsace Gewurztraminer Vendanges tardives","moelleux, riche et frais",["foi"],["hui","dau","boe","bro"],"Un moelleux avec le foie gras ; le cours cite aussi munster et dessert exotique (hors liste)."]
+];
+EX.alqcm=()=>{const d=makeDeck(AL_QCM);const m=mcPanel("alqcm",{controls:'<span class="kicker cnt"></span>',next:()=>{const q=qFromQCM(d.next());q.cat="Alsace";m.f(".cnt").textContent="Question "+d.pos+" / "+d.total;return q;}});m.show();};
+EX.alcep=()=>{
+  const opts='<label for="acMode">Type</label><select id="acMode"><option value="mix">Les deux</option><option value="cep">Reconnaître le cépage</option><option value="qual">Qualificatifs de la fiche</option></select>';
+  const cd=makeDeck(AL_CEP),qd=makeDeck(AL_QUAL);
+  const m=mcPanel("alcep",{controls:opts,next:()=>{
+    const v=$("#acMode").value,t=v==="mix"?(Math.random()<.5?"cep":"qual"):v;
+    if(t==="cep"){const x=cd.next();const o=shuf([x.c].concat(shuf(AL_CEP.filter(y=>y!==x).map(y=>y.c)).slice(0,3)));
+      return{cat:"Quel cépage ?",q:shuf(x.k.slice()).slice(0,3).join(" · "),opts:o,a:o.indexOf(x.c),ex:x.c+" : "+x.k.join(", ")+"."};}
+    const x=qd.next();const o=shuf([x[1]].concat(x[2]));return{cat:"Fiche de dégustation",q:x[0]+" ?",opts:o,a:o.indexOf(x[1]),ex:x[3],two:o.length===2};
+  }});
+  $("#acMode").onchange=()=>m.reset();m.show();
+};
+EX.alacc=()=>{const d=makeDeck(AL_ACC);const m=mcPanel("alacc",{controls:'<span class="kicker cnt"></span>',next:()=>{const x=d.next();const ok=AL_PLATS[pick(x[2])];const o=shuf([ok].concat(shuf(x[3].slice()).slice(0,3).map(k=>AL_PLATS[k])));m.f(".cnt").textContent="Vin "+d.pos+" / "+d.total;
+  return{cat:"Accord mets et vins",q:x[0]+" ("+x[1]+") : quel plat de la liste proposer ?",opts:o,a:o.indexOf(ok),ex:x[4]+" Autres bons choix : "+x[2].map(k=>AL_PLATS[k]).join(" ; ")+"."};}});m.show();};
+EX.aletiq=()=>{
+  const panel=$("#x-aletiq"),box=document.createElement("div");box.className="mc";panel.appendChild(box);
+  const d=makeDeck(AL_LBL);let good=0,asked=0;
+  const APP=["Alsace","Alsace Grand Cru","Crémant d'Alsace"];
+  const NIV=["AOP Régionale","AOP Grand Cru","AOP Communale","AOP 1er Cru","AOP Sous-régionale","IGP","Vin de France"];
+  const SUB=["Haut-Rhin","Bas-Rhin","Toute l'Alsace (AOP régionale)"];
+  const VIN=["Pressurage direct","Rouge classique","Saignée","Méthode traditionnelle","Ancestrale","VDN","Vin naturellement doux","Macération carbonique"];
+  const GR=["Riesling","Gewurztraminer","Pinot gris","Muscat","Sylvaner","Pinot blanc","Auxerrois","Chasselas","Pinot noir","Savagnin rose","Chardonnay","Gamay","Syrah","Chenin","Sauvignon","Merlot","Meunier","Aligoté"];
+  function cepStep(L){
+    const n=L.cep.length,ok=L.cep.join(", "),bad=GR.filter(g=>!L.all.includes(g)),sets=[ok];let g=0;
+    while(sets.length<4&&g++<60){const s=L.cep.slice();shuf([...Array(n).keys()]).slice(0,n>1?1+Math.floor(Math.random()*2):1).forEach(i=>{s[i]=pick(bad.filter(b=>!s.includes(b)));});const t=s.join(", ");if(!sets.includes(t))sets.push(t);}
+    return{t:n>1?"Citez 4 cépages autorisés (choisir la bonne série)":"Citez le cépage de cette appellation",o:shuf(sets),a:ok,x:"Cépages autorisés : "+L.all.join(", ")+"."};
+  }
+  function show(){
+    const L=d.next();
+    const steps=[
+      {t:"Nom de l'appellation",o:APP.slice(),a:L.app},
+      {t:"Niveau hiérarchique de l'appellation",o:shuf([L.niv].concat(shuf(NIV.filter(x=>x!==L.niv)).slice(0,3))),a:L.niv,x:L.xniv},
+      {t:"Sous-région, à défaut le département",o:SUB.slice(),a:L.sub},
+      {t:"Vinification pratiquée",o:shuf([L.vin].concat(shuf(VIN.filter(x=>x!==L.vin)).slice(0,3))),a:L.vin},
+      cepStep(L)];
+    box.innerHTML='<div class="ex-bar"><span class="kicker">Étiquette '+d.pos+' / '+d.total+'</span><span class="score">'+good+' / '+asked+'</span></div>'+
+      '<div class="lbl" aria-label="Étiquette">'+L.l.map(x=>'<span class="lbl-l lbl-'+x[1]+'">'+(x[2]?'<span class="lbl-m">effacé</span>':esc(x[0]))+'</span>').join("")+'<span class="lbl-l lbl-foot">75 cl · Mis en bouteille à la propriété</span></div>'+
+      '<p class="mini">Région : Alsace (/3). Répondez ligne par ligne, comme sur la feuille d\'examen.</p>'+
+      steps.map((s,i)=>'<div class="al-step" data-i="'+i+'"><p class="mini">'+(i+1)+'. '+esc(s.t)+'</p><div class="q-opts'+(s.o.length===3?' three':'')+'">'+s.o.map((t,k)=>'<button type="button" data-k="'+k+'">'+esc(t)+'</button>').join("")+'</div><p class="al-fb" aria-live="polite"></p></div>').join("")+
+      '<div class="al-step"><p class="mini">6. '+esc(L.oq)+' (/5)</p><p class="ex-prompt">Rédigez votre réponse sur papier, puis comparez.</p><div><button type="button" class="btn ghost al-show">Voir une réponse modèle</button></div><div class="explain" hidden>'+L.oa+'</div></div>'+
+      '<div class="ex-foot"><p class="mini">Seule la question 6 n\'est pas notée ici.</p><button type="button" class="btn al-next">Étiquette suivante</button></div>';
+    box.querySelectorAll(".al-step[data-i]").forEach(st=>{const s=steps[+st.dataset.i];st.querySelectorAll("button").forEach(b=>b.onclick=()=>{
+      const ok=s.o[+b.dataset.k]===s.a;asked++;if(ok)good++;
+      st.querySelectorAll("button").forEach(x=>{x.disabled=true;if(s.o[+x.dataset.k]===s.a)x.classList.add("is-right");});if(!ok)b.classList.add("is-wrong");
+      st.querySelector(".al-fb").innerHTML=(ok?'<span class="ok">Juste.</span>':'<span class="ko">Non.</span> Bonne réponse : « '+esc(s.a)+' ».')+(s.x?' '+esc(s.x):'');
+      box.querySelector(".score").textContent=good+" / "+asked;});});
+    box.querySelector(".al-show").onclick=e=>{e.target.parentElement.nextElementSibling.hidden=false;e.target.hidden=true;};
+    box.querySelector(".al-next").onclick=()=>{show();panel.scrollIntoView({block:"start"});};
+  }
+  show();
+};
+
 /* ===== Compteurs du menu et démarrage ===== */
 (function(){
   const nVocab=VOCAB.reduce((s,g)=>s+g.items.length,0),nCl=CLASSER.reduce((s,c)=>s+c.items.length,0);
-  const C={examen:"20 questions",qcm:QCM.length+" questions",vf:VF.length+" affirmations",chiffres:CHIFFRES.length+" questions",classer:CLASSER.length+" séries · "+nCl+" éléments",intrus:"tiré au hasard",def:nVocab+" termes · 2 sens",ordre:SEQS.length+" séries"};
+  const C={examen:"20 questions",qcm:QCM.length+" questions",vf:VF.length+" affirmations",chiffres:CHIFFRES.length+" questions",classer:CLASSER.length+" séries · "+nCl+" éléments",intrus:"tiré au hasard",def:nVocab+" termes · 2 sens",ordre:SEQS.length+" séries",aletiq:AL_LBL.length+" étiquettes",alqcm:AL_QCM.length+" questions",alcep:(AL_CEP.length+AL_QUAL.length)+" questions",alacc:AL_ACC.length+" vins"};
   document.querySelectorAll("[data-count]").forEach(el=>{el.textContent=C[el.dataset.count]||"";});
   openEx("nuage");
   route();
