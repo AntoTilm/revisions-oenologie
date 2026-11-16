@@ -1043,7 +1043,7 @@ const AL_QCM=[
  ["Que désigne « Edelzwicker » ?",["Un assemblage de cépages","Un vin de grains nobles","Un grand cru","Un crémant rosé"],"L'Edelzwicker est l'assemblage simple ; le Gentil est l'assemblage plus rigoureux."],
  ["Le nom du cépage sur une étiquette d'AOP Alsace…",["n'est pas le nom de l'AOP et n'est pas obligatoire","est le nom de l'AOP","est obligatoire","est interdit"],"Attention, piège du cours : « Alsace Riesling » = AOP Alsace + mention du cépage."],
  ["Quel est le seul cépage rouge d'Alsace ?",["Pinot noir","Gamay","Meunier","Syrah"],"Il fait environ 10 % de l'encépagement."],
- ["Quel cépage est le plus planté en Alsace ?",["Riesling (22 %)","Sylvaner (8 %)","Pinot noir (10 %)","Muscat"],"Riesling 22 %, pinot blanc 21 %, gewurztraminer 19 %, pinot gris 15 %, pinot noir 10 %, sylvaner 8 %."],
+ ["Quel cépage est le plus planté en Alsace ?",["Riesling","Pinot blanc","Gewurztraminer","Pinot gris"],"Riesling 22 %, pinot blanc 21 %, gewurztraminer 19 %, pinot gris 15 %, pinot noir 10 %, sylvaner 8 %."],
  ["Quelle bouteille est obligatoire pour les vins d'Alsace ?",["La flûte d'Alsace (sauf pour le crémant)","La bourguignonne","La bordelaise","Le clavelin"],"La flûte, dite aussi « vin du Rhin »."],
  ["Quels cépages sont admis en grand cru (sauf exceptions) ?",["Riesling, gewurztraminer, pinot gris, muscat","Tous les cépages d'Alsace","Riesling et sylvaner","Pinot blanc, auxerrois, chardonnay, pinot noir"],"Ce sont les 4 cépages nobles."],
  ["Quel est le seul grand cru qui autorise le sylvaner ?",["Zotzenberg","Rangen","Schoenenbourg","Brand"],"Zotzenberg, à Mittelbergheim (Bas-Rhin)."],
