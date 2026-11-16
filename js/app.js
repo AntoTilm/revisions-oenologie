@@ -1032,11 +1032,11 @@ window.removeEventListener("hashchange",_route);window.addEventListener("hashcha
 
 /* ===== Alsace : exercices au format de l'évaluation France 1 (étiquettes, QCM, dégustation, accords) ===== */
 const AL_QCM=[
- ["Combien d'AOP compte l'Alsace ?",["53","51","3","13"],"AOP Alsace, AOP Crémant d'Alsace et 51 AOP Alsace Grand Cru."],
+ ["Combien d'AOP compte l'Alsace ?",["53","51","3","13"],"53 : AOP Alsace + AOP Crémant d'Alsace + 51 AOP Alsace Grand Cru."],
  ["Combien de grands crus en Alsace ?",["51","33","53","17"],"51 grands crus de 3 à 80 ha, environ 700 ha au total."],
  ["Quelle part des vins d'Alsace les grands crus représentent-ils ?",["4 %","21 %","74 %","40 %"],"AOP Alsace 74 %, Crémant 21 %, grands crus 4 %."],
  ["Quelle part de la production représente le Crémant d'Alsace ?",["21 %","4 %","74 %","50 %"],"Le crémant fait 21 % de la production."],
- ["Dans quels départements se trouve le vignoble ?",["Bas-Rhin et Haut-Rhin","Moselle et Bas-Rhin","Haut-Rhin et Vosges","Doubs et Haut-Rhin"],"Une bande de 100 km sur 2 à 4 km entre les Vosges et le Rhin."],
+ ["Dans quels départements se trouve le vignoble d'Alsace ?",["Bas-Rhin et Haut-Rhin","Moselle et Bas-Rhin","Haut-Rhin et Vosges","Doubs et Haut-Rhin"],"Bas-Rhin (67) et Haut-Rhin (68). Le vignoble est une bande de 100 km sur 2 à 4 km au pied du massif des Vosges, mais il n'est pas dans le département des Vosges."],
  ["Quel est le climat de l'Alsace ?",["Semi-continental, sec et ensoleillé","Océanique et humide","Méditerranéen","Montagnard très pluvieux"],"Les Vosges arrêtent la pluie : pluviométrie faible."],
  ["Quel rôle jouent les Vosges ?",["Elles arrêtent les pluies venues de l'ouest","Elles apportent l'humidité du Rhin","Elles fournissent les sols volcaniques de tout le vignoble","Elles protègent du mistral"],"Micro-climat sec et ensoleillé, protégé par le massif vosgien."],
  ["Que signifie la mention « Gentil » ?",["Un assemblage avec au moins 50 % de riesling, pinot gris, muscat ou gewurztraminer","Un assemblage simple, sans règle de proportion","Un vin doux issu de raisins surmûris","Un vin d'un seul cépage noble"],"Gentil = assemblage plus exigeant que l'Edelzwicker."],
@@ -1052,18 +1052,18 @@ const AL_QCM=[
  ["Qu'est-ce que le complantage ?",["Planter plusieurs variétés sur le même terrain","Planter les vignes sur deux départements","Greffer deux cépages sur un même pied","Vendanger deux fois la même parcelle"],"L'Altenberg de Bergheim autorise des raisins pressés ensemble, sans mention de cépage."],
  ["Quelles mentions sont obligatoires sur l'étiquette d'un grand cru ?",["Le millésime et le nom du grand cru","Le cépage et la commune","Le degré de sucre et le cépage","Le nom du domaine et la mention Gentil"],"Le cépage est « généralement » indiqué, mais il n'est pas obligatoire."],
  ["Avec quelle méthode élabore-t-on le Crémant d'Alsace ?",["Méthode traditionnelle","Méthode ancestrale","Cuve close","Gazéification"],"Deuxième fermentation en bouteille."],
- ["Quel est le cépage principal du Crémant d'Alsace ?",["Pinot blanc","Riesling","Gewurztraminer","Sylvaner"],"Aussi pinot gris, pinot noir, riesling, chardonnay."],
+ ["Quel est le cépage principal du Crémant d'Alsace ?",["Pinot blanc","Riesling","Gewurztraminer","Sylvaner"],"Pinot blanc. Sont aussi admis : pinot gris, pinot noir, riesling et chardonnay."],
  ["Que sont les Vendanges tardives (VT) ?",["Des raisins récoltés en surmaturité, qui donnent des vins moelleux","Des tries de grains botrytisés, qui donnent des liquoreux","Des raisins gelés sur pied","Des vins vinifiés avec les peaux"],"Récolte plusieurs semaines après le début officiel des vendanges."],
  ["Que sont les Sélections de grains nobles (SGN) ?",["Des tries successives de grains atteints de Botrytis cinerea","Des raisins récoltés une semaine plus tôt","Les meilleurs raisins d'un grand cru, vinifiés secs","Un assemblage des 4 cépages nobles"],"Vins liquoreux : le cépage s'efface derrière la concentration."],
  ["Quels cépages peuvent faire des VT et des SGN ?",["Riesling, pinot gris, muscat, gewurztraminer","Tous les cépages d'Alsace","Pinot noir et pinot gris","Sylvaner et pinot blanc"],"Uniquement les 4 cépages nobles."],
- ["Quelle richesse en sucre pour une Vendange tardive (selon le cours) ?",["235 à 257 g/L","276 à 306 g/L","17 g/L","45 à 60 g/L"],"276 à 306 g/L, c'est la SGN."],
+ ["Quelle richesse en sucre pour une Vendange tardive (selon le cours) ?",["235 à 257 g/L","276 à 306 g/L","17 g/L","45 à 60 g/L"],"VT : 235 à 257 g/L. À ne pas confondre avec la SGN : 276 à 306 g/L."],
  ["Le Rangen se distingue par…",["sa roche volcanique et sa position la plus au sud","ses marnes gypseuses à Riquewihr","son autorisation du sylvaner","ses assemblages sans cépage"],"Thann et Vieux-Thann, 22 ha, longue garde."],
  ["Le Schoenenbourg se distingue par…",["ses marnes gypseuses et sa minéralité « pierre à fusil »","sa roche volcanique","son pinot noir","son complantage"],"Riquewihr et Zellenberg, 53 ha, vins amples de longue garde."],
  ["La dénomination « Klevener de Heiligenstein » est réservée au…",["savagnin rose","gewurztraminer","pinot noir","chasselas"],"Une des dénominations géographiques de l'AOP Alsace."],
  ["Quel arôme le riesling développe-t-il en vieillissant ?",["Hydrocarbures (pétrole)","Litchi","Cuir","Noix"],"Jeune : citron, fleurs blanches, minéral."],
  ["Quels arômes typiques du gewurztraminer ?",["Litchi, rose, épices","Pomme verte, herbe coupée","Cassis, poivron","Beurre, noisette"],"Robe jaune doré intense, bouche ample et suave."],
  ["Qu'est-ce qu'un vin orange ?",["Un blanc vinifié avec macération des peaux, comme un rouge","Un rosé de saignée","Un vin aromatisé à l'orange","Un liquoreux botrytisé"],"La macération apporte couleur, tanins et structure."],
- ["À l'apéritif, on évite…",["les vins avec du sucre résiduel","le crémant","le sylvaner","le muscat sec"],"Le cours conseille crémant, pinot blanc, sylvaner ou muscat sec."]
+ ["À l'apéritif, on évite…",["les vins avec du sucre résiduel","le crémant","le sylvaner","le muscat sec"],"On évite les vins avec du sucre résiduel. Le cours conseille crémant, pinot blanc, sylvaner ou muscat sec."]
 ];
 const AL_LBL=[
  {l:[["Riesling","cep"],["Alsace Grand Cru","app",1],["Schoenenbourg","cru"],["2019","mil"]],app:"Alsace Grand Cru",niv:"AOP Grand Cru",sub:"Haut-Rhin",vin:"Pressurage direct",
